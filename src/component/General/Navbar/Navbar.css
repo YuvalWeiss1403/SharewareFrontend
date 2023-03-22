@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.all-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.navbar-left-side {
+    display: flex;
+    flex-direction: row;
+    gap: 30%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.navbar-right-side {
+    display: flex;
+    flex-direction: row;
+    gap: 30%;
+    font-size: 16px;
+    font-weight: bold;
+    padding-right: 2%;
+}
+
+#sign-up {
+    width: 120px;
+    height: 30px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: #f76b8a; 
+}
