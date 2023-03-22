@@ -1,0 +1,114 @@
+.logIn-page {
+	width: 100%;
+	height: 100vh;
+	box-sizing: border-box;
+}
+.logIn-page .footer {
+	position: absolute;
+}
+
+.login-content {
+	font-family: 'Helvetica Neue Thin';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 345px;
+	background-color: white;
+	height: 50vh;
+	overflow: scroll;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+	gap: 15px;
+	padding: 20px;
+}
+
+.signIn-page-heading {
+	font-size: 24px;
+	line-height: 26px;
+	letter-spacing: 2.67px;
+	text-transform: uppercase;
+}
+
+.signIn-page-secondary-heading {
+	font-size: 18px;
+	line-height: 18px;
+	letter-spacing: 1.87px;
+}
+
+.enter-email,
+.enter-password {
+	width: 60%;
+	border: 0;
+	background-color: transparent;
+	border-bottom: 0.5px solid black;
+}
+
+#page-login {
+	border: 0;
+	background-color: black;
+	color: white;
+	font-size: 16px;
+	line-height: 20px;
+	letter-spacing: 2.67px;
+	text-transform: uppercase;
+	width: 110px;
+	height: 30px;
+}
+#page-login:hover {
+	background-color: #979797;
+}
+#page-forget-password {
+	border: 0;
+	font-weight: 600;
+	line-height: 18px;
+	letter-spacing: 1.97px;
+	background-color: transparent;
+}
+#forget-password:hover {
+	color: #979797;
+}
+
+.or-div {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+.or-div hr {
+	width: 126.5px;
+	height: 0px;
+	border: 0.5px solid #979797;
+}
+
+#page-sign-up-button {
+	border: 0.5px solid black;
+	background-color: transparent;
+	color: black;
+	font-size: 16px;
+	line-height: 20px;
+	letter-spacing: 2.67px;
+	text-transform: uppercase;
+	width: 110px;
+	height: 30px;
+}
+
+@media only screen and (max-width: 640px) {
+	.my-login-modal {
+		background-color: white;
+	}
+	.login-close-button {
+		color: black;
+		top: 0;
+		left: 0;
+		font-size: 30px;
+	}
+	.signIn-page-secondary-heading {
+		width: 90%;
+		text-align: center;
+	}
+	.login-content {
+		height: 440px;
+	}
+}
