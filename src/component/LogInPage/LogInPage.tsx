@@ -72,7 +72,6 @@ const LogInPage: React.FC = () => {
 					sign up
 				</button>
 			</div>
-
 			{/* <Footer /> */}
 		</div>
 	);
