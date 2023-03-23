@@ -29,6 +29,7 @@ export interface IAnswersState {
 	value: IAnswers[];
 }
 export interface ITipsState {
+	filteredValue: ITips;
 	value: ITips[];
 }
 export default configureStore({
