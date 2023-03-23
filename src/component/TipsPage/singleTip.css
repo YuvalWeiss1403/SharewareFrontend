@@ -1,0 +1,13 @@
+.Tips-Page {
+	width: 100vw;
+	height: 100vh;
+}
+#tip {
+	background-color: beige;
+	width: 70%;
+	border-color: #d68bd2;
+	height: 200px;
+	margin-left: 16%;
+	border-radius: 12px;
+	border: 7px solid #d68bd2;
+}
