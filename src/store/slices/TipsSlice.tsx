@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ObjectId } from 'mongoose';
 
 export interface ITips {
+	_id?: ObjectId;
 	title: string;
 	userName: string;
 	approved: boolean;
