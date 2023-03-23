@@ -4,6 +4,7 @@ import HomePage from './component/HomePage/HomePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LogInPage from './component/LogInPage/LogInPage';
 import SignUp from './component/SignUp/SignUp';
+import SignedInUser from './component/SignedInUser/SignedInUser';
 
 const App: React.FC = () => {
 	return (
@@ -22,6 +23,10 @@ const App: React.FC = () => {
 				<Route
 					path="/SignUp"
 					element={<SignUp />}
+				/>
+				<Route
+					path="/UserInfo"
+					element={<SignedInUser />}
 				/>
 				<Route path="/SignUp" />
 			</Routes>
