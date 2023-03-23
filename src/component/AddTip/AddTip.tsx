@@ -1,7 +1,6 @@
-import mongoose from 'mongoose';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
 interface IModal {
@@ -27,14 +26,14 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 	const restDetails: InputField[] = [
 		{
 			id: 'title-input',
-			placeholder: 'Enter TITLE',
+			placeholder: 'Enter Title',
 			type: 'text',
 			title: 'title',
 			name: 'title',
 		},
 		{
 			id: 'comment-input',
-			placeholder: 'comment',
+			placeholder: 'Enter Comment',
 			type: 'text',
 			title: 'comment',
 			name: 'comment',
@@ -69,7 +68,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 			// }
 			// // Use the provided _id to create a valid ObjectId
 			// const objectId = mongoose.Types.ObjectId.createFromHexString(_id);
-			await fetch('http://localhost:8000/tips', {
+			await fetch('http://localhost:8000/tips/', {
 				method: 'POST',
 				body: JSON.stringify({
 					title: title,
@@ -87,6 +86,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 						title: '',
 						comment: '',
 					});
+					navigate('/');
 					window.location.reload();
 				});
 		} catch (err) {
@@ -97,7 +97,8 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const username = `${data.firstname} "" ${data.lastname}`;
+		const username = `${data.firstName} ${data.lastName}`;
+		console.log(username);
 		const comment = inputValues.comment;
 		const title = inputValues.title;
 		await newTip(title, comment, username);
