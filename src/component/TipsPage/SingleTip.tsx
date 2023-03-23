@@ -26,6 +26,8 @@ const SingleTip: React.FC = () => {
 	};
 
 	const addLike = async (_id: ObjectId, newData: ITips) => {
+		console.log(_id);
+		console.log(newData);
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
 				method: 'PUT',
