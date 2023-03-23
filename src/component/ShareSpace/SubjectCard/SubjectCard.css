@@ -1,0 +1,46 @@
+.subject-card {
+	background-color: #d68bd2;
+	width: 150px;
+	border-radius: 5px;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 2px 10px 10px hsla(0, 0%, 69%, 1.25);
+	font-weight: 600;
+	letter-spacing: 0.67px;
+	line-height: 26px;
+	text-transform: uppercase;
+	transition: all 0.5s;
+	font-size: 22px;
+}
+
+.subject-card:hover {
+	cursor: pointer;
+	color: white;
+}
+
+.subject-card span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.3s;
+}
+
+.subject-card span:after {
+	content: "\00bb";
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.subject-card:hover span {
+	padding-right: 25px;
+}
+
+.subject-card:hover span:after {
+	opacity: 1;
+	right: 0;
+}

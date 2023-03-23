@@ -1,13 +1,23 @@
-import "./ShareSpace.css"
-import Navbar from "../General/Navbar/Navbar"
+import "./ShareSpace.css";
+import Navbar from "../General/Navbar/Navbar";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { ISubjects } from "../../store/slices/SubjectsSlice";
+import SubjectCard from "./SubjectCard/SubjectCard";
 
 const ShareSpace: React.FC = () => {
-return (
-    <div className="ShareSpace">
-        <Navbar />
-        ShareSpace
-    </div>
-)
-}
+	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 
-export default ShareSpace 
+	return (
+		<div className="ShareSpace">
+			<Navbar />
+			<div className="subjects-card-container">
+				{subjectsData?.map((subject: ISubjects, index: number) => {
+					return <SubjectCard name={subject.name} key={index} />;
+				})}
+			</div>
+		</div>
+	);
+};
+
+export default ShareSpace;

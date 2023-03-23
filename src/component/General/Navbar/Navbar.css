@@ -1,48 +1,48 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .all-navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height:100px;
-    padding-top: 2%;
-    padding-left: 2%;
-    padding-right: 2%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 100px;
+	padding-top: 2%;
+	padding-left: 2%;
+	padding-right: 2%;
 }
 
 .navbar-left-side {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 30%;
-    font-size: 20px;
-    font-weight: bold;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 30%;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 .navbar-right-side {
-    display: flex;
-    flex-direction: row;
-    gap: 30%;
-    font-size: 18px;
-    font-weight: bold;
-    padding-right: 2%;
+	display: flex;
+	flex-direction: row;
+	gap: 30%;
+	font-size: 18px;
+	font-weight: bold;
+	padding-right: 2%;
 }
 
-.log-in{
-    color:white  
+.log-in {
+	color: white;
 }
 
 #sign-up {
-    width: 140px;
-    height: 30px;
-    border-radius: 20px;
-    text-align: center;
-    background-color: #f76b8a;
-    color:white 
+	width: 140px;
+	height: 30px;
+	border-radius: 20px;
+	text-align: center;
+	background-color: #d68bd2;
+	color: white;
 }
