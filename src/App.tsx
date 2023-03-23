@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LogInPage from './component/LogInPage/LogInPage';
 import SignUp from './component/SignUp/SignUp';
 import SignedInUser from './component/SignedInUser/SignedInUser';
+import TipsPage from './component/TipsPage/TipsPage';
 
 const App: React.FC = () => {
 	return (
@@ -15,7 +16,6 @@ const App: React.FC = () => {
 					element={<HomePage />}
 				/>
 				<Route path="/ShareSpace" />
-				<Route path="/Tips" />
 				<Route
 					path="/LogIn"
 					element={<LogInPage />}
@@ -27,6 +27,10 @@ const App: React.FC = () => {
 				<Route
 					path="/UserInfo"
 					element={<SignedInUser />}
+				/>
+				<Route
+					path="/Tips"
+					element={<TipsPage />}
 				/>
 				<Route path="/SignUp" />
 			</Routes>
