@@ -6,6 +6,7 @@ import LogInPage from "./component/LogInPage/LogInPage";
 import SignUp from "./component/SignUp/SignUp";
 import SignedInUser from "./component/SignedInUser/SignedInUser";
 import ShareSpace from "./component/ShareSpace/ShareSpace";
+import SingleSubjectPage from "./component/SingleSubjectPage/SingleSubjectPage";
 
 const App: React.FC = () => {
 	return (
@@ -13,7 +14,7 @@ const App: React.FC = () => {
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/ShareSpace" element={<ShareSpace />} />
-				<Route path="/ShareSpace/:subjectId" />
+				<Route path="/ShareSpace/:subjectId" element={<SingleSubjectPage />} />
 				<Route path="/Tips" />
 				<Route path="/LogIn" element={<LogInPage />} />
 				<Route path="/SignUp" element={<SignUp />} />

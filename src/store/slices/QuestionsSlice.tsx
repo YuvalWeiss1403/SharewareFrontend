@@ -22,7 +22,6 @@ const dataQuestions = async () => {
 	}
 };
 const questions: IQuestions[] = await dataQuestions();
-console.log(questions);
 export const questionsSlice = createSlice({
 	name: "Questions",
 	initialState: {
@@ -33,9 +32,14 @@ export const questionsSlice = createSlice({
 		setAllQuestions: (state) => {
 			state.filteredValue = state.value;
 		},
+		QuestionsBySubject: (state, action) => {
+			state.filteredValue = state.value.filter((question) => {
+				return question.subjectId === action.payload;
+			});
+		},
 	},
 });
 
-export const { setAllQuestions } = questionsSlice.actions;
+export const { setAllQuestions, QuestionsBySubject } = questionsSlice.actions;
 
 export default questionsSlice.reducer;
