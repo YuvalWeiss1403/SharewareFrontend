@@ -10,26 +10,23 @@ const LogInPage: React.FC = () => {
 	const [Email, setEmail] = useState('');
 	const [Password, setPassword] = useState('');
 
-	// const onLogin = async () => {
-	// 	try {
-	// 		const userReq = await axios.post(
-	// 			'https://epicure-server-z5p7.onrender.com/users/login',
-	// 			{
-	// 				email: Email,
-	// 				password: Password,
-	// 			}
-	// 		);
-	// 		sessionStorage.setItem('user', JSON.stringify(userReq.data));
-	// 		navigator('/');
-	// 	} catch (error: any) {
-	// 		alert(error.response.data);
-	// 		return [];
-	// 	}
-	// };
+	const onLogin = async () => {
+		try {
+			const userReq = await axios.post('http://localhost:8000/users/', {
+				email: Email,
+				password: Password,
+			});
+			sessionStorage.setItem('user', JSON.stringify(userReq.data));
+			navigator('/');
+		} catch (error: any) {
+			alert(error.response.data);
+			return [];
+		}
+	};
 
-	// const handelLogin = async () => {
-	// 	await onLogin();
-	// };
+	const handelLogin = async () => {
+		await onLogin();
+	};
 
 	return (
 		<div className="logIn-page">
@@ -54,7 +51,7 @@ const LogInPage: React.FC = () => {
 				<button
 					id="page-login"
 					onClick={() => {
-						// handelLogin();
+						handelLogin();
 						setEmail('');
 						setPassword('');
 					}}>
