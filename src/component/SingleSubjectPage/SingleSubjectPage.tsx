@@ -9,29 +9,62 @@ import {
 	QuestionsBySubject,
 } from "../../store/slices/QuestionsSlice";
 import QuestionCard from "./questionCard/questionCard";
+import { ObjectId } from "mongoose";
+import { useState } from "react";
+import SingleQuestionPage from "./SingleQuestionPage/SingleQuestionPage";
 
 const SingleSubjectPage: React.FC = () => {
 	let { subjectId } = useParams<string>();
 	const dispatch = useDispatch();
-
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const getSpecificSubject = () => {
 		return subjectsData.filter((sub) => sub._id.toString() === subjectId);
 	};
-	const currentSubjectDate: ISubjects[] = getSpecificSubject();
+	const currentSubjectData: ISubjects[] = getSpecificSubject();
+	const [questionClicked, setQuestionClicked] = useState(false);
+	const [currentQuestion, setCurrentQuestion] = useState<IQuestions>();
 	const questionsData = useSelector(
 		(state: RootState) => state.questions.value
 	);
+	const findQuestionById = (qId: ObjectId) => {
+		return questionsData.filter((question) => {
+			return question._id.toString() === qId.toString();
+		});
+	};
 
 	dispatch(QuestionsBySubject(subjectId));
+
+	const handleQuestionClick = (questionId: ObjectId) => {
+		const currentQuestion: IQuestions[] = findQuestionById(questionId);
+		setQuestionClicked(true);
+		setCurrentQuestion(currentQuestion[0]);
+	};
 
 	return (
 		<div className="single-subject-page">
 			<Navbar />
-			<div className="subjects-cards-container">
-				{questionsData.map((question: IQuestions, index: number) => {
-					return <QuestionCard question={question} key={index} />;
-				})}
+			<div className="single-subject-container">
+				<div className="navbarHeading">{currentSubjectData[0].name}</div>
+				<div className="content">
+					<div className="questionsNavbar">
+						{questionsData.map((question: IQuestions) => {
+							return (
+								<button
+									className="questions button"
+									onClick={() => {
+										handleQuestionClick(question._id);
+									}}>
+									{question.header}
+								</button>
+							);
+						})}
+					</div>
+					<div className="question-container">
+						{questionClicked && (
+							<SingleQuestionPage question={currentQuestion} />
+						)}
+					</div>
+				</div>
 			</div>
 		</div>
 	);
