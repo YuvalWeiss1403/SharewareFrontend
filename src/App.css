@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 .App {
   text-align: center;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Anton', sans-serif;
   font-weight: 400;
   width: 100vw;
   height: 100vh;
