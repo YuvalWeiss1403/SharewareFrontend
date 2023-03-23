@@ -1,16 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ObjectId } from 'mongoose';
+import { createSlice } from "@reduxjs/toolkit";
+import { ObjectId } from "mongoose";
 export interface IAnswers {
 	questionsId: ObjectId;
 	userName: string;
+	_id: ObjectId;
 	date: Date;
 	title: string;
 }
 
 const dataAnswers = async () => {
 	try {
-		const response = await fetch('http://localhost:8000/answers', {
-			method: 'GET',
+		const response = await fetch("http://localhost:8000/answers", {
+			method: "GET",
 		});
 		const data = await response.json();
 		return data;
@@ -21,7 +22,7 @@ const dataAnswers = async () => {
 const answers: IAnswers[] = await dataAnswers();
 console.log(answers);
 export const answersSlice = createSlice({
-	name: 'Answers',
+	name: "Answers",
 	initialState: {
 		value: answers,
 		filteredValue: {},

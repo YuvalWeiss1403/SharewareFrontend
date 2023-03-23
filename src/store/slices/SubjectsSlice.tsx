@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ObjectId } from "mongoose";
 
 export interface ISubjects {
 	name: string;
+	_id: ObjectId;
 }
 
 const dataSubject = async () => {

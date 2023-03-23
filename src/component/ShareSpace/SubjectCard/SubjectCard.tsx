@@ -3,6 +3,7 @@ import { RootState } from "../../../store/store";
 
 import { useSelector } from "react-redux";
 import "./SubjectCard.css";
+import { ISubjects } from "../../../store/slices/SubjectsSlice";
 
 export interface ISubjectCard {
 	name: string;
@@ -16,9 +17,9 @@ const SubjectCard: React.FC<ISubjectCard> = (props: ISubjectCard) => {
 		return subjectsData.filter((sub) => sub.name === subject);
 	};
 	const handelCardClick = (subject: string) => {
-		const currentSubjectDate = getSpecificSubjectID(subject);
+		const currentSubjectDate: ISubjects[] = getSpecificSubjectID(subject);
 		console.log(currentSubjectDate);
-		navigator(`/ShareSpace/${currentSubjectDate[0].name}`);
+		navigator(`/ShareSpace/${currentSubjectDate[0]._id}`);
 	};
 	return (
 		<div className="subject-card" onClick={() => handelCardClick(props.name)}>
