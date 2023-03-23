@@ -18,7 +18,6 @@ const dataSubject = async () => {
 	}
 };
 const subjects: ISubjects[] = await dataSubject();
-console.log(subjects);
 export const subjectsSlice = createSlice({
 	name: "Subjects",
 	initialState: {

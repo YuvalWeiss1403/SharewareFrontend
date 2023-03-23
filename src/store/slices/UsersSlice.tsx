@@ -24,7 +24,6 @@ const datausers = async () => {
 	}
 };
 const users: IUser[] = await datausers();
-console.log(users);
 export const userSlice = createSlice({
 	name: "users",
 	initialState: {

@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
 import { RootState } from "../../../store/store";
-
 import { useSelector } from "react-redux";
 import "./SubjectCard.css";
 import { ISubjects } from "../../../store/slices/SubjectsSlice";
@@ -18,7 +17,6 @@ const SubjectCard: React.FC<ISubjectCard> = (props: ISubjectCard) => {
 	};
 	const handelCardClick = (subject: string) => {
 		const currentSubjectDate: ISubjects[] = getSpecificSubjectID(subject);
-		console.log(currentSubjectDate);
 		navigator(`/ShareSpace/${currentSubjectDate[0]._id}`);
 	};
 	return (

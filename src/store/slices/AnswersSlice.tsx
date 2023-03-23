@@ -20,7 +20,6 @@ const dataAnswers = async () => {
 	}
 };
 const answers: IAnswers[] = await dataAnswers();
-console.log(answers);
 export const answersSlice = createSlice({
 	name: "Answers",
 	initialState: {

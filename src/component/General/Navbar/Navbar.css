@@ -17,21 +17,24 @@
 }
 
 .navbar-left-side {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 30%;
-    font-size: 20px;
-    /* font-weight: bold; */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 30%;
+	font-size: 20px;
+	font-weight: bold;
+	height: 100%;
 }
 
 .navbar-right-side {
-    display: flex;
-    flex-direction: row;
-    gap: 30%;
-    font-size: 18px;
-    /* font-weight: bold; */
-    padding-right: 2%;
+	display: flex;
+	flex-direction: row;
+	gap: 30%;
+	font-size: 18px;
+	font-weight: bold;
+	padding-right: 2%;
+	height: 100%;
+	align-items: center;
 }
 
 .log-in {
