@@ -4,6 +4,7 @@ export interface ITips {
 	title: string;
 	userName: string;
 	approved: boolean;
+	comment: string;
 }
 
 const tipsSubject = async () => {

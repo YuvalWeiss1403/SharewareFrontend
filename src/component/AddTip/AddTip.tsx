@@ -7,19 +7,10 @@ import { ITips } from '../../store/slices/TipsSlice';
 interface IModal {
 	closeButton: Function;
 }
-interface Credentials {
-	id: number;
-	restId: string;
-	dishName: string;
-	about: string;
-	dishPrice: number;
-	icons: string[];
-	img: string;
-}
-const AddDish: React.FC<IModal> = (props: IModal) => {
+const AddTip: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const navigate = useNavigate();
-	const tipsData = useSelector((state: RootState) => state.tips.filteredValue);
+	const tipsData = useSelector((state: RootState) => state.tips.value);
 	const [tips, setTips] = useState<any>(tipsData);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
 		title: '',
@@ -43,7 +34,7 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		},
 		{
 			id: 'comment-input',
-			placeholder: 'COMMENT',
+			placeholder: 'comment',
 			type: 'text',
 			title: 'comment',
 			name: 'comment',
@@ -78,16 +69,12 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 			// }
 			// // Use the provided _id to create a valid ObjectId
 			// const objectId = mongoose.Types.ObjectId.createFromHexString(_id);
-			await fetch('https://backendepicure.onrender.com/dishes/', {
+			await fetch('http://localhost:8000/tips', {
 				method: 'POST',
 				body: JSON.stringify({
-					// userId: objectId, // Use the valid objectId instead of the _id parameter
-					// img: img,
-					// about: about,
-					// name: dishName,
-					// price: dishPrice,
-					// icons: icons,
-					// restId: restId,
+					title: title,
+					comment: comment,
+					username: username,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -97,11 +84,8 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 				.then((data) => {
 					setTips((newTips: ITips[]) => [...newTips, data]);
 					setInputValues({
-						dishName: '',
-						about: '',
-						dishPrice: '',
-						icons: '',
-						img: '',
+						title: '',
+						comment: '',
 					});
 					window.location.reload();
 				});
@@ -113,40 +97,10 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
-		const credentials: Credentials = {
-			id: 0,
-			restId: '',
-			dishName: '',
-			about: '',
-			dishPrice: 0,
-			icons: [],
-			img: '',
-		};
-		const inputObj = e.target;
-		Object.values(inputObj).forEach((obj: HTMLInputElement) => {
-			switch (obj.name) {
-				case 'dishPrice':
-					credentials[obj.name] = Number(obj.value);
-					break;
-				case 'dishName':
-				case 'img':
-				case 'about':
-					credentials[obj.name] = String(obj.value);
-					break;
-				case 'icons':
-					credentials[obj.name] = obj.value.split(',').map(String);
-					break;
-			}
-		});
-		// const img = credentials.img;
-		// const about = credentials.about;
-		// const dishName = credentials.dishName;
-		// const dishPrice = credentials.dishPrice;
-		// const icons = credentials.icons;
-		// const _id = data._id;
-		// const restId: string = restaurantId.dishID ?? 'undefined ';
-		// await newDish(_id, restId, img, about, dishName, dishPrice, icons);
+		const username = `${data.firstname} "" ${data.lastname}`;
+		const comment = inputValues.comment;
+		const title = inputValues.title;
+		await newTip(title, comment, username);
 	};
 
 	return (
@@ -169,7 +123,7 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 							<button
 								className="submit"
 								type="submit">
-								<span>ADD DISH </span>
+								<span>ADD TIPS </span>
 							</button>
 						</div>
 					</div>
@@ -179,4 +133,4 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 	);
 };
 
-export default AddDish;
+export default AddTip;

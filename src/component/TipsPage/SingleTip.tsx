@@ -16,6 +16,7 @@ const SingleTip: React.FC = () => {
 							id="tip"
 							key={data._id}>
 							<div id="title">{data.title}</div>
+							<div id="username">{data.comment}</div>
 							<div id="username">{data.username}</div>
 							{/* <img src={heartwithout} />
 							<img src={fullHeart} /> */}
