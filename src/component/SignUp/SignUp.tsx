@@ -23,15 +23,16 @@ const SignUp: React.FC = () => {
 	}, [User]);
 
 	const onSignUp = async () => {
+		console.log(User);
 		try {
 			const userReq = await axios.post('http://localhost:8000/users/create', {
-				first_name: User.first_name,
-				last_name: User.last_name,
+				firstName: User.first_name,
+				lastName: User.last_name,
 				email: User.email,
 				password: User.password,
 			});
 			sessionStorage.setItem('user', JSON.stringify(userReq.data));
-			navigator('/UserInfo');
+			navigator('/LogIn');
 		} catch (error: any) {
 			alert(error.response.data);
 			return [];
