@@ -8,7 +8,6 @@ import {
 	IQuestions,
 	QuestionsBySubject,
 } from "../../store/slices/QuestionsSlice";
-import QuestionCard from "./questionCard/questionCard";
 import { ObjectId } from "mongoose";
 import { useState } from "react";
 import SingleQuestionPage from "./SingleQuestionPage/SingleQuestionPage";
