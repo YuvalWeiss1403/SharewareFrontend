@@ -7,11 +7,14 @@ import usersReducer from './slices/UsersSlice';
 import subjectsReducer from './slices/SubjectsSlice';
 import questionsReducer from './slices/QuestionsSlice';
 import answersReducer from './slices/AnswersSlice';
+import tipsReducer from './slices/TipsSlice';
+import { ITips } from './slices/TipsSlice';
 export interface RootState {
 	users: IUsersState;
 	subjects: ISubjectsState;
 	questions: IQuestionsState;
 	answers: IAnswersState;
+	tips: ITipsState;
 }
 export interface IUsersState {
 	value: IUser[];
@@ -25,11 +28,15 @@ export interface IQuestionsState {
 export interface IAnswersState {
 	value: IAnswers[];
 }
+export interface ITipsState {
+	value: ITips[];
+}
 export default configureStore({
 	reducer: {
 		users: usersReducer,
 		subjects: subjectsReducer,
 		questions: questionsReducer,
 		answers: answersReducer,
+		tips: tipsReducer,
 	},
 });
