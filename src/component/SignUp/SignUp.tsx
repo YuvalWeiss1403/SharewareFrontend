@@ -22,28 +22,25 @@ const SignUp: React.FC = () => {
 		handelPasswords();
 	}, [User]);
 
-	// const onSignUp = async () => {
-	// 	try {
-	// 		const userReq = await axios.post(
-	// 			'https://epicure-server-z5p7.onrender.com/users/',
-	// 			{
-	// 				first_name: User.first_name,
-	// 				last_name: User.last_name,
-	// 				email: User.email,
-	// 				password: User.password,
-	// 			}
-	// 		);
-	// 		sessionStorage.setItem('user', JSON.stringify(userReq.data));
-	// 		navigator('/UserInfo');
-	// 	} catch (error: any) {
-	// 		alert(error.response.data);
-	// 		return [];
-	// 	}
-	// };
+	const onSignUp = async () => {
+		try {
+			const userReq = await axios.post('http://localhost:8000/users/create', {
+				first_name: User.first_name,
+				last_name: User.last_name,
+				email: User.email,
+				password: User.password,
+			});
+			sessionStorage.setItem('user', JSON.stringify(userReq.data));
+			navigator('/UserInfo');
+		} catch (error: any) {
+			alert(error.response.data);
+			return [];
+		}
+	};
 
-	// const handelSignUp = async () => {
-	// 	PasswordsMatch ? await onSignUp() : console.log('not match');
-	// };
+	const handelSignUp = async () => {
+		PasswordsMatch ? await onSignUp() : console.log('not match');
+	};
 
 	const handelPasswords = () => {
 		setPasswordsMatch(() => {
@@ -113,7 +110,7 @@ const SignUp: React.FC = () => {
 					onClick={(e) => {
 						e.preventDefault();
 						handelPasswords();
-						// handelSignUp();
+						handelSignUp();
 						setUser(defaultInputValue);
 					}}>
 					sign up
