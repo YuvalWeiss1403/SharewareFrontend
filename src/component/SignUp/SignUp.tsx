@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 // import Footer from "../Footer/Footer";
-// import NavBar from "../NavBar/NavBar";
+import NavBar from "../General/Navbar/Navbar";
 import "./SignUp.css";
 
 const SignUp: React.FC = () => {
@@ -56,7 +56,7 @@ const SignUp: React.FC = () => {
 
 	return (
 		<div className="signUp-page">
-			{/* <NavBar /> */}
+			<NavBar />
 			<div className="signUp-content">
 				<div className="signUp-page-heading">Sign up</div>
 				<div className="signUp-page-secondary-heading">
