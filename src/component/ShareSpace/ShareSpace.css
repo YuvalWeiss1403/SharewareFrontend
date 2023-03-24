@@ -1,3 +1,9 @@
+.ShareSpace {
+	background-color: #d68bd20f;
+	width: 100%;
+	height: 100vh;
+}
+
 .subjects-card-container {
 	padding: 15px;
 	display: grid;

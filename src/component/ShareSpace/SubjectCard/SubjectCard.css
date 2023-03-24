@@ -1,9 +1,9 @@
 .subject-card {
-	background-color: #d68bd2;
 	width: 150px;
 	border-radius: 5px;
 	height: 150px;
 	display: flex;
+	color: #d68bd2;
 	align-items: center;
 	justify-content: center;
 	box-shadow: 2px 10px 10px hsla(0, 0%, 69%, 1.25);
@@ -13,11 +13,13 @@
 	text-transform: uppercase;
 	transition: all 0.5s;
 	font-size: 22px;
+	border: 0.5px solid black;
 }
 
 .subject-card:hover {
 	cursor: pointer;
-	color: white;
+	color: black;
+	border: 0.5px solid #d68bd2;
 }
 
 .subject-card span {
