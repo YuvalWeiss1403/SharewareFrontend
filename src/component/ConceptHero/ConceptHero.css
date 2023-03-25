@@ -18,6 +18,7 @@
 .platform-subtitle{
     padding-left: 5%;
     color: #2C3333;
+    font-family: "Anton", sans-serif;
     font-size: 18px;
     position: absolute;
     left: 50%;
@@ -29,13 +30,15 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    color: #2C3333;
+    color: white;
+    font-size: 22px;
 }
 
 .sharing-caring-title {
     padding-left: 2%;
     font-size: 50px;
     color: #2C3333;
+    font-family: "Anton", sans-serif;
     position: absolute;
     left: 50%;
     top: 0%;
@@ -46,42 +49,42 @@
 }
 
 .hero-circle{
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     border: 2px solid white;
     border-radius: 50%;
     position: relative;
     font-size: 20px;
-    background-image: url(../../assets/images/backgroundTriangles.jpg); 
+    /* background-image: url(../../assets/images/backgroundTriangles.jpg);  */
     box-shadow: 3px 3px 3px white;
 }
 
 .hero-circle2{
-    width: 240px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
     border: 2px solid white;
     border-radius: 50%;
     position: relative;
     font-size: 20px;
-    background-image: url(../../assets/images/backgroundTriangles.jpg); 
+    /* background-image: url(../../assets/images/backgroundTriangles.jpg);  */
     box-shadow: 3px 3px 3px white;
 }
 
 .c-line1{
     position: absolute;
-    top: 62%;
+    top: 60%;
     left: 16%;
     transform: translate(-50%, -50%);
 }
 .c-line2{
     position: absolute;
-    top: 38%;
+    top: 36%;
     left:23%;
     transform: translate(-50%, -50%);
 }
 .c-line3{
     position: absolute;
-    top: 68%;
+    top: 70%;
     left: 26%;
     transform: translate(-50%, -50%);
 }
@@ -138,7 +141,8 @@
     height: 90px;
     width: 85%;
     z-index: 1;
-    background-image: url(../../assets/images/backgroundTriangles.jpg); 
+    background-color: #d68bd2;
+    /* background-image: url(../../assets/images/backgroundTriangles.jpg);  */
 
 }
 
@@ -165,5 +169,44 @@
     height: 45px;
     width: 17%;
     font-family: 'Anton', sans-serif;
-    border-color: #2C3333;
+    border-color: white;
+}
+
+
+@media (min-width: 375px) and (max-width: 700px) {    
+    
+    .sharing-caring-title {
+        padding-left: 2%;
+        font-size: 30px;
+    }
+
+    .platform-subtitle{
+        font-family: "Anton", sans-serif;
+        font-size: 16px;
+        top: 18%;
+    }
+    .hero-circle{
+        width: 120px;
+        height: 120px;
+    }
+    .hero-circle2{
+        width: 150px;
+        height: 150px;
+    }
+    .hero-content {
+        font-size: 17px;
+    }
+
+    .c-line1{
+        top: 60%;
+        left: 16%;
+    }
+    .c-line2{
+        top: 42%;
+        left: 32%;
+    }
+    .c-line3{
+        top: 70%;
+        left: 34%;
+    }
 }

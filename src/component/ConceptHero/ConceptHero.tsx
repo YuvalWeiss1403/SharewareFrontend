@@ -1,7 +1,4 @@
 import "../ConceptHero/ConceptHero.css"
-import teamLogo from "../../assets/icons/team-icon.png"
-import corporate from "../../assets/images/corporate-img.png"
-import carpImg from "../../assets/images/definition-corporate.jpg"
 
 const ConceptHero: React.FC = () => {
     return (
