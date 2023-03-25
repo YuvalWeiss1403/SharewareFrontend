@@ -67,17 +67,34 @@
 	cursor: pointer;
 }
 
+.not-on-page {
+	border: 0;
+	all: unset;
+	cursor: pointer;
+}
+.on-page {
+	border-bottom: 3px solid #2C3333;
+	cursor: pointer;
+	text-decoration: none;
+}
+
 @media (min-width: 375px) and (max-width: 700px) {    
 
 	.all-navbar {
-		justify-content: center;
+		justify-content: space-between;
+		width: 100vw;
+	}
+
+	.navbar-left-side{
+		justify-content: space-between;
+		width: 100%;
 	}
 
 	.navbar-right-side{
 		display: none;
 	}
 
-	.navbar-left-side {
+	#button-hidden {
 		display: none;
 	}
 

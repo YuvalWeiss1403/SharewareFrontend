@@ -6,7 +6,7 @@ import { INavlinkButton } from "../../../interfaces";
 const NavlinkButton: React.FC<INavlinkButton> = (props:INavlinkButton) => {
     return (
         <>
-            <NavLink to={props.navigate} className={({isActive} ) => isActive ? "button button-active" : "button button-not-active" }>
+            <NavLink to={props.navigate} id={`button-hidden`} className={({isActive} ) => isActive ? "button button-active" : "button button-not-active" }>
                     {props.name}
             </NavLink>
         </>

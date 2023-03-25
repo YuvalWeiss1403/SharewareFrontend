@@ -4,20 +4,19 @@ import NavButton from "../ButtonGeneral/ButtonGeneral";
 import { useNavigate } from "react-router-dom";
 import logo from "../../../assets/icons/logo.svg";
 import burgerIcon from "../../../assets/icons/burger-icon.svg"
+import NavBarMobileMenu from "../../NavbarMobileMenu/NavbarMobileMenu";
 
 const Navbar: React.FC = () => {
 	const navigate = useNavigate();
 	return (
 		<>
-			<button className="burger-icon">
-				<img src={burgerIcon} alt="burgr-icon" />
-			</button>
 			<div className="all-navbar">
-				<img src={logo} onClick={() => navigate("/")} className="logo-icon-mobile" />
+				{/* <img src={logo} onClick={() => navigate("/")} className="logo-icon-mobile" /> */}
 				<div className="navbar-left-side">
 					<img src={logo} onClick={() => navigate("/")} className="logo-icon" />
 					<Navlinkbutton name={"ShareSpace"} navigate="/ShareSpace" />
 					<Navlinkbutton name={"Tips"} navigate="/Tips" />
+					<NavBarMobileMenu />
 				</div>
 				<div className="navbar-right-side">
 					<NavButton

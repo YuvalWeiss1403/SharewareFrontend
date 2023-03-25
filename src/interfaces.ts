@@ -1,6 +1,7 @@
 export interface INavlinkButton {
     name: string,
     navigate: string,
+    id?:string,
     onClick?: React.MouseEventHandler<HTMLButtonElement> 
 }
 
