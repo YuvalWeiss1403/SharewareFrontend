@@ -1,10 +1,10 @@
 .answer-card {
 	display: flex;
 	flex-direction: column;
-	width: 70%;
+	width: 95%;
 	border: 1px solid black;
 	border-radius: 8px;
-	box-shadow: 2px 10px 10px hsla(0, 0%, 69%, 1.25);
+	box-shadow: 2px 0px 3px hsla(0, 0%, 69%, 1.25);
 	background-image: url("../../../assets/backround.jpg");
 	padding: 10px;
 	background-repeat: no-repeat;
@@ -12,12 +12,11 @@
 }
 
 .answer-header {
-	font-weight: 600;
+	font-weight: 300;
 	letter-spacing: 0.37px;
 	line-height: 26px;
-	font-size: 24px;
+	font-size: 21px;
 	text-transform: uppercase;
-	border-bottom: 2px solid #d68bd2;
 	width: fit-content;
 }
 

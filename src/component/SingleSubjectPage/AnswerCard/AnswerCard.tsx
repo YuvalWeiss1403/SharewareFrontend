@@ -1,21 +1,18 @@
-import "./questionCard.css";
 import { IAnswers } from "../../../store/slices/AnswersSlice";
+import "./AnswerCard.css";
 
 export interface IAnswerCard {
-	answers: [IAnswers];
+	answer: IAnswers;
 }
 
 const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
-	const answers = props.answers;
+	const currentAnswer = props.answer;
 	return (
 		<div className="answer-card">
-			{answers.map((answer) => {
-				return (
-					<div className="single-answer-container">
-						<div></div>
-					</div>
-				);
-			})}
+			<div className="single-answer-container">
+				<div className="answer-header">{currentAnswer.title}</div>
+				<div className="answer-username">{currentAnswer.userName}</div>
+			</div>
 		</div>
 	);
 };
