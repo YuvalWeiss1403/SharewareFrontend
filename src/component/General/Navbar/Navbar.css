@@ -29,6 +29,14 @@
 	height: 100%;
 }
 
+.burger-icon{
+    display: none;
+}
+
+.logo-icon-mobile {
+	display: none;
+}
+
 .navbar-right-side {
 	display: flex;
 	flex-direction: row;
@@ -57,4 +65,39 @@
 }
 .logo-icon:hover {
 	cursor: pointer;
+}
+
+@media (min-width: 375px) and (max-width: 700px) {    
+
+	.all-navbar {
+		justify-content: center;
+	}
+
+	.navbar-right-side{
+		display: none;
+	}
+
+	.navbar-left-side {
+		display: none;
+	}
+
+	.logo-icon-mobile {
+		display: flex;
+		height: 100px;
+	}
+
+	.burger-icon{
+		display: flex;
+		cursor: pointer;
+		position: absolute;
+		top: 15px;		
+		margin-left: 5%;
+        height: 30px;
+		border: none;
+		background-color: white;
+		border-radius: 2px;
+		align-items: center;
+		justify-content: center;
+	}
+
 }
