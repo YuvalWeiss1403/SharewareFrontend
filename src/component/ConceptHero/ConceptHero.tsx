@@ -1,5 +1,7 @@
 import "../ConceptHero/ConceptHero.css"
 import teamLogo from "../../assets/icons/team-icon.png"
+import corporate from "../../assets/images/corporate-img.png"
+import carpImg from "../../assets/images/definition-corporate.jpg"
 
 const ConceptHero: React.FC = () => {
     return (
@@ -10,7 +12,7 @@ const ConceptHero: React.FC = () => {
                 <div className="hero-circle c-line1" >
                     <div className="hero-content line1" >Asking Questions</div>
                 </div>
-                <div className="hero-circle c-line2" >
+                <div className="hero-circle2 c-line2" >
                 <div className="hero-content line2">Sharing your Solutions</div>
                 </div>
                 <div className="hero-circle c-line3" >
@@ -23,6 +25,9 @@ const ConceptHero: React.FC = () => {
                 <input id="input" type="text" placeholder="Search for subject"/>
                 <button id="search-button">Search</button>
                 </div>
+            </div>
+            <div>
+                {/* <img src={corporate} alt="" className="corporate-img"/> */}
             </div>
         </div>
     )
