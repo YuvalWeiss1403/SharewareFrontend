@@ -1,28 +1,25 @@
 import "../FlowHP/FlowHP.css"
-import recognitionIcon from "../../assets/images/icon-brand-recognition.svg"
-import detailsIcon from "../../assets/images/icon-detailed-records.svg"
-import customizableIcon from "../../assets/images/icon-fully-customizable.svg"
 
 const FlowHP: React.FC = () => {
     return (
         <div className="all-flow-container">
             <div className="all-flow-dashboard">
                 <hr/>
-                <div className="brand-recognition-container">
+                <div className="home-page-container">
                     <span>1</span>
-                    <div className="brand-recognition-content">
+                    <div className="home-page-content">
                         <div className="heading">Home Page</div>
                     </div>
                 </div>
-                <div className="detailed-records-container">
+                <div className="all-shareSpace-container">
                     <span>2</span>
-                    <div className="detailed-records-content">
-                        <div className="heading">All Sharespace</div>
+                    <div className="all-shareSpace-content">
+                        <div className="heading">All ShareSpace</div>
                     </div>
                 </div>
-                <div className="fully-customizable-container">
+                <div className="tips-container">
                     <span>3</span>
-                    <div className="fully-customizable-content">
+                    <div className="tips-content">
                     <div className="heading">Tips And Advices</div>
                     </div>
                 </div> 
