@@ -1,0 +1,38 @@
+.answer-card {
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	border: 1px solid black;
+	border-radius: 8px;
+	box-shadow: 2px 10px 10px hsla(0, 0%, 69%, 1.25);
+	background-image: url("../../../assets/backround.jpg");
+	padding: 10px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.answer-header {
+	font-weight: 600;
+	letter-spacing: 0.37px;
+	line-height: 26px;
+	font-size: 24px;
+	text-transform: uppercase;
+	border-bottom: 2px solid #d68bd2;
+	width: fit-content;
+}
+
+.answer-username {
+	background-image: url("../../../assets/icons/user.svg");
+	font-size: 13px;
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	background-size: 14px;
+	display: flex;
+	align-items: center;
+	margin-top: 5px;
+}
+
+.answer-title {
+	padding-top: 10px;
+	font-size: 18px;
+}

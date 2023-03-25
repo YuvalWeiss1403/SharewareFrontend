@@ -56,3 +56,7 @@
 	border-right: 2px solid #d68bd2;
 	background-color: hsl(0deg 3.24% 60.94% / 13%);
 }
+
+.question-container {
+	width: 75%;
+}
