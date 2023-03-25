@@ -6,6 +6,7 @@ import { ISubjects } from '../../store/slices/SubjectsSlice';
 import SubjectCard from './SubjectCard/SubjectCard';
 import { useState } from 'react';
 import AddSubject from '../AddSubject/AddSubject';
+import { ObjectId } from 'mongoose';
 
 const ShareSpace: React.FC = () => {
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
@@ -16,6 +17,32 @@ const ShareSpace: React.FC = () => {
 	const closeModal = () => {
 		setIsModalOpen(false);
 	};
+	const deleteSubject = async (_id: ObjectId) => {
+		console.log(_id);
+		try {
+			const response = await fetch(`http://localhost:8000/subjects`, {
+				method: 'DELETE',
+				body: JSON.stringify({
+					_id: _id,
+				}),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			});
+			const data = await response.json();
+			window.location.reload();
+			if (!response.ok) {
+				throw new Error(data.message);
+			}
+		} catch (err) {
+			console.error(err);
+			throw err;
+		}
+	};
+	const closeButton = async (id: ObjectId) => {
+		console.log(id);
+		await deleteSubject(id);
+	};
 	return (
 		<div className="ShareSpace">
 			<Navbar />
@@ -23,10 +50,18 @@ const ShareSpace: React.FC = () => {
 			<div className="subjects-card-container">
 				{subjectsData?.map((subject: ISubjects, index: number) => {
 					return (
-						<SubjectCard
-							name={subject.name}
-							key={index}
-						/>
+						<div>
+							<span
+								id="closeButton"
+								onClick={() => closeButton(subject._id)}
+								className="close">
+								&times;
+							</span>
+							<SubjectCard
+								name={subject.name}
+								key={index}
+							/>
+						</div>
 					);
 				})}
 			</div>

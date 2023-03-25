@@ -53,7 +53,6 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 	};
 
 	const newSubject = async (newSubject: String) => {
-		console.log(newSubject);
 		try {
 			await fetch('http://localhost:8000/subjects/', {
 				method: 'POST',
@@ -85,7 +84,6 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 			navigate('/LogIn');
 		}
 		const newSubjectValue = inputValues.Subject;
-
 		await newSubject(newSubjectValue);
 	};
 
