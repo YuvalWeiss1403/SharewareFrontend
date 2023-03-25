@@ -2,6 +2,7 @@ import "../HomePage/HomePage.css"
 import Navbar from "../General/Navbar/Navbar"
 import ConceptHero from "../ConceptHero/ConceptHero"
 import FlowHP from "../FlowHP/FlowHP"
+import Footer from "../General/Footer/Footer"
 
 const HomePage: React.FC = () => {
 return (
@@ -9,6 +10,7 @@ return (
         <Navbar />
         <ConceptHero />
         <FlowHP />
+        <Footer />
     </div>
 )
 }
