@@ -17,7 +17,7 @@
 	box-shadow: 0px 0px 25px hsla(0, 0%, 69%, 1.25);
 	overflow-y: hidden;
 	letter-spacing: 0.67px;
-	z-index: 1;
+	background-color: white;
 }
 
 .navbar-left-side {
@@ -32,7 +32,7 @@
 .navbar-right-side {
 	display: flex;
 	flex-direction: row;
-	gap: 30%;
+	gap: 15px;
 	font-size: 18px;
 	padding-right: 2%;
 	height: 100%;
@@ -54,4 +54,7 @@
 
 .logo-icon {
 	height: 100px;
+}
+.logo-icon:hover {
+	cursor: pointer;
 }

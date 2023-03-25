@@ -43,13 +43,19 @@ const SingleSubjectPage: React.FC = () => {
 		<div className="single-subject-page">
 			<Navbar />
 			<div className="single-subject-container">
-				<div className="navbarHeading">{currentSubjectData[0].name}</div>
 				<div className="content">
 					<div className="questionsNavbar">
+						<div className="navbarHeading">
+							{`${currentSubjectData[0].name} questions`}
+						</div>
 						{questionsData.map((question: IQuestions) => {
 							return (
 								<button
-									className="questions button"
+									className={
+										currentQuestion === question
+											? "questions button currentQ"
+											: "questions button"
+									}
 									onClick={() => {
 										handleQuestionClick(question._id);
 									}}>

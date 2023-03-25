@@ -13,13 +13,13 @@
 	text-transform: uppercase;
 	transition: all 0.5s;
 	font-size: 22px;
-	border: 0.5px solid black;
+	border: 1px solid black;
 }
 
 .subject-card:hover {
 	cursor: pointer;
 	color: black;
-	border: 0.5px solid #d68bd2;
+	border: 1px solid #d68bd2;
 }
 
 .subject-card span {
