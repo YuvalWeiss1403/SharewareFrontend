@@ -6,14 +6,13 @@ import { ITips } from '../../store/slices/TipsSlice';
 interface IModal {
 	closeButton: Function;
 }
-const AddTip: React.FC<IModal> = (props: IModal) => {
+const AddSubject: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const navigate = useNavigate();
-	const tipsData = useSelector((state: RootState) => state.tips.value);
-	const [tips, setTips] = useState<any>(tipsData);
+	const subjectsData = useSelector((state: RootState) => state.subjects.value);
+	const [subject, SetSubject] = useState<any>(subjectsData);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
-		title: '',
-		comment: '',
+		subject: '',
 	});
 
 	interface InputField {
@@ -25,18 +24,11 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 	}
 	const restDetails: InputField[] = [
 		{
-			id: 'title-input',
-			placeholder: 'Enter Title',
+			id: 'subject-input',
+			placeholder: 'Enter Subject',
 			type: 'text',
-			title: 'title',
-			name: 'title',
-		},
-		{
-			id: 'comment-input',
-			placeholder: 'Enter Comment',
-			type: 'text',
-			title: 'comment',
-			name: 'comment',
+			title: 'Subject',
+			name: 'Subject',
 		},
 	];
 
@@ -60,21 +52,13 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 		));
 	};
 
-	const newTip = async (title: string, comment: string, username: string) => {
+	const newSubject = async (newSubject: String) => {
+		console.log(newSubject);
 		try {
-			// // Check if the provided _id is a valid ObjectId
-			// if (!mongoose.Types.ObjectId.isValid(_id)) {
-			// 	throw new Error('Invalid ObjectId');
-			// }
-			// // Use the provided _id to create a valid ObjectId
-			// const objectId = mongoose.Types.ObjectId.createFromHexString(_id);
-			await fetch('http://localhost:8000/tips/', {
+			await fetch('http://localhost:8000/subjects/', {
 				method: 'POST',
 				body: JSON.stringify({
-					title: title,
-					comment: comment,
-					username: username,
-					likes: 0,
+					name: newSubject,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -82,12 +66,10 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					setTips((newTips: ITips[]) => [...newTips, data]);
+					SetSubject((newSubject: ITips[]) => [...newSubject, data]);
 					setInputValues({
-						title: '',
-						comment: '',
+						subject: '',
 					});
-					// navigate('/');
 					window.location.reload();
 				});
 		} catch (err) {
@@ -102,18 +84,16 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 			alert('please Log-in');
 			navigate('/LogIn');
 		}
-		const username = `${data.firstName} ${data.lastName}`;
-		console.log(username);
-		const comment = inputValues.comment;
-		const title = inputValues.title;
-		await newTip(title, comment, username);
+		const newSubjectValue = inputValues.Subject;
+
+		await newSubject(newSubjectValue);
 	};
 
 	return (
-		<div className="card-information">
+		<div className="card">
 			<form onSubmit={handSaveRest}>
 				<div
-					id="Modal"
+					id="modal"
 					className="modal">
 					<div className="add-information">
 						<span
@@ -129,7 +109,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 							<button
 								className="submit"
 								type="submit">
-								<span>ADD TIPS </span>
+								<span>ADD SUBJECT </span>
 							</button>
 						</div>
 					</div>
@@ -139,4 +119,4 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 	);
 };
 
-export default AddTip;
+export default AddSubject;
