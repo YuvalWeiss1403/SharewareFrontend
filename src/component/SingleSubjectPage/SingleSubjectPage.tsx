@@ -1,19 +1,27 @@
-import { useParams } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import "./SingleSubjectPage.css";
-import { RootState } from "../../store/store";
-import { ISubjects } from "../../store/slices/SubjectsSlice";
-import Navbar from "../General/Navbar/Navbar";
+import { useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import './SingleSubjectPage.css';
+import { RootState } from '../../store/store';
+import { ISubjects } from '../../store/slices/SubjectsSlice';
+import Navbar from '../General/Navbar/Navbar';
 import {
 	IQuestions,
 	QuestionsBySubject,
-} from "../../store/slices/QuestionsSlice";
-import { ObjectId } from "mongoose";
-import { useState } from "react";
-import SingleQuestionPage from "./SingleQuestionPage/SingleQuestionPage";
+} from '../../store/slices/QuestionsSlice';
+import { ObjectId } from 'mongoose';
+import { useState } from 'react';
+import SingleQuestionPage from './SingleQuestionPage/SingleQuestionPage';
+import AddQuestion from '../AddQuestion/AddQuestion';
 
 const SingleSubjectPage: React.FC = () => {
 	let { subjectId } = useParams<string>();
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const openModal = () => {
+		setIsModalOpen(true);
+	};
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
 	const dispatch = useDispatch();
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const getSpecificSubject = () => {
@@ -48,13 +56,18 @@ const SingleSubjectPage: React.FC = () => {
 						<div className="navbarHeading">
 							{`${currentSubjectData[0].name} questions`}
 						</div>
+						<button
+							id="add-button"
+							onClick={openModal}>
+							ADD QUESTION
+						</button>
 						{questionsData.map((question: IQuestions) => {
 							return (
 								<button
 									className={
 										currentQuestion === question
-											? "questions button currentQ"
-											: "questions button"
+											? 'questions button currentQ'
+											: 'questions button'
 									}
 									onClick={() => {
 										handleQuestionClick(question._id);
@@ -71,6 +84,7 @@ const SingleSubjectPage: React.FC = () => {
 					</div>
 				</div>
 			</div>
+			{isModalOpen && <AddQuestion closeButton={closeModal} />}
 		</div>
 	);
 };
