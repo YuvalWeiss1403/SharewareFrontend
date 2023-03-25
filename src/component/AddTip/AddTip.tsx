@@ -74,6 +74,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 					title: title,
 					comment: comment,
 					username: username,
+					likes: 0,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -86,7 +87,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 						title: '',
 						comment: '',
 					});
-					navigate('/');
+					// navigate('/');
 					window.location.reload();
 				});
 		} catch (err) {
@@ -97,6 +98,10 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		if (!data) {
+			alert('please Log-in');
+			navigate('/LogIn');
+		}
 		const username = `${data.firstName} ${data.lastName}`;
 		console.log(username);
 		const comment = inputValues.comment;
