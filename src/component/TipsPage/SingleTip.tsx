@@ -1,14 +1,13 @@
-import "../HomePage/HomePage.css";
-import Navbar from "../General/Navbar/Navbar";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import "./singleTip.css";
-// import heartwithout from './image/heartwithout.png';
-// import fullHeart from './image/fullheart.png';
-import like from "./image/like.svg";
-import { useState } from "react";
-import { ObjectId, Types } from "mongoose";
-import { ITips } from "../../store/slices/TipsSlice";
+import '../HomePage/HomePage.css';
+import Navbar from '../General/Navbar/Navbar';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import './singleTip.css';
+import like from './image/like.svg';
+import { useState } from 'react';
+import { ObjectId, Types } from 'mongoose';
+import { ITips } from '../../store/slices/TipsSlice';
+
 const SingleTip: React.FC = () => {
 	const tipsData = useSelector((state: RootState) => state.tips.value);
 	const [number, setNumber] = useState<number>(0);
@@ -30,16 +29,17 @@ const SingleTip: React.FC = () => {
 		console.log(newData);
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
-				method: "PUT",
+				method: 'PUT',
 				body: JSON.stringify({
 					_id: _id,
 					data: newData,
 				}),
 				headers: {
-					"Content-type": "application/json; charset=UTF-8",
+					'Content-type': 'application/json; charset=UTF-8',
 				},
 			});
 			const data = await response.json();
+			window.location.reload();
 			if (!response.ok) {
 				throw new Error(data.message);
 			}
@@ -48,13 +48,47 @@ const SingleTip: React.FC = () => {
 			throw err;
 		}
 	};
+	const closeButton = async (id: ObjectId) => {
+		console.log(id);
+		await deleteTips(id);
+	};
 
+	const deleteTips = async (_id: ObjectId) => {
+		console.log(_id);
+		try {
+			const response = await fetch(`http://localhost:8000/tips/`, {
+				method: 'DELETE',
+				body: JSON.stringify({
+					_id: _id,
+				}),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			});
+			const data = await response.json();
+			window.location.reload();
+			if (!response.ok) {
+				throw new Error(data.message);
+			}
+		} catch (err) {
+			console.error(err);
+			throw err;
+		}
+	};
 	return (
 		<div className="Tips-Page">
 			<div id="all-the-tips">
 				{tipsData.map((data: any) => {
 					return (
-						<div id="tip" key={data._id}>
+						<div
+							id="tip"
+							key={data._id}>
+							<span
+								id="closeButton"
+								onClick={() => closeButton(data._id)}
+								className="close">
+								&times;
+							</span>
 							<div id="title">{data.title}</div>
 							<div id="comment">{data.comment}</div>
 							<div id="username">{data.username}</div>
@@ -69,7 +103,7 @@ const SingleTip: React.FC = () => {
 								/>
 								<div>{data.likes}</div>
 							</div>
-							<div id="approved">{data.approved ? "true" : ""}</div>
+							<div id="approved">{data.approved ? 'true' : ''}</div>
 						</div>
 					);
 				})}

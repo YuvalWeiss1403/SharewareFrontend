@@ -6,10 +6,12 @@
 .concept-hero-container{
     position: relative;
     width: 100%;
-    height: 550px;
-    background-color: #F9F4EA; 
+    height: 480px;
+    background-color: white; 
     font-family: 'Anton', sans-serif;
-    background-image: url(../../assets/images/backgroundTriangles.jpg); 
+    /* background-image: url(../../assets/images/backgroundTriangles.jpg);  */
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.5)), url(../../assets/images/definition-corporate.jpg);
+    background-color: black;
     /* font-weight: bold; */
 }
 
@@ -17,6 +19,10 @@
     padding-left: 5%;
     color: #2C3333;
     font-size: 18px;
+    position: absolute;
+    left: 50%;
+    top: 22%;
+    transform: translate(-50%, 0%);
 }
 
 .hero-content {
@@ -28,35 +34,55 @@
 
 .sharing-caring-title {
     padding-left: 2%;
-    font-size: 40px;
+    font-size: 50px;
     color: #2C3333;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, 50%);
+    text-shadow: 2px 2px 3px black;
+    letter-spacing: 2px;
+    z-index: 1;
 }
 
 .hero-circle{
-    width: 160px;
-    height: 160px;
-    border: 2px solid #2C3333;
+    width: 180px;
+    height: 180px;
+    border: 2px solid white;
     border-radius: 50%;
     position: relative;
     font-size: 20px;
+    background-image: url(../../assets/images/backgroundTriangles.jpg); 
+    box-shadow: 3px 3px 3px white;
+}
+
+.hero-circle2{
+    width: 240px;
+    height: 240px;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: relative;
+    font-size: 20px;
+    background-image: url(../../assets/images/backgroundTriangles.jpg); 
+    box-shadow: 3px 3px 3px white;
 }
 
 .c-line1{
     position: absolute;
-    top: 60%;
-    left: 30%;
+    top: 62%;
+    left: 16%;
     transform: translate(-50%, -50%);
 }
 .c-line2{
     position: absolute;
     top: 38%;
-    left: 34%;
+    left:23%;
     transform: translate(-50%, -50%);
 }
 .c-line3{
     position: absolute;
-    top: 60%;
-    left: 38%;
+    top: 68%;
+    left: 26%;
     transform: translate(-50%, -50%);
 }
 
@@ -76,6 +102,16 @@
     right: 15%;
 }
 
+.corporate-img{
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    border-radius: 20px;
+    outline: 2px solid white;
+    outline-offset: -15px;
+}
+
 /* .input-modal{
     padding-top: 50px;
     display: flex;
@@ -91,10 +127,10 @@
     justify-content: center;
     background-size:cover;
     background-repeat:no-repeat;
-    background-color: #d68bd2;
+    /* background-color: #d68bd2; */
     gap: 10px;
     position: absolute;
-    bottom: 0;
+    bottom: -75px;
     left: 50%;
     transform: translate(-50%, -30%);
     border-radius: 10px;
@@ -102,6 +138,8 @@
     height: 90px;
     width: 85%;
     z-index: 1;
+    background-image: url(../../assets/images/backgroundTriangles.jpg); 
+
 }
 
 .input-container #input{
@@ -127,4 +165,5 @@
     height: 45px;
     width: 17%;
     font-family: 'Anton', sans-serif;
+    border-color: #2C3333;
 }
