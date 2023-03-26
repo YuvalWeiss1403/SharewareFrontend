@@ -78,6 +78,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Authorization: `Bearer ${data.token}`,
 				},
 			})
 				.then((response) => response.json())

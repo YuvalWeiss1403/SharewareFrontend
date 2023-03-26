@@ -9,6 +9,7 @@ import AddSubject from '../AddSubject/AddSubject';
 import { ObjectId } from 'mongoose';
 
 const ShareSpace: React.FC = () => {
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const openModal = () => {
@@ -18,7 +19,6 @@ const ShareSpace: React.FC = () => {
 		setIsModalOpen(false);
 	};
 	const deleteSubject = async (_id: ObjectId) => {
-		console.log(_id);
 		try {
 			const response = await fetch(`http://localhost:8000/subjects`, {
 				method: 'DELETE',
@@ -27,6 +27,7 @@ const ShareSpace: React.FC = () => {
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Authorization: `Bearer ${user.token}`,
 				},
 			});
 			const data = await response.json();

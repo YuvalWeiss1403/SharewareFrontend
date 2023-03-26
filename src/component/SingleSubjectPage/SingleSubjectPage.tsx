@@ -14,6 +14,7 @@ import SingleQuestionPage from './SingleQuestionPage/SingleQuestionPage';
 import AddQuestion from '../AddQuestion/AddQuestion';
 
 const SingleSubjectPage: React.FC = () => {
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	let { subjectId } = useParams<string>();
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const openModal = () => {
@@ -57,6 +58,7 @@ const SingleSubjectPage: React.FC = () => {
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Authorization: `Bearer ${user.token}`,
 				},
 			});
 			const data = await response.json();
