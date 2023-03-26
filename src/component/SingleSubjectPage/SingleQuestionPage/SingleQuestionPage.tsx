@@ -13,6 +13,7 @@ export interface IQuestionCard {
 }
 
 const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const [ShowAnswers, setShowAnswers] = useState<boolean>(false);
 	const currentQuestion = props.question;
 	const answersData = useSelector((state: RootState) => state.answers.value);
@@ -73,11 +74,13 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 					}}>
 					{ShowAnswers ? 'Hide answers' : 'Show answers'}
 				</button>
-				<button
-					className="button add-answer"
-					onClick={openModal}>
-					Add answer
-				</button>
+				{user.userType === 'admin' && (
+					<button
+						className="button add-answer"
+						onClick={openModal}>
+						Add answer
+					</button>
+				)}
 			</div>
 			{ShowAnswers && (
 				<div className="answers-container">
