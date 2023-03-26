@@ -9,6 +9,7 @@ import { ObjectId, Types } from 'mongoose';
 import { ITips } from '../../store/slices/TipsSlice';
 
 const SingleTip: React.FC = () => {
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const tipsData = useSelector((state: RootState) => state.tips.value);
 	const [number, setNumber] = useState<number>(0);
 	const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
@@ -63,6 +64,7 @@ const SingleTip: React.FC = () => {
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Authorization: `Bearer ${user.token}`,
 				},
 			});
 			const data = await response.json();
@@ -83,12 +85,14 @@ const SingleTip: React.FC = () => {
 						<div
 							id="tip"
 							key={data._id}>
-							<span
-								id="closeButton"
-								onClick={() => closeButton(data._id)}
-								className="close">
-								&times;
-							</span>
+							{user.userType === 'admin' && (
+								<span
+									id="closeButton"
+									onClick={() => closeButton(data._id)}
+									className="close">
+									&times;
+								</span>
+							)}
 							<div id="title">{data.title}</div>
 							<div id="comment">{data.comment}</div>
 							<div id="username">{data.username}</div>

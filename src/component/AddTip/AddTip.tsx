@@ -62,12 +62,6 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 
 	const newTip = async (title: string, comment: string, username: string) => {
 		try {
-			// // Check if the provided _id is a valid ObjectId
-			// if (!mongoose.Types.ObjectId.isValid(_id)) {
-			// 	throw new Error('Invalid ObjectId');
-			// }
-			// // Use the provided _id to create a valid ObjectId
-			// const objectId = mongoose.Types.ObjectId.createFromHexString(_id);
 			await fetch('http://localhost:8000/tips/', {
 				method: 'POST',
 				body: JSON.stringify({
@@ -78,6 +72,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Authorization: `Bearer ${data.token}`,
 				},
 			})
 				.then((response) => response.json())

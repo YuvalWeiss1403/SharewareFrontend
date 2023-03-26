@@ -1,17 +1,19 @@
-import "./ShareSpace.css";
-import Navbar from "../General/Navbar/Navbar";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { ISubjects } from "../../store/slices/SubjectsSlice";
-import SubjectCard from "./SubjectCard/SubjectCard";
-import { useState } from "react";
-import AddSubject from "../AddSubject/AddSubject";
-import { ObjectId } from "mongoose";
-
+import './ShareSpace.css';
+import Navbar from '../General/Navbar/Navbar';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { ISubjects } from '../../store/slices/SubjectsSlice';
+import SubjectCard from './SubjectCard/SubjectCard';
+import { useState } from 'react';
+import AddSubject from '../AddSubject/AddSubject';
+import { ObjectId } from 'mongoose';
+// import dotenv from 'dotenv';
+// // dotenv.config();
 const ShareSpace: React.FC = () => {
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	console.log(user.userType);
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const openModal = () => {
 		setIsModalOpen(true);
 	};
@@ -21,12 +23,13 @@ const ShareSpace: React.FC = () => {
 	const deleteSubject = async (_id: ObjectId) => {
 		try {
 			const response = await fetch(`http://localhost:8000/subjects`, {
-				method: "DELETE",
+				method: 'DELETE',
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					"Content-type": "application/json; charset=UTF-8",
+					'Content-type': 'application/json; charset=UTF-8',
+					Authorization: `Bearer ${user.token}`,
 				},
 			});
 			const data = await response.json();
@@ -45,20 +48,25 @@ const ShareSpace: React.FC = () => {
 	return (
 		<div className="ShareSpace">
 			<Navbar />
-			{user.userType === "admin" && (
+			{user.userType === 'admin' && (
 				<button onClick={openModal}> ADD SUBJECT</button>
 			)}
 			<div className="subjects-card-container">
 				{subjectsData?.map((subject: ISubjects, index: number) => {
 					return (
 						<div>
-							<span
-								id="closeButton"
-								onClick={() => closeButton(subject._id)}
-								className="close">
-								&times;
-							</span>
-							<SubjectCard name={subject.name} key={index} />
+							{user.userType === 'admin' && (
+								<span
+									id="closeButton"
+									onClick={() => closeButton(subject._id)}
+									className="close">
+									&times;
+								</span>
+							)}
+							<SubjectCard
+								name={subject.name}
+								key={index}
+							/>
 						</div>
 					);
 				})}
