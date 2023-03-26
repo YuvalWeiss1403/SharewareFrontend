@@ -1,18 +1,18 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-// import Footer from "../Footer/Footer";
-import NavBar from "../General/Navbar/Navbar";
-import "./SignUp.css";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import Footer from '../General/Footer/Footer';
+import NavBar from '../General/Navbar/Navbar';
+import './SignUp.css';
 
 const SignUp: React.FC = () => {
 	const navigator = useNavigate();
 	const defaultInputValue = {
-		first_name: "",
-		last_name: "",
-		email: "",
-		password: "",
-		confirmPassword: "",
+		first_name: '',
+		last_name: '',
+		email: '',
+		password: '',
+		confirmPassword: '',
 	};
 
 	const [User, setUser] = useState(defaultInputValue);
@@ -24,14 +24,14 @@ const SignUp: React.FC = () => {
 
 	const onSignUp = async () => {
 		try {
-			const userReq = await axios.post("http://localhost:8000/users/create", {
+			const userReq = await axios.post('http://localhost:8000/users/create', {
 				firstName: User.first_name,
 				lastName: User.last_name,
 				email: User.email,
 				password: User.password,
 			});
-			sessionStorage.setItem("user", JSON.stringify(userReq.data));
-			navigator("/LogIn");
+			sessionStorage.setItem('user', JSON.stringify(userReq.data));
+			navigator('/LogIn');
 		} catch (error: any) {
 			alert(error.response.data);
 			return [];
@@ -39,16 +39,16 @@ const SignUp: React.FC = () => {
 	};
 
 	const handelSignUp = async () => {
-		PasswordsMatch ? await onSignUp() : console.log("not match");
+		PasswordsMatch ? await onSignUp() : console.log('not match');
 	};
 
 	const handelPasswords = () => {
 		setPasswordsMatch(() => {
 			if (User.confirmPassword !== User.password) {
-				console.log("false" + " " + User.confirmPassword + " " + User.password);
+				console.log('false' + ' ' + User.confirmPassword + ' ' + User.password);
 				return false;
 			} else {
-				console.log("true" + " " + User.confirmPassword + " " + User.password);
+				console.log('true' + ' ' + User.confirmPassword + ' ' + User.password);
 				return true;
 			}
 		});
@@ -100,7 +100,7 @@ const SignUp: React.FC = () => {
 						className="enter-password-again"
 						type="password"
 						placeholder="Enter password again"></input>
-					<label className={PasswordsMatch ? "match" : "not-match"}>
+					<label className={PasswordsMatch ? 'match' : 'not-match'}>
 						Passwords do not match
 					</label>
 				</div>
@@ -117,7 +117,7 @@ const SignUp: React.FC = () => {
 				</button>
 			</div>
 
-			{/* <Footer /> */}
+			<Footer />
 		</div>
 	);
 };

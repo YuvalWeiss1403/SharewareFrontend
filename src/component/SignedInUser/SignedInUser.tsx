@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-// import Footer from '../Footer/Footer';
-// import NavBar from '../NavBar/NavBar';
+import Footer from '../General/Footer/Footer';
+import NavBar from '../General/Navbar/Navbar';
 import './SignedInUser.css';
 
 const SignedInUser: React.FC = () => {
@@ -21,7 +21,7 @@ const SignedInUser: React.FC = () => {
 
 	return (
 		<div className="logIn-page">
-			{/* <NavBar /> */}
+			<NavBar />
 			<div className="login-content">
 				<div className="user-page-heading">{`Hello,${userName}`}</div>
 				<button
@@ -32,8 +32,7 @@ const SignedInUser: React.FC = () => {
 					Logout
 				</button>
 			</div>
-
-			{/* <Footer /> */}
+			<Footer />
 		</div>
 	);
 };
