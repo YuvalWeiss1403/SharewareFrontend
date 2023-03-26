@@ -11,7 +11,6 @@ import Modal from "../General/Modal/Modal";
 
 const ShareSpace: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
-	console.log(user.userType);
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const openModal = () => {
@@ -61,9 +60,8 @@ const ShareSpace: React.FC = () => {
 						<div>
 							{user.userType === "admin" && (
 								<span
-									id="closeButton"
 									onClick={() => closeButton(subject._id)}
-									className="close">
+									className="delete-subject">
 									&times;
 								</span>
 							)}
