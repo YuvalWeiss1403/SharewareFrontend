@@ -7,8 +7,6 @@ import SubjectCard from './SubjectCard/SubjectCard';
 import { useState } from 'react';
 import AddSubject from '../AddSubject/AddSubject';
 import { ObjectId } from 'mongoose';
-// import dotenv from 'dotenv';
-// // dotenv.config();
 const ShareSpace: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	console.log(user.userType);

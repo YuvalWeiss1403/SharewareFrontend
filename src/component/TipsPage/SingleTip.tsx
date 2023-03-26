@@ -1,26 +1,30 @@
-import "../HomePage/HomePage.css";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import "./singleTip.css";
-import like from "./image/like.svg";
+import '../HomePage/HomePage.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import './singleTip.css';
+import like from './image/like.svg';
 // import { useState } from 'react';
-import { ObjectId } from "mongoose";
-import { ITips } from "../../store/slices/TipsSlice";
+import { ObjectId } from 'mongoose';
+import { ITips } from '../../store/slices/TipsSlice';
+import { useNavigate } from 'react-router';
 
 const SingleTip: React.FC = () => {
-	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const tipsData = useSelector((state: RootState) => state.tips.value);
-	// const [number, setNumber] = useState<number>(0);
+	const navigate = useNavigate();
 	const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
 		const newData = tipsData.find((data: ITips) => {
 			return data._id === _id;
 		});
-		console.log(newData);
-		if (newData && newData.likes !== undefined) {
-			const updatedData = { ...newData }; // create a new object with the same properties as newData
-			updatedData.likes += 1; // modify the likes property on the new object
-			console.log(updatedData.likes);
-			await addLike(_id, updatedData);
+		if (user) {
+			if (newData && newData.likes !== undefined) {
+				const updatedData = { ...newData }; // create a new object with the same properties as newData
+				updatedData.likes += 1; // modify the likes property on the new object
+				await addLike(_id, updatedData);
+			}
+		} else {
+			alert('please log-in');
+			navigate('/');
 		}
 	};
 
@@ -29,13 +33,13 @@ const SingleTip: React.FC = () => {
 		console.log(newData);
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
-				method: "PUT",
+				method: 'PUT',
 				body: JSON.stringify({
 					_id: _id,
 					data: newData,
 				}),
 				headers: {
-					"Content-type": "application/json; charset=UTF-8",
+					'Content-type': 'application/json; charset=UTF-8',
 				},
 			});
 			const data = await response.json();
@@ -57,12 +61,12 @@ const SingleTip: React.FC = () => {
 		console.log(_id);
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
-				method: "DELETE",
+				method: 'DELETE',
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					"Content-type": "application/json; charset=UTF-8",
+					'Content-type': 'application/json; charset=UTF-8',
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
@@ -80,8 +84,10 @@ const SingleTip: React.FC = () => {
 		<div id="all-the-tips">
 			{tipsData.map((data: any) => {
 				return (
-					<div id="tip" key={data._id}>
-						{user.userType === "admin" && (
+					<div
+						id="tip"
+						key={data._id}>
+						{user.userType === 'admin' && (
 							<span
 								id="closeButton"
 								onClick={() => closeButton(data._id)}
@@ -103,7 +109,7 @@ const SingleTip: React.FC = () => {
 							/>
 							<div>{data.likes}</div>
 						</div>
-						<div id="approved">{data.approved ? "true" : ""}</div>
+						<div id="approved">{data.approved ? 'true' : ''}</div>
 					</div>
 				);
 			})}
