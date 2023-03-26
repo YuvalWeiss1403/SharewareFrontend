@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
-
+import Modal from '../General/Modal/Modal';
+import { ObjectId } from 'mongoose';
 interface IModal {
 	closeButton: Function;
 	key?: string;
@@ -111,32 +112,36 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 	};
 
 	return (
-		<div className="card">
-			<form onSubmit={handSaveRest}>
-				<div
-					id="modal"
-					className="modal">
-					<div className="add-information">
-						<span
-							id="closeButton"
-							onClick={() => props.closeButton()}
-							className="close">
-							&times;
-						</span>
-						<div className="information">
-							<div>
-								<div id="information">{renderInputs(restDetails)}</div>
+		<>
+			<Modal>
+				<div className="card">
+					<form onSubmit={handSaveRest}>
+						<div
+							id="modal"
+							className="modal">
+							<div className="add-information">
+								<span
+									id="closeButton"
+									onClick={() => props.closeButton()}
+									className="close">
+									&times;
+								</span>
+								<div className="information">
+									<div>
+										<div id="information">{renderInputs(restDetails)}</div>
+									</div>
+									<button
+										className="submit"
+										type="submit">
+										<span>ADD QUESTION </span>
+									</button>
+								</div>
 							</div>
-							<button
-								className="submit"
-								type="submit">
-								<span>ADD QUESTION </span>
-							</button>
 						</div>
-					</div>
+					</form>
 				</div>
-			</form>
-		</div>
+			</Modal>
+		</>
 	);
 };
 

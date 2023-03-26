@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
+import Modal from '../General/Modal/Modal';
 import { ITips } from '../../store/slices/TipsSlice';
 interface IModal {
 	closeButton: Function;
@@ -105,32 +106,34 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 	};
 
 	return (
-		<div className="card-information">
-			<form onSubmit={handSaveRest}>
-				<div
-					id="Modal"
-					className="modal">
-					<div className="add-information">
-						<span
-							id="closeButton"
-							onClick={() => props.closeButton()}
-							className="close">
-							&times;
-						</span>
-						<div className="information">
-							<div>
-								<div id="information">{renderInputs(restDetails)}</div>
+		<Modal>
+			<div className="card-information">
+				<form onSubmit={handSaveRest}>
+					<div
+						id="Modal"
+						className="modal">
+						<div className="add-information">
+							<span
+								id="closeButton"
+								onClick={() => props.closeButton()}
+								className="close">
+								&times;
+							</span>
+							<div className="information">
+								<div>
+									<div id="information">{renderInputs(restDetails)}</div>
+								</div>
+								<button
+									className="submit"
+									type="submit">
+									<span>ADD TIPS </span>
+								</button>
 							</div>
-							<button
-								className="submit"
-								type="submit">
-								<span>ADD TIPS </span>
-							</button>
 						</div>
 					</div>
-				</div>
-			</form>
-		</div>
+				</form>
+			</div>
+		</Modal>
 	);
 };
 
