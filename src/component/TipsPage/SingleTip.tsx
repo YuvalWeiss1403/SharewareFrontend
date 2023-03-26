@@ -3,7 +3,7 @@ import Navbar from '../General/Navbar/Navbar';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import './singleTip.css';
-// import like from './image/like.svg';
+import like from './image/like.svg';
 import { useState } from 'react';
 import { ObjectId, Types } from 'mongoose';
 import { ITips } from '../../store/slices/TipsSlice';
@@ -98,7 +98,7 @@ const SingleTip: React.FC = () => {
 							<div id="username">{data.username}</div>
 							<div>
 								<img
-									// src={like}
+									src={like}
 									alt="like"
 									id="like"
 									onClick={(e) => {

@@ -5,9 +5,13 @@ import './AnswerCard.css';
 export interface IAnswerCard {
 	answer: IAnswers;
 }
+const closeButton = async (id: ObjectId) => {
+	await deleteAnswers(id);
+};
 
 const deleteAnswers = async (_id: ObjectId) => {
 	console.log(_id);
+
 	try {
 		const response = await fetch(`http://localhost:8000/answers`, {
 			method: 'DELETE',
@@ -28,12 +32,20 @@ const deleteAnswers = async (_id: ObjectId) => {
 		throw err;
 	}
 };
-
 const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const currentAnswer = props.answer;
 	return (
 		<div className="answer-card">
 			<div className="single-answer-container">
+				{user.userType === 'admin' && (
+					<span
+						id="delete-question"
+						onClick={() => closeButton(currentAnswer._id)}
+						className="delete">
+						Delete ANSWER
+					</span>
+				)}
 				<div className="answer-header">{currentAnswer.title}</div>
 				<div className="answer-username">{currentAnswer.userName}</div>
 			</div>

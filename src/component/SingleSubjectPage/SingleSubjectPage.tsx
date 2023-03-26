@@ -82,11 +82,13 @@ const SingleSubjectPage: React.FC = () => {
 					<div className="questionsNavbar">
 						<div className="navbarHeading">
 							{`${currentSubjectData[0].name} questions`}
-							<button
-								id="add-button"
-								onClick={openModal}>
-								&#43;
-							</button>
+							{user.userType === 'admin' && (
+								<button
+									id="add-button"
+									onClick={openModal}>
+									&#43;
+								</button>
+							)}
 						</div>
 						{questionsBySubject.map((question: IQuestions) => {
 							return (
