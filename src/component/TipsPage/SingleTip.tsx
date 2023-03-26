@@ -1,17 +1,16 @@
 import '../HomePage/HomePage.css';
-import Navbar from '../General/Navbar/Navbar';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import './singleTip.css';
 import like from './image/like.svg';
-import { useState } from 'react';
-import { ObjectId, Types } from 'mongoose';
+// import { useState } from 'react';
+import { ObjectId } from 'mongoose';
 import { ITips } from '../../store/slices/TipsSlice';
 
 const SingleTip: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const tipsData = useSelector((state: RootState) => state.tips.value);
-	const [number, setNumber] = useState<number>(0);
+	// const [number, setNumber] = useState<number>(0);
 	const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
 		const newData = tipsData.find((data: ITips) => {
 			return data._id === _id;

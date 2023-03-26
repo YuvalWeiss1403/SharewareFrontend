@@ -1,7 +1,7 @@
 import '../HomePage/HomePage.css';
 import Navbar from '../General/Navbar/Navbar';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
+// import { useSelector } from 'react-redux';
+// import { RootState } from '../../store/store';
 import SingleTip from './SingleTip';
 import { useState } from 'react';
 import AddTip from '../AddTip/AddTip';
@@ -15,7 +15,7 @@ const TipsPage: React.FC = () => {
 	const closeModal = () => {
 		setIsModalOpen(false);
 	};
-	const tipsData = useSelector((state: RootState) => state.tips.filteredValue);
+	// const tipsData = useSelector((state: RootState) => state.tips.filteredValue);
 	return (
 		<div className="Tips-Page">
 			<Navbar />

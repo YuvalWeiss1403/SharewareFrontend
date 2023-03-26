@@ -10,6 +10,7 @@ import AddAnswer from '../../AddAnswer/AddAnswer';
 
 export interface IQuestionCard {
 	question: IQuestions;
+	key?: string;
 }
 
 const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {

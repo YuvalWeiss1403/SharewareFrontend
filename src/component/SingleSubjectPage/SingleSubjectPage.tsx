@@ -20,7 +20,6 @@ const SingleSubjectPage: React.FC = () => {
 	const closeModal = () => {
 		setIsModalOpen(false);
 	};
-
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const getSpecificSubject = () => {
 		return subjectsData.filter((sub) => String(sub._id) === subjectId);
@@ -47,33 +46,6 @@ const SingleSubjectPage: React.FC = () => {
 		setCurrentQuestion(currentQuestion[0]);
 	};
 
-	const deleteQuestion = async (_id: ObjectId) => {
-		console.log(_id);
-		try {
-			const response = await fetch(`http://localhost:8000/questions`, {
-				method: 'DELETE',
-				body: JSON.stringify({
-					_id: _id,
-				}),
-				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
-				},
-			});
-			const data = await response.json();
-			window.location.reload();
-			if (!response.ok) {
-				throw new Error(data.message);
-			}
-		} catch (err) {
-			console.error(err);
-			throw err;
-		}
-	};
-
-	const closeButton = async (id: ObjectId) => {
-		console.log(id);
-		await deleteQuestion(id);
-	};
 	return (
 		<div className="single-subject-page">
 			<Navbar />
@@ -82,14 +54,14 @@ const SingleSubjectPage: React.FC = () => {
 					<div className="questionsNavbar">
 						<div className="navbarHeading">
 							{`${currentSubjectData[0].name} questions`}
-							{user.userType === 'admin' && (
-								<button
-									id="add-button"
-									onClick={openModal}>
-									&#43;
-								</button>
-							)}
 						</div>
+						{user.userType === 'admin' && (
+							<button
+								id="add-button"
+								onClick={openModal}>
+								&#43;
+							</button>
+						)}
 						{questionsBySubject.map((question: IQuestions) => {
 							return (
 								<button
@@ -108,12 +80,20 @@ const SingleSubjectPage: React.FC = () => {
 					</div>
 					<div className="question-container">
 						{questionClicked && currentQuestion && (
-							<SingleQuestionPage question={currentQuestion} />
+							<SingleQuestionPage
+								question={currentQuestion}
+								key={currentQuestion._id.toString()}
+							/>
 						)}
 					</div>
 				</div>
 			</div>
-			{isModalOpen && <AddQuestion closeButton={closeModal} />}
+			{isModalOpen && (
+				<AddQuestion
+					closeButton={closeModal}
+					key={subjectId}
+				/>
+			)}
 		</div>
 	);
 };

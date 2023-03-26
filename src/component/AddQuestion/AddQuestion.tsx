@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
-import { ObjectId } from 'mongoose';
+
 interface IModal {
 	closeButton: Function;
+	key?: string;
 }
 const AddQuestion: React.FC<IModal> = (props: IModal) => {
 	let { subjectId } = useParams<string>();

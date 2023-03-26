@@ -11,7 +11,6 @@ const closeButton = async (id: ObjectId) => {
 
 const deleteAnswers = async (_id: ObjectId) => {
 	console.log(_id);
-
 	try {
 		const response = await fetch(`http://localhost:8000/answers`, {
 			method: 'DELETE',

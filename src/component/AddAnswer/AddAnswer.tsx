@@ -4,13 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
 import { ObjectId } from 'mongoose';
-import { string } from 'yargs';
 interface IModal {
 	closeButton: Function;
 	questionId: ObjectId;
 }
 const AddAnswer: React.FC<IModal> = (props: IModal) => {
-	let { subjectId } = useParams<string>();
 	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const navigate = useNavigate();
 	const questionData = useSelector((state: RootState) => state.questions.value);
