@@ -5,6 +5,7 @@ import Navbar from "../General/Navbar/Navbar";
 import SingleTip from "./SingleTip";
 import { useState } from "react";
 import AddTip from "../AddTip/AddTip";
+import Modal from '../General/Modal/Modal';
 
 const TipsPage: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
@@ -21,16 +22,18 @@ const TipsPage: React.FC = () => {
 			<Navbar />
 			<div className="tips-content">
 				<div id="advice">Your Friends Advice</div>
-				{user.userType === "admin" && (
+				{/* {user.userType === "admin" && ( */}
 					<button id="add-button" onClick={openModal}>
 						ADD TIPS
 					</button>
-				)}
+				{/* )} */}
 			</div>
 			<div className="tips-container">
 				<SingleTip />
 			</div>
-			{isModalOpen && <AddTip closeButton={closeModal} />}
+			{/* {isModalOpen && <AddTip closeButton={closeModal} />} */}
+			{isModalOpen && <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} > < AddTip setIsModalOpen={setIsModalOpen} />
+			</Modal>}
 		</div>
 	);
 };
