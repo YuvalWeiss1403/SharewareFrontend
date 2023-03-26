@@ -48,13 +48,12 @@ const SingleTip: React.FC = () => {
 		console.log(newData);
 		if (user.email != null) {
 			if (!user.tipLiked.includes(String(newData?._id))) {
-				const currentUser = userLike.find(
-					(user: IUser) => user._id.toString() === user._id.toString()
-				);
+				// 	const currentUser = userLike.find(
+				// 		(user: IUser) => user._id.toString() === user._id.toString()
+				// 	);
 
-				const updatedUserData = { ...currentUser }; // create a new object with the same properties as currentUser
-				updatedUserData.tipLiked.push(String(newData?._id)); // modify the tipLiked property on the new object
-				await updateUser(currentUser?._id, updatedUserData); // update the user data in the state
+				// 	const updatedUserData = { ...currentUser, tipLiked: [] };
+				// 	updatedUserData.tipLiked.push(String(newData?._id));
 				if (newData && newData.likes !== undefined) {
 					const updatedData = { ...newData }; // create a new object with the same properties as newData
 					updatedData.likes += 1; // modify the likes property on the new object
