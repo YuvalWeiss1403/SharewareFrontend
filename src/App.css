@@ -10,5 +10,25 @@ body {
 	font-weight: 400;
 	width: 100vw;
 	height: 100vh;
-	overflow: hidden;
+	overflow-x: hidden;
+}
+
+/* width */
+body::-webkit-scrollbar {
+	width: 100%;
+}
+
+/* Track */
+body::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+	background: transparent;
+}
+
+/* Handle on hover */
+body::-webkit-scrollbar-thumb:hover {
+	background: transparent;
 }

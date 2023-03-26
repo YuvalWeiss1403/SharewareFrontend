@@ -103,7 +103,6 @@ const SingleTip: React.FC = () => {
 							/>
 							<div>{data.likes}</div>
 						</div>
-						<div id="approved">{data.approved ? "true" : ""}</div>
 					</div>
 				);
 			})}
