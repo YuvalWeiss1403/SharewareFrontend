@@ -32,14 +32,14 @@ export const questionsSlice = createSlice({
 		setAllQuestions: (state) => {
 			state.filteredValue = state.value;
 		},
-		QuestionsBySubject: (state, action) => {
-			state.filteredValue = state.value.filter((question) => {
-				return question.subjectId === action.payload;
-			});
-		},
+		// QuestionsBySubject: (state, action) => {
+		// 	state.filteredValue = state.value.filter((question) => {
+		// 		return question.subjectId === action.payload;
+		// 	});
+		// },
 	},
 });
 
-export const { setAllQuestions, QuestionsBySubject } = questionsSlice.actions;
+export const { setAllQuestions } = questionsSlice.actions;
 
 export default questionsSlice.reducer;
