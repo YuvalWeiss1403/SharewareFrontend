@@ -1,16 +1,17 @@
-import './ShareSpace.css';
-import Navbar from '../General/Navbar/Navbar';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import { ISubjects } from '../../store/slices/SubjectsSlice';
-import SubjectCard from './SubjectCard/SubjectCard';
-import { useState } from 'react';
-import AddSubject from '../AddSubject/AddSubject';
-import { ObjectId } from 'mongoose';
+import "./ShareSpace.css";
+import Navbar from "../General/Navbar/Navbar";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { ISubjects } from "../../store/slices/SubjectsSlice";
+import SubjectCard from "./SubjectCard/SubjectCard";
+import { useState } from "react";
+import AddSubject from "../AddSubject/AddSubject";
+import { ObjectId } from "mongoose";
 
 const ShareSpace: React.FC = () => {
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const openModal = () => {
 		setIsModalOpen(true);
 	};
@@ -18,15 +19,14 @@ const ShareSpace: React.FC = () => {
 		setIsModalOpen(false);
 	};
 	const deleteSubject = async (_id: ObjectId) => {
-		console.log(_id);
 		try {
 			const response = await fetch(`http://localhost:8000/subjects`, {
-				method: 'DELETE',
+				method: "DELETE",
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 				},
 			});
 			const data = await response.json();
@@ -40,13 +40,14 @@ const ShareSpace: React.FC = () => {
 		}
 	};
 	const closeButton = async (id: ObjectId) => {
-		console.log(id);
 		await deleteSubject(id);
 	};
 	return (
 		<div className="ShareSpace">
 			<Navbar />
-			<button onClick={openModal}> ADD SUBJECT</button>
+			{user.userType === "admin" && (
+				<button onClick={openModal}> ADD SUBJECT</button>
+			)}
 			<div className="subjects-card-container">
 				{subjectsData?.map((subject: ISubjects, index: number) => {
 					return (
@@ -57,10 +58,7 @@ const ShareSpace: React.FC = () => {
 								className="close">
 								&times;
 							</span>
-							<SubjectCard
-								name={subject.name}
-								key={index}
-							/>
+							<SubjectCard name={subject.name} key={index} />
 						</div>
 					);
 				})}

@@ -32,11 +32,6 @@ export const questionsSlice = createSlice({
 		setAllQuestions: (state) => {
 			state.filteredValue = state.value;
 		},
-		// QuestionsBySubject: (state, action) => {
-		// 	state.filteredValue = state.value.filter((question) => {
-		// 		return question.subjectId === action.payload;
-		// 	});
-		// },
 	},
 });
 
