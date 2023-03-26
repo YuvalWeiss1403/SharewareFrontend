@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-// import Footer from "../Footer/Footer";
+import Footer from "../General/Footer/Footer";
 import NavBar from "../General/Navbar/Navbar";
 import "./LogInPage.css";
 
@@ -67,7 +67,7 @@ const LogInPage: React.FC = () => {
 					sign up
 				</button>
 			</div>
-			{/* <Footer /> */}
+			<Footer />
 		</div>
 	);
 };
