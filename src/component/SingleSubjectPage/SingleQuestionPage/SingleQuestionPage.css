@@ -46,3 +46,12 @@
 .answers-container::-webkit-scrollbar-thumb:hover {
 	background: transparent;
 }
+
+.delete {
+	background-color: #d68bd2c4;
+	position: absolute;
+	right: 15px;
+	padding: 5px;
+	border-radius: 5px;
+	color: white;
+}
