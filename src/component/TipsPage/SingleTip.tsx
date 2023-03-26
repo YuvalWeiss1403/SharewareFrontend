@@ -85,12 +85,14 @@ const SingleTip: React.FC = () => {
 						<div
 							id="tip"
 							key={data._id}>
-							<span
-								id="closeButton"
-								onClick={() => closeButton(data._id)}
-								className="close">
-								&times;
-							</span>
+							{user.userType === 'admin' && (
+								<span
+									id="closeButton"
+									onClick={() => closeButton(data._id)}
+									className="close">
+									&times;
+								</span>
+							)}
 							<div id="title">{data.title}</div>
 							<div id="comment">{data.comment}</div>
 							<div id="username">{data.username}</div>

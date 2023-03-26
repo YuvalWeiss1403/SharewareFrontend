@@ -7,8 +7,8 @@ import SubjectCard from './SubjectCard/SubjectCard';
 import { useState } from 'react';
 import AddSubject from '../AddSubject/AddSubject';
 import { ObjectId } from 'mongoose';
-import dotenv from 'dotenv';
-dotenv.config();
+// import dotenv from 'dotenv';
+// // dotenv.config();
 const ShareSpace: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	console.log(user.userType);
@@ -46,23 +46,24 @@ const ShareSpace: React.FC = () => {
 		console.log(id);
 		await deleteSubject(id);
 	};
-	console.log(process.env.ADMIN);
 	return (
 		<div className="ShareSpace">
 			<Navbar />
-			{user.userType === process.env.ADMIN && (
+			{user.userType === 'admin' && (
 				<button onClick={openModal}> ADD SUBJECT</button>
 			)}
 			<div className="subjects-card-container">
 				{subjectsData?.map((subject: ISubjects, index: number) => {
 					return (
 						<div>
-							<span
-								id="closeButton"
-								onClick={() => closeButton(subject._id)}
-								className="close">
-								&times;
-							</span>
+							{user.userType === 'admin' && (
+								<span
+									id="closeButton"
+									onClick={() => closeButton(subject._id)}
+									className="close">
+									&times;
+								</span>
+							)}
 							<SubjectCard
 								name={subject.name}
 								key={index}

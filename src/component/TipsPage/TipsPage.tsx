@@ -7,6 +7,7 @@ import { useState } from 'react';
 import AddTip from '../AddTip/AddTip';
 
 const TipsPage: React.FC = () => {
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const openModal = () => {
 		setIsModalOpen(true);
@@ -21,11 +22,13 @@ const TipsPage: React.FC = () => {
 			<div className="title">TIPS PAGE</div>
 			<div>
 				<div id="advice">Your Friends Advice</div>
-				<button
-					id="add-button"
-					onClick={openModal}>
-					ADD TIPS
-				</button>
+				{user.userType === 'admin' && (
+					<button
+						id="add-button"
+						onClick={openModal}>
+						ADD TIPS
+					</button>
+				)}
 			</div>
 			<SingleTip />
 			{isModalOpen && <AddTip closeButton={closeModal} />}
