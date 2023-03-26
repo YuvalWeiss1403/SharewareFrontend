@@ -69,6 +69,7 @@
 @media (min-width: 375px) and (max-width: 700px) {
 	.delete {
 		position: unset;
+		align-self: flex-end;
 	}
 	.buttons-container {
 		flex-direction: column;

@@ -1,12 +1,12 @@
-import './SingleQuestionPage.css';
-import { IQuestions } from '../../../store/slices/QuestionsSlice';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { IAnswers } from '../../../store/slices/AnswersSlice';
-import { RootState } from '../../../store/store';
-import AnswerCard from '../AnswerCard/AnswerCard';
-import { ObjectId } from 'mongoose';
-import AddAnswer from '../../AddAnswer/AddAnswer';
+import "./SingleQuestionPage.css";
+import { IQuestions } from "../../../store/slices/QuestionsSlice";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { IAnswers } from "../../../store/slices/AnswersSlice";
+import { RootState } from "../../../store/store";
+import AnswerCard from "../AnswerCard/AnswerCard";
+import { ObjectId } from "mongoose";
+import AddAnswer from "../../AddAnswer/AddAnswer";
 
 export interface IQuestionCard {
 	question: IQuestions;
@@ -14,7 +14,7 @@ export interface IQuestionCard {
 }
 
 const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
-	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const [ShowAnswers, setShowAnswers] = useState<boolean>(false);
 	const currentQuestion = props.question;
 	const answersData = useSelector((state: RootState) => state.answers.value);
@@ -33,15 +33,15 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	};
 
 	const deleteQuestion = async (_id: ObjectId) => {
-		console.log('delete question', _id);
+		console.log("delete question", _id);
 		try {
 			const response = await fetch(`http://localhost:8000/questions`, {
-				method: 'DELETE',
+				method: "DELETE",
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
@@ -75,12 +75,10 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 					onClick={() => {
 						ShowAnswers ? setShowAnswers(false) : setShowAnswers(true);
 					}}>
-					{ShowAnswers ? 'Hide answers' : 'Show answers'}
+					{ShowAnswers ? "Hide answers" : "Show answers"}
 				</button>
-				{user.userType === 'admin' && (
-					<button
-						className="button add-answer"
-						onClick={openModal}>
+				{user.userType === "admin" && (
+					<button className="button add-answer" onClick={openModal}>
 						Add answer
 					</button>
 				)}
@@ -93,10 +91,7 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 				</div>
 			)}
 			{isModalOpen && (
-				<AddAnswer
-					closeButton={closeModal}
-					questionId={currentQuestion._id}
-				/>
+				<AddAnswer closeButton={closeModal} questionId={currentQuestion._id} />
 			)}
 		</div>
 	);

@@ -71,6 +71,8 @@
 	color: white;
 	background-color: #d68bd2;
 	border-radius: 5px;
+	height: fit-content;
+	width: fit-content;
 }
 #add-button:hover {
 	color: black;

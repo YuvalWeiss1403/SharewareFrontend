@@ -1,27 +1,27 @@
-import { ObjectId } from 'mongoose';
-import { IAnswers } from '../../../store/slices/AnswersSlice';
-import './AnswerCard.css';
+import { ObjectId } from "mongoose";
+import { IAnswers } from "../../../store/slices/AnswersSlice";
+import "./AnswerCard.css";
 
 export interface IAnswerCard {
 	answer: IAnswers;
 }
 const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
-	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const currentAnswer = props.answer;
 	const closeButton = async (id: ObjectId) => {
 		await deleteAnswers(id);
 	};
 
 	const deleteAnswers = async (_id: ObjectId) => {
-		console.log('delete answer', _id);
+		console.log("delete answer", _id);
 		try {
 			const response = await fetch(`http://localhost:8000/answers`, {
-				method: 'DELETE',
+				method: "DELETE",
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
@@ -38,12 +38,11 @@ const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
 	return (
 		<div className="answer-card">
 			<div className="single-answer-container">
-				{user.userType === 'admin' && (
+				{user.userType === "admin" && (
 					<span
-						id="delete-question"
 						onClick={() => closeButton(currentAnswer._id)}
-						className="delete">
-						Delete ANSWER
+						className="delete-answer">
+						Delete Answer
 					</span>
 				)}
 				<div className="answer-header">{currentAnswer.title}</div>

@@ -1,14 +1,14 @@
-import '../HomePage/HomePage.css';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import './singleTip.css';
-import like from './image/like.svg';
+import "../HomePage/HomePage.css";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import "./singleTip.css";
+import like from "./image/like.svg";
 // import { useState } from 'react';
-import { ObjectId } from 'mongoose';
-import { ITips } from '../../store/slices/TipsSlice';
+import { ObjectId } from "mongoose";
+import { ITips } from "../../store/slices/TipsSlice";
 
 const SingleTip: React.FC = () => {
-	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const tipsData = useSelector((state: RootState) => state.tips.value);
 	// const [number, setNumber] = useState<number>(0);
 	const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
@@ -29,13 +29,13 @@ const SingleTip: React.FC = () => {
 		console.log(newData);
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
-				method: 'PUT',
+				method: "PUT",
 				body: JSON.stringify({
 					_id: _id,
 					data: newData,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 				},
 			});
 			const data = await response.json();
@@ -57,12 +57,12 @@ const SingleTip: React.FC = () => {
 		console.log(_id);
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
-				method: 'DELETE',
+				method: "DELETE",
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
@@ -77,40 +77,36 @@ const SingleTip: React.FC = () => {
 		}
 	};
 	return (
-		<div className="Tips-Page">
-			<div id="all-the-tips">
-				{tipsData.map((data: any) => {
-					return (
-						<div
-							id="tip"
-							key={data._id}>
-							{user.userType === 'admin' && (
-								<span
-									id="closeButton"
-									onClick={() => closeButton(data._id)}
-									className="close">
-									&times;
-								</span>
-							)}
-							<div id="title">{data.title}</div>
-							<div id="comment">{data.comment}</div>
-							<div id="username">{data.username}</div>
-							<div>
-								<img
-									src={like}
-									alt="like"
-									id="like"
-									onClick={(e) => {
-										handlePlus(e, data._id);
-									}}
-								/>
-								<div>{data.likes}</div>
-							</div>
-							<div id="approved">{data.approved ? 'true' : ''}</div>
+		<div id="all-the-tips">
+			{tipsData.map((data: any) => {
+				return (
+					<div id="tip" key={data._id}>
+						{user.userType === "admin" && (
+							<span
+								id="closeButton"
+								onClick={() => closeButton(data._id)}
+								className="delete-tip">
+								Delete tip
+							</span>
+						)}
+						<div id="title">{data.title}</div>
+						<div id="username">{data.username}</div>
+						<div id="comment">{data.comment}</div>
+						<div className="likes-container">
+							<img
+								src={like}
+								alt="like"
+								id="like"
+								onClick={(e) => {
+									handlePlus(e, data._id);
+								}}
+							/>
+							<div>{data.likes}</div>
 						</div>
-					);
-				})}
-			</div>
+						<div id="approved">{data.approved ? "true" : ""}</div>
+					</div>
+				);
+			})}
 		</div>
 	);
 };
