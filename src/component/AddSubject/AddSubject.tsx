@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
+import Modal from "../General/Modal/Modal"
 import { ITips } from '../../store/slices/TipsSlice';
+import "../AddSubject/AddSubject.css"
 interface IModal {
-	closeButton: Function;
+	setIsModalOpen: Function;
 }
 const AddSubject: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
@@ -88,32 +90,34 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 	};
 
 	return (
-		<div className="card">
-			<form onSubmit={handSaveRest}>
-				<div
-					id="modal"
-					className="modal">
-					<div className="add-information">
-						<span
-							id="closeButton"
-							onClick={() => props.closeButton()}
-							className="close">
-							&times;
-						</span>
-						<div className="information">
-							<div>
-								<div id="information">{renderInputs(restDetails)}</div>
+		<>
+			<div className="card">
+				<form onSubmit={handSaveRest}>
+					<div
+						id="modal"
+						className="modal">
+						<div className="add-information">
+							<span
+								id="closeButton"
+								onClick={() => props.setIsModalOpen(false)}
+								className="close">
+								{/* &times; */}
+							</span>
+							<div className="information">
+								<div>
+									<div id="information">{renderInputs(restDetails)}</div>
+								</div>
+								<button
+									className="submit"
+									type="submit">
+									<span>ADD SUBJECT </span>
+								</button>
 							</div>
-							<button
-								className="submit"
-								type="submit">
-								<span>ADD SUBJECT </span>
-							</button>
 						</div>
 					</div>
-				</div>
-			</form>
-		</div>
+				</form>
+			</div>
+		</>
 	);
 };
 

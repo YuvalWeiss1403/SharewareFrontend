@@ -7,6 +7,7 @@ import SubjectCard from './SubjectCard/SubjectCard';
 import { useState } from 'react';
 import AddSubject from '../AddSubject/AddSubject';
 import { ObjectId } from 'mongoose';
+import Modal from '../General/Modal/Modal';
 
 const ShareSpace: React.FC = () => {
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
@@ -46,7 +47,7 @@ const ShareSpace: React.FC = () => {
 	return (
 		<div className="ShareSpace">
 			<Navbar />
-			<button onClick={openModal}> ADD SUBJECT</button>
+			<button onClick={openModal}>Add Subject</button>
 			<div className="subjects-card-container">
 				{subjectsData?.map((subject: ISubjects, index: number) => {
 					return (
@@ -65,7 +66,9 @@ const ShareSpace: React.FC = () => {
 					);
 				})}
 			</div>
-			{isModalOpen && <AddSubject closeButton={closeModal} />}
+			{/* {isModalOpen && <AddSubject closeButton={closeModal} />} */}
+			{isModalOpen && <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} > <AddSubject setIsModalOpen={setIsModalOpen} />
+			</Modal>}
 		</div>
 	);
 };
