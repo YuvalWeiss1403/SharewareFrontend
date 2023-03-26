@@ -8,6 +8,7 @@ import { useState } from "react";
 import AddSubject from "../AddSubject/AddSubject";
 import { ObjectId } from "mongoose";
 import Modal from "../General/Modal/Modal";
+import Footer from "../General/Footer/Footer";
 
 const ShareSpace: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
@@ -77,6 +78,7 @@ const ShareSpace: React.FC = () => {
 					<AddSubject setIsModalOpen={setIsModalOpen} />
 				</Modal>
 			)}
+			<Footer></Footer>
 		</div>
 	);
 };
