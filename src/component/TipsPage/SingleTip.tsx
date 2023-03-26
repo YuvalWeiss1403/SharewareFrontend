@@ -16,21 +16,19 @@ const SingleTip: React.FC = () => {
 		const newData = tipsData.find((data: ITips) => {
 			return data._id === _id;
 		});
-		if (user) {
+		if (user.email != null) {
 			if (newData && newData.likes !== undefined) {
 				const updatedData = { ...newData }; // create a new object with the same properties as newData
 				updatedData.likes += 1; // modify the likes property on the new object
 				await addLike(_id, updatedData);
 			}
 		} else {
+			navigate('/LogIn');
 			alert('please log-in');
-			navigate('/');
 		}
 	};
 
 	const addLike = async (_id: ObjectId, newData: ITips) => {
-		console.log(_id);
-		console.log(newData);
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
 				method: 'PUT',
