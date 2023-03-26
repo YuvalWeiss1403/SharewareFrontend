@@ -33,6 +33,7 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	};
 
 	const deleteQuestion = async (_id: ObjectId) => {
+		console.log('delete question', _id);
 		try {
 			const response = await fetch(`http://localhost:8000/questions`, {
 				method: 'DELETE',
@@ -41,6 +42,7 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
+					Authorization: `Bearer ${user.token}`,
 				},
 			});
 			const data = await response.json();
