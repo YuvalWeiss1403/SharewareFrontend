@@ -1,6 +1,6 @@
-import { ObjectId } from 'mongoose';
-import { IAnswers } from '../../../store/slices/AnswersSlice';
-import './AnswerCard.css';
+import { ObjectId } from "mongoose";
+import { IAnswers } from "../../../store/slices/AnswersSlice";
+import "./AnswerCard.css";
 
 export interface IAnswerCard {
 	answer: IAnswers;
@@ -12,12 +12,12 @@ const closeButton = async (id: ObjectId) => {
 const deleteAnswers = async (_id: ObjectId) => {
 	try {
 		const response = await fetch(`http://localhost:8000/answers`, {
-			method: 'DELETE',
+			method: "DELETE",
 			body: JSON.stringify({
 				_id: _id,
 			}),
 			headers: {
-				'Content-type': 'application/json; charset=UTF-8',
+				"Content-type": "application/json; charset=UTF-8",
 			},
 		});
 		const data = await response.json();
@@ -31,17 +31,16 @@ const deleteAnswers = async (_id: ObjectId) => {
 	}
 };
 const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
-	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const currentAnswer = props.answer;
 	return (
 		<div className="answer-card">
 			<div className="single-answer-container">
-				{user.userType === 'admin' && (
+				{user.userType === "admin" && (
 					<span
-						id="delete-question"
 						onClick={() => closeButton(currentAnswer._id)}
-						className="delete">
-						Delete ANSWER
+						className="delete-answer">
+						Delete Answer
 					</span>
 				)}
 				<div className="answer-header">{currentAnswer.title}</div>

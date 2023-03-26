@@ -10,6 +10,10 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+.single-answer-container {
+	display: flex;
+	flex-direction: column;
+}
 
 .answer-header {
 	font-weight: 300;
@@ -34,4 +38,17 @@
 .answer-title {
 	padding-top: 10px;
 	font-size: 18px;
+}
+
+.delete-answer {
+	align-self: flex-end;
+	background-color: #ffffff91;
+	padding: 4px;
+	border-radius: 5px;
+	font-weight: 100;
+	font-size: 12px;
+}
+
+.delete-answer:hover {
+	font-weight: 400;
 }
