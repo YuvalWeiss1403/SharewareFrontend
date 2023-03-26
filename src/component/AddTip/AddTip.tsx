@@ -106,7 +106,6 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 	};
 
 	return (
-		<Modal>
 			<div className="card-information">
 				<form onSubmit={handSaveRest}>
 					<div
@@ -133,7 +132,6 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 					</div>
 				</form>
 			</div>
-		</Modal>
 	);
 };
 

@@ -48,9 +48,9 @@ const ShareSpace: React.FC = () => {
 	return (
 		<div className="ShareSpace">
 			<Navbar />
-			{user.userType === 'admin' && (
+			{/* {user.userType === 'admin' && ( */}
 				<button onClick={openModal}> ADD SUBJECT</button>
-			)}
+			{/* )} */}
 			{/* <button onClick={openModal}>Add Subject</button> */}
 			<div className="subjects-card-container">
 				{subjectsData?.map((subject: ISubjects, index: number) => {
