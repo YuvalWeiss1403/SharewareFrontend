@@ -7,9 +7,11 @@ import SubjectCard from './SubjectCard/SubjectCard';
 import { useState } from 'react';
 import AddSubject from '../AddSubject/AddSubject';
 import { ObjectId } from 'mongoose';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const ShareSpace: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	console.log(user.userType);
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const openModal = () => {
@@ -44,10 +46,13 @@ const ShareSpace: React.FC = () => {
 		console.log(id);
 		await deleteSubject(id);
 	};
+	console.log(process.env.ADMIN);
 	return (
 		<div className="ShareSpace">
 			<Navbar />
-			<button onClick={openModal}> ADD SUBJECT</button>
+			{user.userType === process.env.ADMIN && (
+				<button onClick={openModal}> ADD SUBJECT</button>
+			)}
 			<div className="subjects-card-container">
 				{subjectsData?.map((subject: ISubjects, index: number) => {
 					return (
