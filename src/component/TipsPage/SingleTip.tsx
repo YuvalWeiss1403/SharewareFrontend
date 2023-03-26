@@ -3,24 +3,67 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import './singleTip.css';
 import like from './image/like.svg';
-// import { useState } from 'react';
 import { ObjectId } from 'mongoose';
 import { ITips } from '../../store/slices/TipsSlice';
 import { useNavigate } from 'react-router';
+import { IUser } from '../../store/slices/UsersSlice';
 
 const SingleTip: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const tipsData = useSelector((state: RootState) => state.tips.value);
+	const userLike = useSelector((state: RootState) => state.users.value);
 	const navigate = useNavigate();
+	// console.log(userLike._id);
+	// const newUserData = () => {
+	// 	userLike.filter((id: any) => {
+	// 		return id._id === user._id.tostring();
+	// 	});
+	// };
+	// console.log(newUserData);
+	// const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
+	// 	const newData = tipsData.find((data: ITips) => {
+	// 		return data._id === _id;
+	// 	});
+	// 	console.log(newData);
+	// 	if (user.email != null) {
+	// 		user.tipLiked.map((tip: string) => {
+	// 			tip !== String(newData?._id);
+	// 		});
+	// 		if (newData && newData.likes !== undefined) {
+	// 			const updatedData = { ...newData }; // create a new object with the same properties as newData
+	// 			updatedData.likes += 1; // modify the likes property on the new object
+	// 			await addLike(_id, updatedData);
+	// 		} else {
+	// 			alert('you already liked this tip!');
+	// 		}
+	// 	} else {
+	// 		navigate('/LogIn');
+	// 		alert('please log-in');
+	// 	}
+	// };
 	const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
 		const newData = tipsData.find((data: ITips) => {
 			return data._id === _id;
 		});
+		console.log(newData);
 		if (user.email != null) {
-			if (newData && newData.likes !== undefined) {
-				const updatedData = { ...newData }; // create a new object with the same properties as newData
-				updatedData.likes += 1; // modify the likes property on the new object
-				await addLike(_id, updatedData);
+			if (!user.tipLiked.includes(String(newData?._id))) {
+				const currentUser = userLike.find(
+					(user: IUser) => user._id.toString() === user._id.toString()
+				);
+
+				const updatedUserData = { ...currentUser }; // create a new object with the same properties as currentUser
+				updatedUserData.tipLiked.push(String(newData?._id)); // modify the tipLiked property on the new object
+				await updateUser(currentUser?._id, updatedUserData); // update the user data in the state
+				if (newData && newData.likes !== undefined) {
+					const updatedData = { ...newData }; // create a new object with the same properties as newData
+					updatedData.likes += 1; // modify the likes property on the new object
+					await addLike(_id, updatedData);
+				} else {
+					alert('you already liked this tip!');
+				}
+			} else {
+				alert('you already liked this tip!');
 			}
 		} else {
 			navigate('/LogIn');
