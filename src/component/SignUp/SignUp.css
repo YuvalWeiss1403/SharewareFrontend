@@ -10,13 +10,10 @@
 }
 
 .signUp-content {
-	font-family: 'Helvetica Neue Thin';
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: white;
-	overflow: scroll;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
@@ -62,7 +59,7 @@
 }
 .signUp-content #page-sign-up-button {
 	border: 0;
-	background-color: black;
+	background-color: #d68bd2;
 	color: white;
 	font-size: 16px;
 	line-height: 20px;

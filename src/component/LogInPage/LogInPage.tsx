@@ -34,7 +34,7 @@ const LogInPage: React.FC = () => {
 			<div className="login-content">
 				<div className="signIn-page-heading">Sign in</div>
 				<div className="signIn-page-secondary-heading">
-					To continue the order, please sign in
+					To continue, please sign in
 				</div>
 				<input
 					value={Email}
