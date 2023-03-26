@@ -6,6 +6,7 @@ import { IAnswers } from "../../../store/slices/AnswersSlice";
 import { RootState } from "../../../store/store";
 import AnswerCard from "../AnswerCard/AnswerCard";
 import { ObjectId } from "mongoose";
+import Modal from "../../General/Modal/Modal"
 import AddAnswer from "../../AddAnswer/AddAnswer";
 
 export interface IQuestionCard {
@@ -77,11 +78,11 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 					}}>
 					{ShowAnswers ? "Hide answers" : "Show answers"}
 				</button>
-				{user.userType === "admin" && (
+				{/* {user.userType === "admin" && ( */}
 					<button className="button add-answer" onClick={openModal}>
 						Add answer
 					</button>
-				)}
+				{/* )} */}
 			</div>
 			{ShowAnswers && (
 				<div className="answers-container">
@@ -90,9 +91,10 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 					})}
 				</div>
 			)}
-			{isModalOpen && (
-				<AddAnswer closeButton={closeModal} questionId={currentQuestion._id} />
-			)}
+			{/* // {isModalOpen && ( */}
+			{/* // 	<AddAnswer closeButton={closeModal} questionId={currentQuestion._id} /> */}
+			{isModalOpen && <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} > <AddAnswer setIsModalOpen={setIsModalOpen} />
+			</Modal>}
 		</div>
 	);
 };
