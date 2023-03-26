@@ -33,6 +33,7 @@ const SingleTip: React.FC = () => {
 			const response = await fetch(`http://localhost:8000/tips/`, {
 				method: 'PUT',
 				body: JSON.stringify({
+					userId: user._id,
 					_id: _id,
 					data: newData,
 				}),
