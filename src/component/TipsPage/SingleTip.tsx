@@ -17,13 +17,10 @@ const SingleTip: React.FC = () => {
 		const newData = tipsData.find((data: ITips) => {
 			return data._id === _id;
 		});
-		console.log(newData);
 		if (user.firstName) {
 			const currentUserLike = userLike.find((data: any) => {
 				return data._id === user._id;
 			});
-			console.log(currentUserLike);
-			console.log('data', newData?._id);
 			if (
 				currentUserLike &&
 				currentUserLike.tipLiked?.includes(String(newData?._id))
@@ -32,8 +29,16 @@ const SingleTip: React.FC = () => {
 			} else {
 				const currentUser = currentUserLike;
 				if (currentUser && currentUser.tipLiked) {
-					currentUser.tipLiked.push(String(newData?._id));
-					console.log(currentUser, 'currentuser after push');
+					const newdataUser = [...currentUser.tipLiked, newData?._id].map(
+						(id) => String(id)
+					);
+					const updatedUser = {
+						...currentUser, // copy all properties from currentUser
+						tipLiked: newdataUser, // override tipLiked property with updated array
+					};
+					console.log(updatedUser);
+
+					await updateUser(updatedUser._id, updatedUser);
 				} else {
 					console.log('Error: currentUser or tipLiked is null or undefined.');
 				}
@@ -51,6 +56,32 @@ const SingleTip: React.FC = () => {
 			alert('Please log in to like tips!');
 		}
 	};
+	const updateUser = async (_id: ObjectId, newData: IUser) => {
+		console.log(_id);
+		console.log(newData);
+		try {
+			const response = await fetch(`http://localhost:8000/users/`, {
+				method: 'PUT',
+				body: JSON.stringify({
+					userId: user._id,
+					_id: _id,
+					data: newData,
+				}),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			});
+			const data = await response.json();
+			window.location.reload();
+			if (!response.ok) {
+				throw new Error(data.message);
+			}
+		} catch (err) {
+			console.error(err);
+			throw err;
+		}
+	};
+
 	const addLike = async (_id: ObjectId, newData: ITips) => {
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
