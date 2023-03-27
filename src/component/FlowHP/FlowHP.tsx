@@ -6,7 +6,7 @@ const FlowHP: React.FC = () => {
 			<div className="all-flow-dashboard">
 				<hr />
 				<div className="home-page-container">
-					<span>?</span>
+					<span id="flow-box-questions"></span>
 					<div className="home-page-content">
 						<div className="heading">Asking Questions</div>
 						<div className="flow-box-content">
@@ -15,7 +15,7 @@ const FlowHP: React.FC = () => {
 					</div>
 				</div>
 				<div className="all-shareSpace-container">
-					<span>@</span>
+					<span id="flow-box-share"></span>
 					<div className="all-shareSpace-content">
 						<div className="heading">Sharing your Solutions</div>
 						<div className="flow-box-content">
@@ -25,7 +25,7 @@ const FlowHP: React.FC = () => {
 					</div>
 				</div>
 				<div className="tips-container-hp">
-					<span>$</span>
+					<span id="flow-box-tips"></span>
 					<div className="tips-content-hp">
 						<div className="heading">Sharing Tips and Advices</div>
 						<div className="flow-box-content">

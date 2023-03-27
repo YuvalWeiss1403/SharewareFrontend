@@ -33,7 +33,7 @@
 }
 .all-flow-dashboard span {
 	justify-items: center;
-	background-color: hsl(260, 18%, 20%);
+	background-color: hsl(257, 7%, 63%);
 	border-radius: 50%;
 	padding: 5px;
 	width: 60px;
@@ -99,6 +99,12 @@
 .flow-box-content {
 	height: 100%;
 	font-size: 18px;
+}
+#flow-box-questions {
+	background-image: url("../../assets/icons/questions.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position-y: 7px;
 }
 @media (min-width: 375px) and (max-width: 700px) {
 	.all-flow-container {
