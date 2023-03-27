@@ -19,9 +19,6 @@ const ShareSpace: React.FC = () => {
 	const openModal = () => {
 		setIsModalOpen(true);
 	};
-	const closeModal = () => {
-		setIsModalOpen(false);
-	};
 	const handelDelete = () => {
 		setDeleteModal(true);
 	};
@@ -31,6 +28,8 @@ const ShareSpace: React.FC = () => {
 	};
 
 	const handelDeleteSubject = (id: ObjectId) => {
+		console.log(id);
+
 		deleteSubject(id);
 	};
 
@@ -56,19 +55,13 @@ const ShareSpace: React.FC = () => {
 			throw err;
 		}
 	};
-	const closeButton = async (id: ObjectId) => {
-		await deleteSubject(id);
-	};
 	return (
 		<div className="ShareSpace">
 			<Navbar />
-			{/* {user.userType === 'admin' && ( */}
 			<button onClick={openModal} className="add-subject">
 				{" "}
 				ADD SUBJECT
 			</button>
-			{/* )} */}
-			{/* <button onClick={openModal}>Add Subject</button> */}
 			<div className="subjects-card-container">
 				{subjectsData?.map((subject: ISubjects, index: number) => {
 					return (
@@ -102,7 +95,6 @@ const ShareSpace: React.FC = () => {
 					);
 				})}
 			</div>
-			{/* {isModalOpen && <AddSubject closeButton={closeModal} />} */}
 			{isModalOpen && (
 				<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
 					{" "}
