@@ -106,6 +106,7 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 		}
 		const username = `${data.firstName} ${data.lastName}`;
 		const question = inputValues.question;
+		console.log(question);
 		const title = inputValues.title;
 		const subjectID = subjectId || '0';
 		await newQuestion(username, title, subjectID, question);
@@ -113,34 +114,32 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 
 	return (
 		<>
-			<Modal>
-				<div className="card">
-					<form onSubmit={handSaveRest}>
-						<div
-							id="modal"
-							className="modal">
-							<div className="add-information">
-								<span
-									id="closeButton"
-									onClick={() => props.closeButton()}
-									className="close">
-									&times;
-								</span>
-								<div className="information">
-									<div>
-										<div id="information">{renderInputs(restDetails)}</div>
-									</div>
-									<button
-										className="submit"
-										type="submit">
-										<span>ADD QUESTION </span>
-									</button>
+			<div className="card">
+				<form onSubmit={handSaveRest}>
+					<div
+						id="modal"
+						className="modal">
+						<div className="add-information">
+							<span
+								id="closeButton"
+								onClick={() => props.closeButton()}
+								className="close">
+								&times;
+							</span>
+							<div className="information">
+								<div>
+									<div id="information">{renderInputs(restDetails)}</div>
 								</div>
+								<button
+									className="submit"
+									type="submit">
+									<span>ADD QUESTION </span>
+								</button>
 							</div>
 						</div>
-					</form>
-				</div>
-			</Modal>
+					</div>
+				</form>
+			</div>
 		</>
 	);
 };
