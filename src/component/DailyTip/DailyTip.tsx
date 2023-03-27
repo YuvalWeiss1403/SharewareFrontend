@@ -25,7 +25,9 @@ const DailyTip:React.FC = () => {
             <div className="daily-tip">
                 <div className="daily-tip-title">Our Daily Tip</div>
                 <div className="tip-comment">
-                    {data.comment}
+                    <div className="tip-content">{data.comment}</div>
+                    <div className="circle-2"></div>
+                    <div className="circle-3"></div>
                 </div>
                 <div className="tip-username">
                     <img src={userIcon} alt="user-icon" />
@@ -40,7 +42,37 @@ const DailyTip:React.FC = () => {
                     <img src={NavigateIcon} alt="navigate-icon" className="navigate-icon" />
                 </div>
             </div>
+            {/* <div className="circular-sb">
+            {data.comment}
+            <div className="circle1"></div>
+            <div className="circle2"></div>
+            </div>             */}
         </div>
+        // <div className="daily-tip-container">
+        //     <div className="daily-tip">
+        //         <div className="daily-tip-title">Our Daily Tip</div>
+        //         <div className="tip-comment">
+        //             {data.comment}
+        //         </div>
+        //         <div className="tip-username">
+        //             <img src={userIcon} alt="user-icon" />
+        //             {data.username}
+        //         </div>
+        //         <div className="all-tips-container">
+        //             <NavLink
+        //             className={"all-tips-link"}
+        //                 to={"/Tips"}>
+        //                 Get All Tips 
+        //             </NavLink>
+        //             <img src={NavigateIcon} alt="navigate-icon" className="navigate-icon" />
+        //         </div>
+        //     </div>
+        //     <div className="circular-sb">
+        //     I'm Circular speech bubble
+        //     <div className="circle1"></div>
+        //     <div className="circle2"></div>
+        //     </div>            
+        // </div>
     )
 }
 
