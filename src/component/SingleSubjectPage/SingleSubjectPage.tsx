@@ -9,6 +9,7 @@ import { ObjectId } from 'mongoose';
 import { useState } from 'react';
 import SingleQuestionPage from './SingleQuestionPage/SingleQuestionPage';
 import AddQuestion from '../AddQuestion/AddQuestion';
+import Modal from '../General/Modal/Modal';
 
 const SingleSubjectPage: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
@@ -93,11 +94,17 @@ const SingleSubjectPage: React.FC = () => {
 			</div>
 			<div>
 				{isModalOpen && (
+					<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+
+					<AddQuestion setIsModalOpen={setIsModalOpen}key={subjectId}/>
+						</Modal>
+				)}
+				{/* {isModalOpen && (
 					<AddQuestion
 						closeButton={() => closeModal()}
 						key={subjectId}
 					/>
-				)}
+				)} */}
 			</div>
 		</div>
 	);
