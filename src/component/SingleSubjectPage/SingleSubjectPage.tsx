@@ -15,9 +15,12 @@ const SingleSubjectPage: React.FC = () => {
 	let { subjectId } = useParams<string>();
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const openModal = () => {
+		console.log('open');
+		console.log(isModalOpen);
 		setIsModalOpen(true);
 	};
 	const closeModal = () => {
+		console.log(isModalOpen);
 		setIsModalOpen(false);
 	};
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
@@ -57,7 +60,7 @@ const SingleSubjectPage: React.FC = () => {
 							{/* {user.userType === "admin" && ( */}
 							<button
 								id="add-button"
-								onClick={openModal}>
+								onClick={() => openModal()}>
 								&#43;
 							</button>
 							{/* )} */}
@@ -88,12 +91,14 @@ const SingleSubjectPage: React.FC = () => {
 					</div>
 				</div>
 			</div>
-			{isModalOpen && (
-				<AddQuestion
-					closeButton={closeModal}
-					key={subjectId}
-				/>
-			)}
+			<div>
+				{isModalOpen && (
+					<AddQuestion
+						closeButton={() => closeModal()}
+						key={subjectId}
+					/>
+				)}
+			</div>
 		</div>
 	);
 };
