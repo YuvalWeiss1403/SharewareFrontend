@@ -3,31 +3,54 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import './singleTip.css';
 import like from './image/like.svg';
-// import { useState } from 'react';
 import { ObjectId } from 'mongoose';
 import { ITips } from '../../store/slices/TipsSlice';
 import { useNavigate } from 'react-router';
+import { IUser } from '../../store/slices/UsersSlice';
 
 const SingleTip: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const tipsData = useSelector((state: RootState) => state.tips.value);
+	const userLike = useSelector((state: RootState) => state.users.value);
 	const navigate = useNavigate();
 	const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
 		const newData = tipsData.find((data: ITips) => {
 			return data._id === _id;
 		});
-		if (user.email != null) {
-			if (newData && newData.likes !== undefined) {
-				const updatedData = { ...newData }; // create a new object with the same properties as newData
-				updatedData.likes += 1; // modify the likes property on the new object
-				await addLike(_id, updatedData);
+		console.log(newData);
+		if (user.firstName) {
+			const currentUserLike = userLike.find((data: any) => {
+				return data._id === user._id;
+			});
+			console.log(currentUserLike);
+			console.log('data', newData?._id);
+			if (
+				currentUserLike &&
+				currentUserLike.tipLiked?.includes(String(newData?._id))
+			) {
+				alert('You have already liked this tip!');
+			} else {
+				const currentUser = currentUserLike;
+				if (currentUser && currentUser.tipLiked) {
+					currentUser.tipLiked.push(String(newData?._id));
+					console.log(currentUser, 'currentuser after push');
+				} else {
+					console.log('Error: currentUser or tipLiked is null or undefined.');
+				}
+
+				if (newData && newData.likes !== undefined) {
+					const updatedData = { ...newData };
+					updatedData.likes += 1;
+					await addLike(_id, updatedData);
+				} else {
+					alert('You have already liked this tip!');
+				}
 			}
 		} else {
 			navigate('/LogIn');
-			alert('please log-in');
+			alert('Please log in to like tips!');
 		}
 	};
-
 	const addLike = async (_id: ObjectId, newData: ITips) => {
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {

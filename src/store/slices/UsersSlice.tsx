@@ -1,21 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { ObjectId } from "mongoose";
+import { createSlice } from '@reduxjs/toolkit';
+import { ObjectId } from 'mongoose';
 
 export interface IUser {
-	firstName: string;
 	_id: ObjectId;
+	firstName: string;
 	lastName: string;
 	userName: string;
 	email: string;
 	password: string;
 	token?: string;
 	connect?: boolean;
+	tipLiked?: string[];
 }
 
 const datausers = async () => {
 	try {
-		const response = await fetch("http://localhost:8000/users", {
-			method: "GET",
+		const response = await fetch('http://localhost:8000/users', {
+			method: 'GET',
 		});
 		const data = await response.json();
 		return data;
@@ -25,7 +26,7 @@ const datausers = async () => {
 };
 const users: IUser[] = await datausers();
 export const userSlice = createSlice({
-	name: "users",
+	name: 'users',
 	initialState: {
 		value: users,
 		filteredValue: {},

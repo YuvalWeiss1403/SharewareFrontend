@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
-import "../AddTip/AddTip.css"
+import '../AddTip/AddTip.css';
 import { ITips } from '../../store/slices/TipsSlice';
 interface IModal {
 	setIsModalOpen: Function;
@@ -66,6 +66,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 			await fetch('http://localhost:8000/tips/', {
 				method: 'POST',
 				body: JSON.stringify({
+					userId: data._id,
 					title: title,
 					comment: comment,
 					username: username,
@@ -106,31 +107,30 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 	};
 
 	return (
-			<div className="card-information">
-				<form onSubmit={handSaveRest}>
-					<div
-						id="Modal"
-						className="modal">
-						<div className="add-information">
-							<span
-								id="closeButton"
-								onClick={() => props.setIsModalOpen(false)}
-								className="close">
-							</span>
-							<div className="information-add-tip">
-								<div>
-									<div id="information">{renderInputs(restDetails)}</div>
-								</div>
-								<button
-									className="submit"
-									type="submit">
-									<span>ADD TIPS </span>
-								</button>
+		<div className="card-information">
+			<form onSubmit={handSaveRest}>
+				<div
+					id="Modal"
+					className="modal">
+					<div className="add-information">
+						<span
+							id="closeButton"
+							onClick={() => props.setIsModalOpen(false)}
+							className="close"></span>
+						<div className="information-add-tip">
+							<div>
+								<div id="information">{renderInputs(restDetails)}</div>
 							</div>
+							<button
+								className="submit"
+								type="submit">
+								<span>ADD TIPS </span>
+							</button>
 						</div>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
+		</div>
 	);
 };
 
