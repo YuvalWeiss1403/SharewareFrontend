@@ -10,6 +10,7 @@ export interface IUser {
 	password: string;
 	token?: string;
 	connect?: boolean;
+	tipLiked?: string[];
 }
 
 const datausers = async () => {
