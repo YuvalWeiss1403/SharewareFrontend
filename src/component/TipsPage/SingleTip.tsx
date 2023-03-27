@@ -13,34 +13,6 @@ const SingleTip: React.FC = () => {
 	const tipsData = useSelector((state: RootState) => state.tips.value);
 	const userLike = useSelector((state: RootState) => state.users.value);
 	const navigate = useNavigate();
-	// const newUserData = userLike.filter((id: any) => {
-	// 	return id._id === user._id;
-	// });
-
-	// console.log(newUserData);
-
-	// const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
-	// 	const newData = tipsData.find((data: ITips) => {
-	// 		return data._id === _id;
-	// 	});
-	// 	console.log(newData);
-	// newUserData
-	// 	if (!user.firstName) {
-	// 		user.tipLiked.map((tip: string) => {
-	// 			tip !== String(newData?._id);
-	// 		});
-	// 		if (newData && newData.likes !== undefined) {
-	// 			const updatedData = { ...newData }; // create a new object with the same properties as newData
-	// 			updatedData.likes += 1; // modify the likes property on the new object
-	// 			await addLike(_id, updatedData);
-	// 		} else {
-	// 			alert('you already liked this tip!');
-	// 		}
-	// 	} else {
-	// 		navigate('/LogIn');
-	// 		alert('please log-in');
-	// 	}
-	// };
 	const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
 		const newData = tipsData.find((data: ITips) => {
 			return data._id === _id;
@@ -79,13 +51,6 @@ const SingleTip: React.FC = () => {
 			alert('Please log in to like tips!');
 		}
 	};
-
-	// const currentUser = currentUserLike;
-	// const updatedUserData = { currentUser };
-	// const currentUser = currentUserLike;
-	// console.log(currentUser, 'currentuser');
-	// currentUser?.tipLiked?.push(String(newData?._id));
-	// console.log('currentuser after push', currentUser);
 	const addLike = async (_id: ObjectId, newData: ITips) => {
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
