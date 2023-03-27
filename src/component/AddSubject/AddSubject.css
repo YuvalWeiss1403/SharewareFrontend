@@ -24,6 +24,7 @@
 #input-title{
     color:black;
     font-size: 26px;
+    text-transform: uppercase;
 }
 
 #input-full-Name{

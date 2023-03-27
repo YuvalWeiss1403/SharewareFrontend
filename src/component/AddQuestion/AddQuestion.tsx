@@ -6,7 +6,7 @@ import { ITips } from '../../store/slices/TipsSlice';
 import Modal from '../General/Modal/Modal';
 import { ObjectId } from 'mongoose';
 interface IModal {
-	closeButton: Function;
+	setIsModalOpen: Function,
 	key?: string;
 }
 const AddQuestion: React.FC<IModal> = (props: IModal) => {
@@ -123,9 +123,8 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 						<div className="add-information">
 							<span
 								id="closeButton"
-								onClick={() => props.closeButton()}
+								onClick={() => props.setIsModalOpen(false)}
 								className="close">
-								&times;
 							</span>
 							<div className="information">
 								<div>
