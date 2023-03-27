@@ -100,16 +100,17 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (!data) {
+		if (!data.firstName) {
 			alert('please Log-in');
 			navigate('/LogIn');
+		} else {
+			const username = `${data.firstName} ${data.lastName}`;
+			const question = inputValues.question;
+			console.log(question);
+			const title = inputValues.title;
+			const subjectID = subjectId || '0';
+			await newQuestion(username, title, subjectID, question);
 		}
-		const username = `${data.firstName} ${data.lastName}`;
-		const question = inputValues.question;
-		console.log(question);
-		const title = inputValues.title;
-		const subjectID = subjectId || '0';
-		await newQuestion(username, title, subjectID, question);
 	};
 
 	return (
