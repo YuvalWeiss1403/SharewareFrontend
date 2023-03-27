@@ -6,6 +6,7 @@ import SingleTip from "./SingleTip";
 import { useState } from "react";
 import AddTip from "../AddTip/AddTip";
 import Modal from '../General/Modal/Modal';
+import Footer from "../General/Footer/Footer";
 
 const TipsPage: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
@@ -34,6 +35,8 @@ const TipsPage: React.FC = () => {
 			{/* {isModalOpen && <AddTip closeButton={closeModal} />} */}
 			{isModalOpen && <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} > < AddTip setIsModalOpen={setIsModalOpen} />
 			</Modal>}
+			<Footer />
+
 		</div>
 	);
 };

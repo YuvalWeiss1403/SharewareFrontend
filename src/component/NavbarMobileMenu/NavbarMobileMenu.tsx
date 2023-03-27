@@ -38,15 +38,6 @@ return (
                     Sign Up
                 </NavLink>
             </li>
-            <li>
-                <button className="contact-us">Contact Us</button>
-            </li>
-            <li>
-                <button className="term-of-use">Term of Use</button>
-            </li>
-            <li>
-                <button className="privacy-policy">Privacy Policy</button>
-            </li>
         </ul>
     </section>
     );

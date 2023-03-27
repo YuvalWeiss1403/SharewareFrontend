@@ -179,12 +179,14 @@
 	.sharing-caring-title {
 		padding-left: 2%;
 		font-size: 30px;
+		width: 250px;
 	}
 
 	.platform-subtitle {
 		font-family: "Anton", sans-serif;
 		font-size: 16px;
 		top: 18%;
+		width: 250px;
 	}
 	.hero-circle {
 		width: 120px;
@@ -208,6 +210,6 @@
 	}
 	.c-line3 {
 		top: 70%;
-		left: 34%;
+		left: 38%;
 	}
 }

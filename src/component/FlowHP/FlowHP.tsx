@@ -17,9 +17,9 @@ const FlowHP: React.FC = () => {
                         <div className="heading">All ShareSpace</div>
                     </div>
                 </div>
-                <div className="tips-container">
+                <div className="tips-container-hp">
                     <span>3</span>
-                    <div className="tips-content">
+                    <div className="tips-content-hp">
                     <div className="heading">Tips And Advices</div>
                     </div>
                 </div> 
