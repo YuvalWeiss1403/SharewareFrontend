@@ -25,7 +25,7 @@ body {
 }
 
 .menu {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	background-color: white;
 	list-style-type: none;
@@ -97,6 +97,7 @@ body {
 		display: flex;
 	}
 	.menu {
+		display: flex;
 		position: absolute;
 		top: 0;
 		margin-top: 50px;

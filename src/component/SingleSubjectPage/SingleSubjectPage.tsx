@@ -1,23 +1,26 @@
-import { useParams } from "react-router";
-import { useSelector } from "react-redux";
-import "./SingleSubjectPage.css";
-import { RootState } from "../../store/store";
-import { ISubjects } from "../../store/slices/SubjectsSlice";
-import Navbar from "../General/Navbar/Navbar";
-import { IQuestions } from "../../store/slices/QuestionsSlice";
-import { ObjectId } from "mongoose";
-import { useState } from "react";
-import SingleQuestionPage from "./SingleQuestionPage/SingleQuestionPage";
-import AddQuestion from "../AddQuestion/AddQuestion";
+import { useParams } from 'react-router';
+import { useSelector } from 'react-redux';
+import './SingleSubjectPage.css';
+import { RootState } from '../../store/store';
+import { ISubjects } from '../../store/slices/SubjectsSlice';
+import Navbar from '../General/Navbar/Navbar';
+import { IQuestions } from '../../store/slices/QuestionsSlice';
+import { ObjectId } from 'mongoose';
+import { useState } from 'react';
+import SingleQuestionPage from './SingleQuestionPage/SingleQuestionPage';
+import AddQuestion from '../AddQuestion/AddQuestion';
 
 const SingleSubjectPage: React.FC = () => {
-	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	let { subjectId } = useParams<string>();
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const openModal = () => {
+		console.log('open');
+		console.log(isModalOpen);
 		setIsModalOpen(true);
 	};
 	const closeModal = () => {
+		console.log(isModalOpen);
 		setIsModalOpen(false);
 	};
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
@@ -54,24 +57,26 @@ const SingleSubjectPage: React.FC = () => {
 					<div className="questionsNavbar">
 						<div className="navbarHeading">
 							{`${currentSubjectData[0].name} questions`}
-						</div>
-						{user.userType === "admin" && (
-							<button id="add-button" onClick={openModal}>
+							{/* {user.userType === "admin" && ( */}
+							<button
+								id="add-button"
+								onClick={() => openModal()}>
 								&#43;
 							</button>
-						)}
+							{/* )} */}
+						</div>
 						{questionsBySubject.map((question: IQuestions) => {
 							return (
 								<button
 									className={
 										currentQuestion === question
-											? "questions button currentQ"
-											: "questions button"
+											? 'questions button currentQ'
+											: 'questions button'
 									}
 									onClick={() => {
 										handleQuestionClick(question._id);
 									}}>
-									{question.header}
+									{question.question}
 								</button>
 							);
 						})}
@@ -86,7 +91,14 @@ const SingleSubjectPage: React.FC = () => {
 					</div>
 				</div>
 			</div>
-			{isModalOpen && <AddQuestion closeButton={closeModal} key={subjectId} />}
+			<div>
+				{isModalOpen && (
+					<AddQuestion
+						closeButton={() => closeModal()}
+						key={subjectId}
+					/>
+				)}
+			</div>
 		</div>
 	);
 };

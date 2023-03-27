@@ -50,6 +50,9 @@
 	width: fit-content;
 	position: absolute;
 }
+.delete-tip:hover {
+	cursor: pointer;
+}
 #title {
 	font-weight: 300;
 	letter-spacing: 0.37px;

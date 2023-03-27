@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
-
+import Modal from '../General/Modal/Modal';
+import { ObjectId } from 'mongoose';
 interface IModal {
 	closeButton: Function;
 	key?: string;
@@ -34,11 +35,11 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 			name: 'title',
 		},
 		{
-			id: 'header-input',
-			placeholder: 'Enter header',
+			id: 'question-input',
+			placeholder: 'Enter question',
 			type: 'text',
-			title: 'header',
-			name: 'header',
+			title: 'question',
+			name: 'question',
 		},
 	];
 
@@ -66,7 +67,7 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 		userName: String,
 		title: string,
 		subjectID: string | undefined,
-		header: string
+		question: string
 	) => {
 		try {
 			await fetch('http://localhost:8000/questions', {
@@ -76,11 +77,11 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 					date: Date.now(),
 					title: title,
 					subjectId: subjectID,
-					header: header,
+					question: question,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
-					Authorization: `Bearer ${data.token}`,
+					// Authorization: `Bearer ${data.token}`,
 				},
 			})
 				.then((response) => response.json())
@@ -99,44 +100,48 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		if (!data) {
+		if (!data.firstName) {
 			alert('please Log-in');
 			navigate('/LogIn');
+		} else {
+			const username = `${data.firstName} ${data.lastName}`;
+			const question = inputValues.question;
+			console.log(question);
+			const title = inputValues.title;
+			const subjectID = subjectId || '0';
+			await newQuestion(username, title, subjectID, question);
 		}
-		const username = `${data.firstName} ${data.lastName}`;
-		const title = inputValues.header;
-		const header = inputValues.title;
-		const subjectID = subjectId || '0';
-		await newQuestion(username, title, subjectID, header);
 	};
 
 	return (
-		<div className="card">
-			<form onSubmit={handSaveRest}>
-				<div
-					id="modal"
-					className="modal">
-					<div className="add-information">
-						<span
-							id="closeButton"
-							onClick={() => props.closeButton()}
-							className="close">
-							&times;
-						</span>
-						<div className="information">
-							<div>
-								<div id="information">{renderInputs(restDetails)}</div>
+		<>
+			<div className="card">
+				<form onSubmit={handSaveRest}>
+					<div
+						id="modal"
+						className="modal">
+						<div className="add-information">
+							<span
+								id="closeButton"
+								onClick={() => props.closeButton()}
+								className="close">
+								&times;
+							</span>
+							<div className="information">
+								<div>
+									<div id="information">{renderInputs(restDetails)}</div>
+								</div>
+								<button
+									className="submit"
+									type="submit">
+									<span>ADD QUESTION </span>
+								</button>
 							</div>
-							<button
-								className="submit"
-								type="submit">
-								<span>ADD QUESTION </span>
-							</button>
 						</div>
 					</div>
-				</div>
-			</form>
-		</div>
+				</form>
+			</div>
+		</>
 	);
 };
 

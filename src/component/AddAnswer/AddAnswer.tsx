@@ -5,8 +5,9 @@ import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
 import { ObjectId } from 'mongoose';
 interface IModal {
-	closeButton: Function;
-	questionId: ObjectId;
+	closeButton?: Function;
+	questionId?: ObjectId;
+	setIsModalOpen: Function
 }
 const AddAnswer: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
@@ -109,9 +110,8 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 					<div className="add-information">
 						<span
 							id="closeButton"
-							onClick={() => props.closeButton()}
+							onClick={() => props.closeButton!()}
 							className="close">
-							&times;
 						</span>
 						<div className="information">
 							<div>

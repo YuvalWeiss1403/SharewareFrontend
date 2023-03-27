@@ -57,7 +57,7 @@
 	background: transparent;
 }
 
-.delete {
+#delete-question {
 	background-color: #d68bd2c4;
 	position: absolute;
 	right: 15px;
@@ -67,7 +67,7 @@
 }
 
 @media (min-width: 375px) and (max-width: 700px) {
-	.delete {
+	#delete-question {
 		position: unset;
 		align-self: flex-end;
 	}
