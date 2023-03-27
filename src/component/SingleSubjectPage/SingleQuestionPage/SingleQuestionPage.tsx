@@ -94,7 +94,7 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 			{ShowAnswers && (
 				<div className="answers-container">
 					{currentAnswers.map((answer: IAnswers, index: number) => {
-						return <AnswerCard answer={answer} />;
+						return <AnswerCard answer={answer} key={index} />;
 					})}
 				</div>
 			)}
