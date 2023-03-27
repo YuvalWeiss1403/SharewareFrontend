@@ -46,22 +46,25 @@ const SingleTip: React.FC = () => {
 			return data._id === _id;
 		});
 		console.log(newData);
-		if (!user.firstName) {
+		if (user.firstName) {
 			const currentUserLike = userLike.find((data: any) => {
 				return data._id === user._id;
 			});
 			console.log(currentUserLike);
+			console.log('data', newData?._id);
 			if (
 				currentUserLike &&
 				currentUserLike.tipLiked?.includes(String(newData?._id))
 			) {
 				alert('You have already liked this tip!');
 			} else {
-				const currentUser = user;
-				console.log(currentUser);
-				const updatedUserData = { ...currentUser, tipLiked: [] };
-				updatedUserData.tipLiked.push(String(newData?._id));
-				console.log(updatedUserData);
+				const currentUser = currentUserLike;
+				if (currentUser && currentUser.tipLiked) {
+					currentUser.tipLiked.push(String(newData?._id));
+					console.log(currentUser, 'currentuser after push');
+				} else {
+					console.log('Error: currentUser or tipLiked is null or undefined.');
+				}
 
 				if (newData && newData.likes !== undefined) {
 					const updatedData = { ...newData };
@@ -77,6 +80,12 @@ const SingleTip: React.FC = () => {
 		}
 	};
 
+	// const currentUser = currentUserLike;
+	// const updatedUserData = { currentUser };
+	// const currentUser = currentUserLike;
+	// console.log(currentUser, 'currentuser');
+	// currentUser?.tipLiked?.push(String(newData?._id));
+	// console.log('currentuser after push', currentUser);
 	const addLike = async (_id: ObjectId, newData: ITips) => {
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
