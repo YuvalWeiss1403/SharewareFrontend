@@ -84,9 +84,6 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 				<button className="button add-answer" onClick={openModal}>
 					Add answer
 				</button>
-					{/* <button className="button add-answer" onClick={openModal}>
-						Add answer
-					</button> */}
 				{/* )} */}
 			</div>
 			{ShowAnswers && (
