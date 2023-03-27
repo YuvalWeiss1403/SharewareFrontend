@@ -1,0 +1,26 @@
+.information-add-ques {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: #d68bd2;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+#information {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.submit-add-ques {
+    width: 200px;
+    height: 50px;
+    background-color:#d68bd2;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 20px;
+}

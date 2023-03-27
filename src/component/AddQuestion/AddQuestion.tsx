@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
-import Modal from '../General/Modal/Modal';
 import { ObjectId } from 'mongoose';
+import "../AddQuestion/AddQuestion.css"
 interface IModal {
 	setIsModalOpen: Function,
 	key?: string;
@@ -126,12 +126,12 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 								onClick={() => props.setIsModalOpen(false)}
 								className="close">
 							</span>
-							<div className="information">
+							<div className="information-add-ques">
 								<div>
 									<div id="information">{renderInputs(restDetails)}</div>
 								</div>
 								<button
-									className="submit"
+									className="submit-add-ques"
 									type="submit">
 									<span>ADD QUESTION </span>
 								</button>
