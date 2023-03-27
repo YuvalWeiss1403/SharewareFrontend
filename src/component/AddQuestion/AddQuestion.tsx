@@ -35,11 +35,11 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 			name: 'title',
 		},
 		{
-			id: 'header-input',
-			placeholder: 'Enter header',
+			id: 'question-input',
+			placeholder: 'Enter question',
 			type: 'text',
-			title: 'header',
-			name: 'header',
+			title: 'question',
+			name: 'question',
 		},
 	];
 
@@ -67,7 +67,7 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 		userName: String,
 		title: string,
 		subjectID: string | undefined,
-		header: string
+		question: string
 	) => {
 		try {
 			await fetch('http://localhost:8000/questions', {
@@ -77,7 +77,7 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 					date: Date.now(),
 					title: title,
 					subjectId: subjectID,
-					header: header,
+					question: question,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -105,10 +105,10 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 			navigate('/LogIn');
 		}
 		const username = `${data.firstName} ${data.lastName}`;
-		const title = inputValues.header;
-		const header = inputValues.title;
+		const question = inputValues.question;
+		const title = inputValues.title;
 		const subjectID = subjectId || '0';
-		await newQuestion(username, title, subjectID, header);
+		await newQuestion(username, title, subjectID, question);
 	};
 
 	return (
