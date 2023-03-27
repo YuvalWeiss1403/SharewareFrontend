@@ -14,12 +14,26 @@ const ShareSpace: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [DeleteModal, setDeleteModal] = useState(false);
+
 	const openModal = () => {
 		setIsModalOpen(true);
 	};
 	const closeModal = () => {
 		setIsModalOpen(false);
 	};
+	const handelDelete = () => {
+		setDeleteModal(true);
+	};
+
+	const handelCancel = () => {
+		setDeleteModal(false);
+	};
+
+	const handelDeleteSubject = (id: ObjectId) => {
+		deleteSubject(id);
+	};
+
 	const deleteSubject = async (_id: ObjectId) => {
 		try {
 			const response = await fetch(`http://localhost:8000/subjects`, {
@@ -60,11 +74,28 @@ const ShareSpace: React.FC = () => {
 					return (
 						<div>
 							{user.userType === "admin" && (
-								<span
-									onClick={() => closeButton(subject._id)}
-									className="delete-subject">
+								<span onClick={() => handelDelete()} className="delete-subject">
 									&times;
 								</span>
+							)}
+							{DeleteModal && (
+								<div className="confirm-delete-modal">
+									<div className="delete-modal-content">
+										<div className="delete-modal-header">Are you sure?</div>
+										<div className="confirm-buttons">
+											<button
+												onClick={() => handelDeleteSubject(subject._id)}
+												className="confirm-delete">
+												Confirm
+											</button>
+											<button
+												onClick={() => handelCancel()}
+												className="cancel-delete">
+												Cancel
+											</button>
+										</div>
+									</div>
+								</div>
 							)}
 							<SubjectCard name={subject.name} key={index} />
 						</div>
