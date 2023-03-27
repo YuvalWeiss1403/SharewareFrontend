@@ -1,0 +1,17 @@
+.daily-tip-container{
+    position: absolute;
+    top: 20%;
+    left: 70%;
+	box-shadow: 0px 0px 25px hsla(0, 0%, 69%, 1.25);
+}
+
+.daily-tip {
+    background-color: white;
+    border-left: 20px solid #d68bd2;
+    width:200px;
+    height:200px;
+    border-radius: 20px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+  }
