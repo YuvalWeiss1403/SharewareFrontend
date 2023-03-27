@@ -102,7 +102,6 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 								id="closeButton"
 								onClick={() => props.setIsModalOpen(false)}
 								className="close">
-								{/* &times; */}
 							</span>
 							<div className="information">
 								<div>

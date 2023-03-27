@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
-import Modal from '../General/Modal/Modal';
+import "../AddTip/AddTip.css"
 import { ITips } from '../../store/slices/TipsSlice';
 interface IModal {
-	closeButton: Function;
+	setIsModalOpen: Function;
 }
 const AddTip: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
@@ -114,11 +114,10 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 						<div className="add-information">
 							<span
 								id="closeButton"
-								onClick={() => props.closeButton()}
+								onClick={() => props.setIsModalOpen(false)}
 								className="close">
-								&times;
 							</span>
-							<div className="information">
+							<div className="information-add-tip">
 								<div>
 									<div id="information">{renderInputs(restDetails)}</div>
 								</div>
