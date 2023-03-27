@@ -76,9 +76,9 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 					Delete question
 				</span>
 			)}
-			<div className="question-header">{currentQuestion?.question}</div>
+			<div className="question-header">{currentQuestion?.title}</div>
 			<div className="question-username">{currentQuestion?.userName}</div>
-			<div className="question-title">{currentQuestion?.title}</div>
+			<div className="question-title">{currentQuestion?.question}</div>
 			<div className="buttons-container">
 				<button
 					className="button show-answer"

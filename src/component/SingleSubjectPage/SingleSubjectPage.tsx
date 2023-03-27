@@ -75,7 +75,7 @@ const SingleSubjectPage: React.FC = () => {
 										handleQuestionClick(question._id);
 									}}
 									key={index}>
-									{question.question}
+									{question.title}
 								</button>
 							);
 						})}
