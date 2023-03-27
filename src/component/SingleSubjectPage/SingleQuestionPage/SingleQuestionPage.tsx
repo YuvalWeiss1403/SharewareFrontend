@@ -102,7 +102,10 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 					isModalOpen={isModalOpen}
 					setIsModalOpen={setIsModalOpen}>
 					{' '}
-					<AddAnswer setIsModalOpen={setIsModalOpen} />
+					<AddAnswer
+						setIsModalOpen={setIsModalOpen}
+						questionId={currentQuestion._id}
+					/>
 				</Modal>
 			)}
 		</div>
