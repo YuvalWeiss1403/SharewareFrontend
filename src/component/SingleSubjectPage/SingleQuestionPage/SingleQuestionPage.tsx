@@ -1,13 +1,13 @@
-import './SingleQuestionPage.css';
-import { IQuestions } from '../../../store/slices/QuestionsSlice';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { IAnswers } from '../../../store/slices/AnswersSlice';
-import { RootState } from '../../../store/store';
-import AnswerCard from '../AnswerCard/AnswerCard';
-import { ObjectId } from 'mongoose';
-import Modal from '../../General/Modal/Modal';
-import AddAnswer from '../../AddAnswer/AddAnswer';
+import "./SingleQuestionPage.css";
+import { IQuestions } from "../../../store/slices/QuestionsSlice";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { IAnswers } from "../../../store/slices/AnswersSlice";
+import { RootState } from "../../../store/store";
+import AnswerCard from "../AnswerCard/AnswerCard";
+import { ObjectId } from "mongoose";
+import Modal from "../../General/Modal/Modal";
+import AddAnswer from "../../AddAnswer/AddAnswer";
 
 export interface IQuestionCard {
 	question: IQuestions;
@@ -15,7 +15,7 @@ export interface IQuestionCard {
 }
 
 const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
-	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const [ShowAnswers, setShowAnswers] = useState<boolean>(false);
 	const currentQuestion = props.question;
 	const answersData = useSelector((state: RootState) => state.answers.value);
@@ -23,26 +23,33 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	const openModal = () => {
 		setIsModalOpen(true);
 	};
-	const closeModal = () => {
-		setIsModalOpen(false);
-	};
 	const currentAnswers: IAnswers[] = answersData.filter((answer: IAnswers) => {
 		return answer.questionsId === currentQuestion?._id;
 	});
-	const closeButton = async (id: ObjectId) => {
-		await deleteQuestion(id);
+
+	const [DeleteModal, setDeleteModal] = useState(false);
+	const handelDelete = () => {
+		setDeleteModal(true);
+	};
+
+	const handelCancel = () => {
+		setDeleteModal(false);
+	};
+
+	const handelDeleteQuestion = (id: ObjectId) => {
+		deleteQuestion(id);
 	};
 
 	const deleteQuestion = async (_id: ObjectId) => {
-		console.log('delete question', _id);
+		console.log("delete question", _id);
 		try {
 			const response = await fetch(`http://localhost:8000/questions`, {
-				method: 'DELETE',
+				method: "DELETE",
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
@@ -61,10 +68,10 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	}, [currentQuestion]);
 	return (
 		<div className="question-content">
-			{user.userType === 'admin' && (
+			{user.userType === "admin" && (
 				<span
 					id="delete-question"
-					onClick={() => closeButton(currentQuestion._id)}
+					onClick={() => handelDelete()}
 					className="delete">
 					Delete question
 				</span>
@@ -78,35 +85,44 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 					onClick={() => {
 						ShowAnswers ? setShowAnswers(false) : setShowAnswers(true);
 					}}>
-					{ShowAnswers ? 'Hide answers' : 'Show answers'}
+					{ShowAnswers ? "Hide answers" : "Show answers"}
 				</button>
-				{/* {user.userType === "admin" && ( */}
-				<button
-					className="button add-answer"
-					onClick={openModal}>
+				<button className="button add-answer" onClick={openModal}>
 					Add answer
 				</button>
-				{/* )} */}
 			</div>
 			{ShowAnswers && (
 				<div className="answers-container">
 					{currentAnswers.map((answer: IAnswers, index: number) => {
-						return <AnswerCard answer={answer} />;
+						return <AnswerCard answer={answer} key={index} />;
 					})}
 				</div>
 			)}
-			{/* // {isModalOpen && ( */}
-			{/* // 	<AddAnswer closeButton={closeModal} questionId={currentQuestion._id} /> */}
 			{isModalOpen && (
-				<Modal
-					isModalOpen={isModalOpen}
-					setIsModalOpen={setIsModalOpen}>
-					{' '}
+				<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+					{" "}
 					<AddAnswer
 						setIsModalOpen={setIsModalOpen}
 						questionId={currentQuestion._id}
 					/>
 				</Modal>
+			)}
+			{DeleteModal && (
+				<div className="confirm-delete-modal">
+					<div className="delete-modal-content">
+						<div className="delete-modal-header">Are you sure?</div>
+						<div className="confirm-buttons">
+							<button
+								onClick={() => handelDeleteQuestion(currentQuestion._id)}
+								className="confirm-delete">
+								Confirm
+							</button>
+							<button onClick={() => handelCancel()} className="cancel-delete">
+								Cancel
+							</button>
+						</div>
+					</div>
+				</div>
 			)}
 		</div>
 	);
