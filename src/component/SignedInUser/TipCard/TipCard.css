@@ -1,0 +1,12 @@
+.tip-card {
+	display: flex;
+	flex-direction: column;
+	width: 95%;
+	border: 1px solid #ecd4eb;
+	border-radius: 8px;
+	box-shadow: 2px 0px 3px hsla(0, 0%, 69%, 1.25);
+	background-color: #ecd4eb47;
+	padding: 10px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
