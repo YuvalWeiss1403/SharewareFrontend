@@ -1,13 +1,13 @@
-import "./SingleQuestionPage.css";
-import { IQuestions } from "../../../store/slices/QuestionsSlice";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { IAnswers } from "../../../store/slices/AnswersSlice";
-import { RootState } from "../../../store/store";
-import AnswerCard from "../AnswerCard/AnswerCard";
-import { ObjectId } from "mongoose";
-import Modal from "../../General/Modal/Modal";
-import AddAnswer from "../../AddAnswer/AddAnswer";
+import './SingleQuestionPage.css';
+import { IQuestions } from '../../../store/slices/QuestionsSlice';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { IAnswers } from '../../../store/slices/AnswersSlice';
+import { RootState } from '../../../store/store';
+import AnswerCard from '../AnswerCard/AnswerCard';
+import { ObjectId } from 'mongoose';
+import Modal from '../../General/Modal/Modal';
+import AddAnswer from '../../AddAnswer/AddAnswer';
 
 export interface IQuestionCard {
 	question: IQuestions;
@@ -15,11 +15,12 @@ export interface IQuestionCard {
 }
 
 const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
-	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const [ShowAnswers, setShowAnswers] = useState<boolean>(false);
 	const currentQuestion = props.question;
 	const answersData = useSelector((state: RootState) => state.answers.value);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
 	const openModal = () => {
 		setIsModalOpen(true);
 	};
@@ -41,15 +42,15 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	};
 
 	const deleteQuestion = async (_id: ObjectId) => {
-		console.log("delete question", _id);
+		console.log('delete question', _id);
 		try {
 			const response = await fetch(`http://localhost:8000/questions`, {
-				method: "DELETE",
+				method: 'DELETE',
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					"Content-type": "application/json; charset=UTF-8",
+					'Content-type': 'application/json; charset=UTF-8',
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
@@ -68,7 +69,7 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	}, [currentQuestion]);
 	return (
 		<div className="question-content">
-			{user.userType === "admin" && (
+			{user.userType === 'admin' && (
 				<span
 					id="delete-question"
 					onClick={() => handelDelete()}
@@ -86,23 +87,32 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 						ShowAnswers ? setShowAnswers(false) : setShowAnswers(true);
 					}}>
 					{ShowAnswers
-						? "Hide answers"
+						? 'Hide answers'
 						: `Show answers (${currentAnswers.length})`}
 				</button>
-				<button className="button add-answer" onClick={openModal}>
+				<button
+					className="button add-answer"
+					onClick={openModal}>
 					Add answer
 				</button>
 			</div>
 			{ShowAnswers && (
 				<div className="answers-container">
 					{currentAnswers.map((answer: IAnswers, index: number) => {
-						return <AnswerCard answer={answer} key={index} />;
+						return (
+							<AnswerCard
+								answer={answer}
+								key={index}
+							/>
+						);
 					})}
 				</div>
 			)}
 			{isModalOpen && (
-				<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-					{" "}
+				<Modal
+					isModalOpen={isModalOpen}
+					setIsModalOpen={setIsModalOpen}>
+					{' '}
 					<AddAnswer
 						setIsModalOpen={setIsModalOpen}
 						questionId={currentQuestion._id}
@@ -119,7 +129,9 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 								className="confirm-delete">
 								Confirm
 							</button>
-							<button onClick={() => handelCancel()} className="cancel-delete">
+							<button
+								onClick={() => handelCancel()}
+								className="cancel-delete">
 								Cancel
 							</button>
 						</div>

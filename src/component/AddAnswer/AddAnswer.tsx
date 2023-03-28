@@ -4,19 +4,49 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
 import { ObjectId } from 'mongoose';
+import emailjs from 'emailjs-com';
 interface IModal {
 	closeButton?: Function;
 	questionId?: ObjectId;
-	setIsModalOpen: Function
+	setIsModalOpen: Function;
 }
 const AddAnswer: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const navigate = useNavigate();
 	const questionData = useSelector((state: RootState) => state.questions.value);
 	const [question, SetQuestion] = useState<any>(questionData);
+	const usersData = useSelector((state: RootState) => state.users.value);
+	const propsQuestion = props.questionId;
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
 		subject: '',
 	});
+	const currentQuestion = questionData.filter(
+		(qusetion) => qusetion._id === propsQuestion
+	);
+	const currentUser = usersData.filter(
+		(user) =>
+			`${user.firstName} ${user.lastName}` === currentQuestion[0].userName
+	);
+	emailjs.init(String(currentUser[0]._id));
+	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		emailjs
+			.sendForm(
+				'service_gzb0p0p',
+				'template_dbd8ip9',
+				e.currentTarget,
+				'iN9LhDKwo2LtbVMRw'
+			)
+			.then(
+				(result) => {
+					console.log(result.text);
+				},
+				(error) => {
+					console.log(error.text);
+				}
+			);
+	};
 
 	interface InputField {
 		id: string;
@@ -55,7 +85,7 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 		));
 	};
 
-	const newQuestion = async (
+	const newAnswer = async (
 		userName: String,
 		title: string,
 		questionsId: string
@@ -97,8 +127,8 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 		const username = `${data.firstName} ${data.lastName}`;
 		const title = inputValues.comment;
 		const questionId = String(props.questionId);
-		console.log(questionId);
-		await newQuestion(username, title, questionId);
+		sendEmail(e);
+		await newAnswer(username, title, questionId);
 	};
 
 	return (
@@ -111,8 +141,7 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 						<span
 							id="closeButton"
 							onClick={() => props.closeButton!()}
-							className="close">
-						</span>
+							className="close"></span>
 						<div className="information">
 							<div>
 								<div id="information">{renderInputs(restDetails)}</div>
