@@ -5,7 +5,7 @@ import Navbar from "../General/Navbar/Navbar";
 import SingleTip from "./SingleTip";
 import { useState } from "react";
 import AddTip from "../AddTip/AddTip";
-import Modal from '../General/Modal/Modal';
+import Modal from "../General/Modal/Modal";
 import Footer from "../General/Footer/Footer";
 
 const TipsPage: React.FC = () => {
@@ -24,19 +24,22 @@ const TipsPage: React.FC = () => {
 			<div className="tips-content">
 				<div id="advice">Your Friends Advice</div>
 				{/* {user.userType === "admin" && ( */}
-					<button id="add-button" onClick={openModal}>
-						ADD TIPS
-					</button>
+				<button id="add-tip" onClick={openModal}>
+					ADD TIPS
+				</button>
 				{/* )} */}
 			</div>
 			<div className="tips-container">
 				<SingleTip />
 			</div>
 			{/* {isModalOpen && <AddTip closeButton={closeModal} />} */}
-			{isModalOpen && <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} > < AddTip setIsModalOpen={setIsModalOpen} />
-			</Modal>}
+			{isModalOpen && (
+				<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+					{" "}
+					<AddTip setIsModalOpen={setIsModalOpen} />
+				</Modal>
+			)}
 			<Footer />
-
 		</div>
 	);
 };
