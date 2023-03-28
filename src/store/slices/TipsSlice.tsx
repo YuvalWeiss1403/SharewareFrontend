@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { ObjectId } from 'mongoose';
+import { createSlice } from "@reduxjs/toolkit";
+import { ObjectId } from "mongoose";
 
 export interface ITips {
 	_id?: ObjectId;
 	title: string;
-	userName: string;
+	username: string;
 	approved: boolean;
 	comment: string;
 	likes: number;
@@ -12,8 +12,8 @@ export interface ITips {
 
 const tipsSubject = async () => {
 	try {
-		const response = await fetch('http://localhost:8000/tips', {
-			method: 'GET',
+		const response = await fetch("http://localhost:8000/tips", {
+			method: "GET",
 		});
 		const data = await response.json();
 		return data;
@@ -24,7 +24,7 @@ const tipsSubject = async () => {
 const tips: ITips[] = await tipsSubject();
 console.log(tips);
 export const tipsSlice = createSlice({
-	name: 'tips',
+	name: "tips",
 	initialState: {
 		value: tips,
 		filteredValue: {},
