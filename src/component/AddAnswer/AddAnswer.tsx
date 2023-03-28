@@ -30,13 +30,13 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 	emailjs.init(String(currentUser[0]._id));
 	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
+		const userEmail = currentUser[0].email;
 		emailjs
 			.sendForm(
 				'service_gzb0p0p',
 				'template_dbd8ip9',
 				e.target as HTMLFormElement,
-				'iN9LhDKwo2LtbVMRw'
+				userEmail
 			)
 			.then(
 				(result) => {
