@@ -85,7 +85,9 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 					onClick={() => {
 						ShowAnswers ? setShowAnswers(false) : setShowAnswers(true);
 					}}>
-					{ShowAnswers ? "Hide answers" : "Show answers"}
+					{ShowAnswers
+						? "Hide answers"
+						: `Show answers (${currentAnswers.length})`}
 				</button>
 				<button className="button add-answer" onClick={openModal}>
 					Add answer
