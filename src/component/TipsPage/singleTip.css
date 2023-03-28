@@ -1,7 +1,6 @@
 .Tips-Page {
 	width: 100vw;
 	height: 100vh;
-	/* background-color: hsl(0, 0%, 95%);  */
 }
 .tips-content {
 	display: flex;
@@ -13,9 +12,6 @@
 }
 #advice {
 	font-size: 25px;
-	margin-left: 40%;
-	margin-top: 50px;
-	margin-bottom: 35px;
 	letter-spacing: 1.67px;
 	font-family: 'Anton', sans-serif;
 }
@@ -25,7 +21,6 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
-	/* background-color: hsl(0, 0%, 95%); */
 }
 .tips-container {
 	display: flex;
@@ -36,7 +31,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 80%;
-	border: 1px solid #d68bd2;
+	border: 1px solid #ecd4eb;
 	border-radius: 8px;
 	box-shadow: 2px 0px 3px hsla(0, 0%, 69%, 1.25);
 	background-color: #ecd4eb47;
