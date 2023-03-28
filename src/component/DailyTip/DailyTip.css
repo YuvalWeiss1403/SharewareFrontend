@@ -1,10 +1,11 @@
 .daily-tip-container {
-	position: absolute;
-	top: 25%;
+	/* position: absolute; */
+	top: 00%;
 	right: 30%;
 	box-shadow: 0px 0px 25px hsla(0, 0%, 69%, 1.25);
 	position: -webkit-sticky;
-	/* position: sticky; */
+	position: sticky;
+    z-index: 1;
 }
 
 .daily-tip-container:hover {
@@ -53,7 +54,7 @@
 	align-items: center;
 	gap: 5px;
 	/* top: 80%; */
-	bottom: 5%;
+	bottom: 2%;
 	right: 5%;
 	font-size: 14px;
 }
@@ -62,7 +63,7 @@
 	display: flex;
 	flex-direction: row;
 	position: absolute;
-	bottom: 5%;
+	bottom: 15%;
 }
 
 .all-tips-link {
@@ -91,13 +92,14 @@
 	transform: translate(-50%, -50%);
 	width: 150px;
 	text-align: center;
+    font-size: 15px;
 }
 
 .circle-2 {
 	position: absolute;
 	top: 90%;
-	left: 80%;
-	width: 30px;
+	left: 85%;
+	width: 40px;
 	height: 30px;
 	border: 5px solid #ecd4eb;
 	border-radius: 50%;
@@ -105,9 +107,75 @@
 .circle-3 {
 	position: absolute;
 	top: 110%;
-	left: 95%;
-	width: 15px;
+	left: 105%;
+	width: 20px;
 	height: 15px;
 	border: 5px solid #ecd4eb;
 	border-radius: 50%;
+}
+
+.dots-link {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+    .daily-tip{
+        width: 160px;
+        left: 66%;
+        padding-left: 5px
+    }
+
+    .daily-tip-container {
+        top: 60%;
+        left: 80%;
+        box-shadow: 0px 0px 25px hsla(0, 0%, 69%, 1.25);
+        /* position: -webkit-sticky; */
+        position: sticky;
+        z-index: 4;
+    }
+
+    .daily-tip-title {
+        display: flex;
+        justify-content: start;
+        color: black;
+        font-weight: bold;
+    }
+
+    .tip-comment {
+        justify-content: center;
+        width: 130px;
+        height: 80px;
+    }
+
+    .tip-content {
+        font-size: 12px;
+        width: 100px;
+    }
+
+    .circle-2 {
+        top: 110%;
+        left: 20%;
+        width: 20px;
+        height: 15px;
+    }
+    
+    .circle-3 {
+        top: 135%;
+        left: 10%;
+        width: 14px;
+        height: 1px;
+    }
+
+    .all-tips-container {
+        bottom: 2%;
+        left: 5%;
+    }
+
+    .tip-username {
+        bottom: 24%;
+        left: 5%;
+        font-size: 14px;
+    }
+    
 }
