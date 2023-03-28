@@ -1,15 +1,15 @@
-import { useParams } from 'react-router';
-import { useSelector } from 'react-redux';
-import './SingleSubjectPage.css';
-import { RootState } from '../../store/store';
-import { ISubjects } from '../../store/slices/SubjectsSlice';
-import Navbar from '../General/Navbar/Navbar';
-import { IQuestions } from '../../store/slices/QuestionsSlice';
-import { ObjectId } from 'mongoose';
-import { useState } from 'react';
-import SingleQuestionPage from './SingleQuestionPage/SingleQuestionPage';
-import AddQuestion from '../AddQuestion/AddQuestion';
-import Modal from '../General/Modal/Modal';
+import { useParams } from "react-router";
+import { useSelector } from "react-redux";
+import "./SingleSubjectPage.css";
+import { RootState } from "../../store/store";
+import { ISubjects } from "../../store/slices/SubjectsSlice";
+import Navbar from "../General/Navbar/Navbar";
+import { IQuestions } from "../../store/slices/QuestionsSlice";
+import { ObjectId } from "mongoose";
+import { useState } from "react";
+import SingleQuestionPage from "./SingleQuestionPage/SingleQuestionPage";
+import AddQuestion from "../AddQuestion/AddQuestion";
+import Modal from "../General/Modal/Modal";
 
 const SingleSubjectPage: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
@@ -94,9 +94,8 @@ const SingleSubjectPage: React.FC = () => {
 			<div>
 				{isModalOpen && (
 					<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-
-					<AddQuestion setIsModalOpen={setIsModalOpen}key={subjectId}/>
-						</Modal>
+						<AddQuestion setIsModalOpen={setIsModalOpen} key={subjectId} />
+					</Modal>
 				)}
 				{/* {isModalOpen && (
 					<AddQuestion
