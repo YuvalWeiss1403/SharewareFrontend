@@ -78,7 +78,7 @@
 	cursor: pointer;
 }
 
-@media (min-width: 375px) and (max-width: 700px) {
+@media (max-width: 700px) {
 	.questionsNavbar {
 		transition: all 0.5s;
 		width: 20%;
