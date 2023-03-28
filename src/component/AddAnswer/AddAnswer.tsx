@@ -35,7 +35,7 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 			.sendForm(
 				'service_gzb0p0p',
 				'template_dbd8ip9',
-				e.currentTarget,
+				e.target as HTMLFormElement,
 				'iN9LhDKwo2LtbVMRw'
 			)
 			.then(
