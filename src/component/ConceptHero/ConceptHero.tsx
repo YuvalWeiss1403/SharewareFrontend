@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { RootState } from "../../store/store";
 import "../ConceptHero/ConceptHero.css";
+import DailyTip from "../DailyTip/DailyTip";
 
 const ConceptHero: React.FC = () => {
 	const [searchValue, setSearchValue] = useState<string>("");
@@ -36,6 +37,7 @@ const ConceptHero: React.FC = () => {
 					<div className="hero-content line3">Sharing Tips and Advices</div>
 				</div>
 			</div>
+			<DailyTip />
 			<div id="input-modal" className="input-modal">
 				<div className="input-container">
 					<label id="input-empty-label">Search for subject</label>

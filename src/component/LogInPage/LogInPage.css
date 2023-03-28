@@ -46,7 +46,7 @@
 
 #page-login {
 	border: 0;
-	background-color: #d68bd2;
+	background-color: #ecd4eb;
 	color: white;
 	border-radius: 4px;
 	font-size: 16px;
@@ -82,7 +82,7 @@
 }
 
 #page-sign-up-button {
-	border: 0.5px solid #d68bd2;
+	border: 0.5px solid #ecd4eb;
 	background-color: transparent;
 	color: black;
 	font-size: 16px;

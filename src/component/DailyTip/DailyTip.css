@@ -1,0 +1,113 @@
+.daily-tip-container {
+	position: absolute;
+	top: 25%;
+	right: 30%;
+	box-shadow: 0px 0px 25px hsla(0, 0%, 69%, 1.25);
+	position: -webkit-sticky;
+	/* position: sticky; */
+}
+
+.daily-tip-container:hover {
+	transform: scale(1.15);
+	transition: transform 0.5s linear;
+	transition-property: transform, color, box-shadow;
+	transition-duration: 0.3s;
+	transition-timing-function: linear;
+}
+
+.daily-tip {
+	background-color: white;
+	border-left: 20px solid #ecd4eb;
+	width: 250px;
+	height: 250px;
+	border-radius: 20px;
+	font-size: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding-left: 10px;
+	position: absolute;
+	left: 80%;
+}
+
+.daily-tip-title {
+	display: flex;
+	justify-content: center;
+	color: black;
+	font-weight: bold;
+}
+
+.tip-comment {
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	width: 150px;
+	height: 150px;
+	border: 5px solid #ecd4eb;
+	border-radius: 50%;
+}
+
+.tip-username {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	/* top: 80%; */
+	bottom: 5%;
+	right: 5%;
+	font-size: 14px;
+}
+
+.all-tips-container {
+	display: flex;
+	flex-direction: row;
+	position: absolute;
+	bottom: 5%;
+}
+
+.all-tips-link {
+	cursor: pointer;
+	all: unset;
+	font-size: 16px;
+	/* font-weight: bold; */
+}
+
+.navigate-icon {
+	width: 20px;
+}
+
+.tip-comment {
+	position: relative;
+	width: 170px;
+	height: 150px;
+	border: 5px solid #ecd4eb;
+	border-radius: 50%;
+}
+
+.tip-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 150px;
+	text-align: center;
+}
+
+.circle-2 {
+	position: absolute;
+	top: 90%;
+	left: 80%;
+	width: 30px;
+	height: 30px;
+	border: 5px solid #ecd4eb;
+	border-radius: 50%;
+}
+.circle-3 {
+	position: absolute;
+	top: 110%;
+	left: 95%;
+	width: 15px;
+	height: 15px;
+	border: 5px solid #ecd4eb;
+	border-radius: 50%;
+}

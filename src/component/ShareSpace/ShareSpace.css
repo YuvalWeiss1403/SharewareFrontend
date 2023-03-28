@@ -1,5 +1,5 @@
 .ShareSpace {
-	background-color: #d68bd20f;
+	background-color: #ecd4eb0f;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -19,7 +19,7 @@
 	min-height: 650px;
 }
 .add-subject {
-	background-color: #d68bd2c4;
+	background-color: #ecd4ebc4;
 	align-self: flex-end;
 	padding: 5px;
 	border-radius: 5px;
@@ -73,7 +73,7 @@
 	height: 30px;
 	width: 110px;
 	text-transform: uppercase;
-	background-color: #d68bd2c4;
+	background-color: #ecd4ebc4;
 	align-self: flex-end;
 	padding: 5px;
 	border-radius: 5px;
@@ -87,7 +87,7 @@
 	height: 30px;
 	width: 110px;
 	text-transform: uppercase;
-	border: 1px solid #d68bd2c4;
+	border: 1px solid #ecd4ebc4;
 	align-self: flex-end;
 	padding: 5px;
 	border-radius: 5px;
