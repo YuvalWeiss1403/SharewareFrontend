@@ -9,7 +9,7 @@ import Footer from "../General/Footer/Footer";
 import NavBar from "../General/Navbar/Navbar";
 import AnswerCard from "../SingleSubjectPage/AnswerCard/AnswerCard";
 import QuestionCard from "./QuestionCard/QuestionCard";
-import TipCard from "./QuestionCard/TipCard/TipCard";
+import TipCard from "./TipCard/TipCard";
 import "./SignedInUser.css";
 
 const SignedInUser: React.FC = () => {

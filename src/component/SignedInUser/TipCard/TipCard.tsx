@@ -1,6 +1,6 @@
 import "./TipCard.css";
-import { ITips } from "../../../../store/slices/TipsSlice";
-import like from "../../../TipsPage/image/like.svg";
+import { ITips } from "../../../store/slices/TipsSlice";
+import like from "../../TipsPage/image/like.svg";
 
 export interface ITipsCard {
 	tip: ITips;

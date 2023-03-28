@@ -24,7 +24,9 @@
 	display: flex;
 	flex-direction: column;
 }
-.UserQuestions {
+.UserQuestions,
+.userTips,
+.usersAnswers {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
@@ -32,19 +34,6 @@
 
 .usersAnswers .answer-username {
 	display: none;
-}
-
-.question-card {
-	display: flex;
-	flex-direction: column;
-	border: 1px solid #d68bd2;
-	border-radius: 8px;
-	box-shadow: 2px 0px 3px hsla(0, 0%, 69%, 1.25);
-	background-color: #d68bd247;
-	padding: 10px;
-	background-repeat: no-repeat;
-	background-size: cover;
-	gap: 5px;
 }
 
 .user-activities-filterBar {
