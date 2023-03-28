@@ -71,7 +71,7 @@
 	font-size: 15px;
 	padding: 25px 30px;
 	width: 240px;
-	height: 250px;
+	height: 180px;
 	margin-top: 35px;
 	border-radius: 10px;
 }
@@ -102,6 +102,19 @@
 }
 #flow-box-questions {
 	background-image: url("../../assets/icons/questions.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position-y: 7px;
+}
+#flow-box-share {
+	background-image: url("../../assets/icons/share.svg");
+	background-repeat: no-repeat;
+	background-size: 39px;
+	background-position-y: 21px;
+	background-position-x: 10px;
+}
+#flow-box-tips {
+	background-image: url("../../assets/icons/tips.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position-y: 7px;
