@@ -83,7 +83,7 @@
 	font-weight: 600;
 }
 
-@media (min-width: 375px) and (max-width: 700px) {
+@media (max-width: 700px) {
 	.all-navbar {
 		justify-content: space-between;
 		width: 100vw;
