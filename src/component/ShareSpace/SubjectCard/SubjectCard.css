@@ -3,7 +3,7 @@
 	border-radius: 5px;
 	height: 150px;
 	display: flex;
-	color: #d68bd2;
+	color: #ecd4eb;
 	align-items: center;
 	justify-content: center;
 	box-shadow: 2px 10px 10px hsla(0, 0%, 69%, 1.25);
@@ -19,7 +19,7 @@
 .subject-card:hover {
 	cursor: pointer;
 	color: black;
-	border: 1px solid #d68bd2;
+	border: 1px solid #ecd4eb;
 }
 
 .subject-card span {

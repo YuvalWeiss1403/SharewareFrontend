@@ -1,49 +1,48 @@
-
-#closeButtonModal  {
-    font-size: 30px;
-    padding-left: 10px;
+#closeButtonModal {
+	font-size: 30px;
+	padding-left: 10px;
 }
 
 .information {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    color: #d68bd2;
-    gap: 100px;
-    padding-top: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	color: #ecd4eb;
+	gap: 100px;
+	padding-top: 20px;
 }
 
 #input-container {
-    display: flex;
-    flex-direction: column;    
-    gap: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
-#input-title{
-    color:black;
-    font-size: 20px;
-    text-transform: uppercase;
-}
-
-#input-full-Name{
-    width: 200px;
-    height: 50px;
-    border-radius: 8px;
+#input-title {
+	color: black;
+	font-size: 20px;
+	text-transform: uppercase;
 }
 
 #input-full-Name {
-    font-size: 14px;
-    padding-left: 5px;
+	width: 200px;
+	height: 50px;
+	border-radius: 8px;
 }
 
-.submit{
-    width: 200px;
-    height: 50px;
-    background-color:#d68bd2;
-    color: white;
-    font-weight: bold;
-    border-radius: 8px;
-    font-size: 20px;
+#input-full-Name {
+	font-size: 14px;
+	padding-left: 5px;
+}
+
+.submit {
+	width: 200px;
+	height: 50px;
+	background-color: #ecd4eb;
+	color: white;
+	font-weight: bold;
+	border-radius: 8px;
+	font-size: 20px;
 }

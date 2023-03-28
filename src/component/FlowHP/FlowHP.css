@@ -12,7 +12,7 @@
 	padding-top: 20px;
 	color: hsl(257, 7%, 63%);
 	width: 100%;
-	height: 700px;
+	height: 625px;
 	text-align: center;
 }
 
@@ -24,7 +24,7 @@
 }
 .all-flow-dashboard hr {
 	width: 40%;
-	background-color: #d68bd2;
+	background-color: #ecd4eb;
 	position: absolute;
 	height: 5px;
 	border: 0;
