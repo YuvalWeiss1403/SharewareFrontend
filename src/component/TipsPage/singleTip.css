@@ -1,6 +1,7 @@
 .Tips-Page {
 	width: 100vw;
 	height: 100vh;
+	/* background-color: hsl(0, 0%, 95%);  */
 }
 .tips-content {
 	display: flex;
@@ -12,8 +13,11 @@
 }
 #advice {
 	font-size: 25px;
+	margin-left: 40%;
+	margin-top: 50px;
+	margin-bottom: 35px;
 	letter-spacing: 1.67px;
-	font-family: "Anton", sans-serif;
+	font-family: 'Anton', sans-serif;
 }
 
 #all-the-tips {
@@ -21,6 +25,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 10px;
+	/* background-color: hsl(0, 0%, 95%); */
 }
 .tips-container {
 	display: flex;
@@ -30,7 +35,7 @@
 #tip {
 	display: flex;
 	flex-direction: column;
-	width: 80%;
+	width: 60%;
 	border: 1px solid #d68bd2;
 	border-radius: 8px;
 	box-shadow: 2px 0px 3px hsla(0, 0%, 69%, 1.25);
@@ -63,7 +68,7 @@
 }
 
 #username {
-	background-image: url("../../assets/icons/user.svg");
+	background-image: url('../../assets/icons/user.svg');
 	font-size: 13px;
 	background-repeat: no-repeat;
 	padding-left: 20px;
