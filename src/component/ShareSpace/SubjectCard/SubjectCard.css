@@ -1,7 +1,7 @@
 .subject-card {
-	width: 150px;
+	width: 100%;
 	border-radius: 5px;
-	height: 150px;
+	height: 95%;
 	display: flex;
 	color: #ecd4eb;
 	align-items: center;
