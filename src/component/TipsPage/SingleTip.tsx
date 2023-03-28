@@ -37,7 +37,6 @@ const SingleTip: React.FC = () => {
 						tipLiked: newdataUser, // override tipLiked property with updated array
 					};
 					console.log(updatedUser);
-
 					await updateUser(updatedUser._id, updatedUser);
 				} else {
 					console.log('Error: currentUser or tipLiked is null or undefined.');
@@ -105,8 +104,34 @@ const SingleTip: React.FC = () => {
 			throw err;
 		}
 	};
+
+	// const deleteTip = async (_id: ObjectId) => {
+	// 	const newData = tipsData.find((data: ITips) => {
+	// 		return data._id === _id;
+	// 	});
+	// 	if (user.firstName) {
+	// 		const currentUserLike = userLike.find((data: any) => {
+	// 			return data._id === user._id;
+	// 		});
+	// 		const currentUser = currentUserLike;
+	// 		if (currentUser && currentUser.tipLiked) {
+	// 			const newdataUser = currentUser.tipLiked.filter((likeId: any) => {
+	// 				return likeId != String(_id);
+	// 			});
+	// 			const updatedUser = {
+	// 				...currentUser, // copy all properties from currentUser
+	// 				tipLiked: newdataUser, // override tipLiked property with updated array
+	// 			};
+	// 			await deleteTips(_id);
+	// 			await updateUser(updatedUser._id, updatedUser);
+	// 		} else {
+	// 			console.log('Error: currentUser or tipLiked is null or undefined.');
+	// 		}
+	// 	}
+	// };
+
 	const closeButton = async (id: ObjectId) => {
-		console.log(id);
+		// await deleteTip(id);
 		await deleteTips(id);
 	};
 
