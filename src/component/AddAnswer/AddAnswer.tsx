@@ -77,10 +77,9 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 				id="input-container"
 				key={field.id}>
 				{field.title && <div id="input-title">{field.title}</div>}
-				<input
+				<textarea
 					id="input-full-Name"
 					placeholder={field.placeholder}
-					type={field.type}
 					name={field.name}
 					value={inputValues[field.name]}
 					onChange={(e) =>

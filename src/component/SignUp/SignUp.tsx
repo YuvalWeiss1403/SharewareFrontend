@@ -31,7 +31,7 @@ const SignUp: React.FC = () => {
 				password: User.password,
 			});
 			sessionStorage.setItem('user', JSON.stringify(userReq.data));
-			navigator('/LogIn');
+			navigator('/');
 		} catch (error: any) {
 			alert(error.response.data);
 			return [];
