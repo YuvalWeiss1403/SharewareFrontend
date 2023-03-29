@@ -1,17 +1,17 @@
-import "./ShareSpace.css";
-import Navbar from "../General/Navbar/Navbar";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { ISubjects } from "../../store/slices/SubjectsSlice";
-import SubjectCard from "./SubjectCard/SubjectCard";
-import { useState } from "react";
-import AddSubject from "../AddSubject/AddSubject";
-import { ObjectId } from "mongoose";
-import Modal from "../General/Modal/Modal";
-import Footer from "../General/Footer/Footer";
+import './ShareSpace.css';
+import Navbar from '../General/Navbar/Navbar';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { ISubjects } from '../../store/slices/SubjectsSlice';
+import SubjectCard from './SubjectCard/SubjectCard';
+import { useState } from 'react';
+import AddSubject from '../AddSubject/AddSubject';
+import { ObjectId } from 'mongoose';
+import Modal from '../General/Modal/Modal';
+import Footer from '../General/Footer/Footer';
 
 const ShareSpace: React.FC = () => {
-	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const [DeleteModal, setDeleteModal] = useState(false);
@@ -28,20 +28,18 @@ const ShareSpace: React.FC = () => {
 	};
 
 	const handelDeleteSubject = (id: ObjectId) => {
-		console.log(id);
-
 		deleteSubject(id);
 	};
 
 	const deleteSubject = async (_id: ObjectId) => {
 		try {
 			const response = await fetch(`http://localhost:8000/subjects`, {
-				method: "DELETE",
+				method: 'DELETE',
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					"Content-type": "application/json; charset=UTF-8",
+					'Content-type': 'application/json; charset=UTF-8',
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
@@ -58,9 +56,11 @@ const ShareSpace: React.FC = () => {
 	return (
 		<div className="ShareSpace">
 			<Navbar />
-			{user.userType === "admin" && (
-				<button onClick={openModal} className="add-subject">
-					{" "}
+			{user.userType === 'admin' && (
+				<button
+					onClick={openModal}
+					className="add-subject">
+					{' '}
 					ADD SUBJECT
 				</button>
 			)}
@@ -68,8 +68,10 @@ const ShareSpace: React.FC = () => {
 				{subjectsData?.map((subject: ISubjects, index: number) => {
 					return (
 						<div className="single-subject">
-							{user.userType === "admin" && (
-								<span onClick={() => handelDelete()} className="delete-subject">
+							{user.userType === 'admin' && (
+								<span
+									onClick={() => handelDelete()}
+									className="delete-subject">
 									&times;
 								</span>
 							)}
@@ -92,14 +94,19 @@ const ShareSpace: React.FC = () => {
 									</div>
 								</div>
 							)}
-							<SubjectCard name={subject.name} key={index} />
+							<SubjectCard
+								name={subject.name}
+								key={index}
+							/>
 						</div>
 					);
 				})}
 			</div>
 			{isModalOpen && (
-				<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-					{" "}
+				<Modal
+					isModalOpen={isModalOpen}
+					setIsModalOpen={setIsModalOpen}>
+					{' '}
 					<AddSubject setIsModalOpen={setIsModalOpen} />
 				</Modal>
 			)}

@@ -7,7 +7,7 @@ import { ObjectId } from 'mongoose';
 interface IModal {
 	closeButton?: Function;
 	questionId?: ObjectId;
-	setIsModalOpen: Function
+	setIsModalOpen: Function;
 }
 const AddAnswer: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
@@ -97,7 +97,6 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 		const username = `${data.firstName} ${data.lastName}`;
 		const title = inputValues.comment;
 		const questionId = String(props.questionId);
-		console.log(questionId);
 		await newQuestion(username, title, questionId);
 	};
 
@@ -111,8 +110,7 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 						<span
 							id="closeButton"
 							onClick={() => props.closeButton!()}
-							className="close">
-						</span>
+							className="close"></span>
 						<div className="information">
 							<div>
 								<div id="information">{renderInputs(restDetails)}</div>

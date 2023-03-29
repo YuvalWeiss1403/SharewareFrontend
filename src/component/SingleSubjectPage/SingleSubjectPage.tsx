@@ -12,16 +12,13 @@ import AddQuestion from '../AddQuestion/AddQuestion';
 import Modal from '../General/Modal/Modal';
 
 const SingleSubjectPage: React.FC = () => {
-	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	let { subjectId } = useParams<string>();
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const openModal = () => {
-		console.log("open");
-		console.log(isModalOpen);
 		setIsModalOpen(true);
 	};
 	const closeModal = () => {
-		console.log(isModalOpen);
 		setIsModalOpen(false);
 	};
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
@@ -58,19 +55,19 @@ const SingleSubjectPage: React.FC = () => {
 					<div className="questionsNavbar">
 						<div className="navbarHeading">
 							{`${currentSubjectData[0].name} questions`}
-							{/* {user.userType === "admin" && ( */}
-							<button id="add-button" onClick={() => openModal()}>
+							<button
+								id="add-button"
+								onClick={() => openModal()}>
 								&#43;
 							</button>
-							{/* )} */}
 						</div>
 						{questionsBySubject.map((question: IQuestions, index: number) => {
 							return (
 								<button
 									className={
 										currentQuestion === question
-											? "questions button currentQ"
-											: "questions button"
+											? 'questions button currentQ'
+											: 'questions button'
 									}
 									onClick={() => {
 										handleQuestionClick(question._id);
@@ -93,10 +90,14 @@ const SingleSubjectPage: React.FC = () => {
 			</div>
 			<div>
 				{isModalOpen && (
-					<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-
-					<AddQuestion setIsModalOpen={setIsModalOpen}key={subjectId}/>
-						</Modal>
+					<Modal
+						isModalOpen={isModalOpen}
+						setIsModalOpen={setIsModalOpen}>
+						<AddQuestion
+							setIsModalOpen={setIsModalOpen}
+							key={subjectId}
+						/>
+					</Modal>
 				)}
 				{/* {isModalOpen && (
 					<AddQuestion

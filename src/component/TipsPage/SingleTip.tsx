@@ -36,8 +36,6 @@ const SingleTip: React.FC = () => {
 						...currentUser, // copy all properties from currentUser
 						tipLiked: newdataUser, // override tipLiked property with updated array
 					};
-					console.log(updatedUser);
-
 					await updateUser(updatedUser._id, updatedUser);
 				} else {
 					console.log('Error: currentUser or tipLiked is null or undefined.');
@@ -57,8 +55,6 @@ const SingleTip: React.FC = () => {
 		}
 	};
 	const updateUser = async (_id: ObjectId, newData: IUser) => {
-		console.log(_id);
-		console.log(newData);
 		try {
 			const response = await fetch(`http://localhost:8000/users/`, {
 				method: 'PUT',
@@ -106,12 +102,10 @@ const SingleTip: React.FC = () => {
 		}
 	};
 	const closeButton = async (id: ObjectId) => {
-		console.log(id);
 		await deleteTips(id);
 	};
 
 	const deleteTips = async (_id: ObjectId) => {
-		console.log(_id);
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
 				method: 'DELETE',

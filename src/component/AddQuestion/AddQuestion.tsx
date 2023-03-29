@@ -4,9 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
 import { ObjectId } from 'mongoose';
-import "../AddQuestion/AddQuestion.css"
+import '../AddQuestion/AddQuestion.css';
 interface IModal {
-	setIsModalOpen: Function,
+	setIsModalOpen: Function;
 	key?: string;
 }
 const AddQuestion: React.FC<IModal> = (props: IModal) => {
@@ -106,7 +106,6 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 		} else {
 			const username = `${data.firstName} ${data.lastName}`;
 			const question = inputValues.question;
-			console.log(question);
 			const title = inputValues.title;
 			const subjectID = subjectId || '0';
 			await newQuestion(username, title, subjectID, question);
@@ -124,8 +123,7 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 							<span
 								id="closeButton"
 								onClick={() => props.setIsModalOpen(false)}
-								className="close">
-							</span>
+								className="close"></span>
 							<div className="information-add-ques">
 								<div>
 									<div id="information">{renderInputs(restDetails)}</div>

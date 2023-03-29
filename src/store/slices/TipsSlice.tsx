@@ -22,7 +22,6 @@ const tipsSubject = async () => {
 	}
 };
 const tips: ITips[] = await tipsSubject();
-console.log(tips);
 export const tipsSlice = createSlice({
 	name: 'tips',
 	initialState: {

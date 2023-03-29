@@ -100,7 +100,6 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 			navigate('/LogIn');
 		}
 		const username = `${data.firstName} ${data.lastName}`;
-		console.log(username);
 		const comment = inputValues.comment;
 		const title = inputValues.title;
 		await newTip(title, comment, username);
