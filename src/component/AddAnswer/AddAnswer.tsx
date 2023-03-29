@@ -131,7 +131,7 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 		const username = `${data.firstName} ${data.lastName}`;
 		const title = inputValues.comment;
 		const questionId = String(props.questionId);
-		// sendEmail(e);
+		sendEmail(e);
 		await newAnswer(username, title, questionId);
 	};
 
