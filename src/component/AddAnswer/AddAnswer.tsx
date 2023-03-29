@@ -5,6 +5,7 @@ import { RootState } from '../../store/store';
 import { ITips } from '../../store/slices/TipsSlice';
 import { ObjectId } from 'mongoose';
 import emailjs from 'emailjs-com';
+import './AddAnswer.css';
 interface IModal {
 	closeButton?: Function;
 	questionId?: ObjectId;
@@ -31,7 +32,10 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 	emailjs.init(String(currentUser[0]._id));
 	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		console.log('pass', e);
+		console.log('form', form.current);
 		if (!form.current) {
+			console.log('null');
 			return;
 		}
 		emailjs
@@ -39,6 +43,9 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 				'service_gzb0p0p',
 				'template_dbd8ip9',
 				form.current,
+				// currentUser[0],
+				// { name: 'hagar', email: 'hagaram11@gmail.com' },
+				// currentUser[0].email,
 				'iN9LhDKwo2LtbVMRw'
 			)
 			.then(
@@ -124,7 +131,7 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 	};
 
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+		// e.preventDefault();
 		if (!data) {
 			alert('please Log-in');
 			navigate('/LogIn');
@@ -152,6 +159,16 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 						<div className="information">
 							<div>
 								<div id="information">{renderInputs(restDetails)}</div>
+								<input
+									id="email"
+									type="email"
+									name={'user_email'}
+									value={`${currentUser[0].email}`}></input>
+								<input
+									id="email"
+									type="text"
+									name={'user_name'}
+									value={`${currentUser[0].firstName}`}></input>
 							</div>
 							<button
 								className="submit"
