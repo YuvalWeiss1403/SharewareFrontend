@@ -162,6 +162,11 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 									type="text"
 									name={'user_name'}
 									value={`${currentUser[0].firstName}`}></input>
+								<input
+									id="email"
+									type="text"
+									name={'user_question'}
+									value={`${currentQuestion[0].question}`}></input>
 							</div>
 							<button
 								className="submit"
