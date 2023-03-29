@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RootState } from '../../store/store';
@@ -27,16 +27,19 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 		(user) =>
 			`${user.firstName} ${user.lastName}` === currentQuestion[0].userName
 	);
+	const form = useRef(null);
 	emailjs.init(String(currentUser[0]._id));
 	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const userEmail = currentUser[0].email;
+		if (!form.current) {
+			return;
+		}
 		emailjs
 			.sendForm(
 				'service_gzb0p0p',
 				'template_dbd8ip9',
-				e.target as HTMLFormElement,
-				userEmail
+				form.current,
+				'iN9LhDKwo2LtbVMRw'
 			)
 			.then(
 				(result) => {
@@ -46,6 +49,8 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 					console.log(error.text);
 				}
 			);
+		const target = e.target as HTMLFormElement;
+		target.reset();
 	};
 
 	interface InputField {
@@ -133,7 +138,9 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 
 	return (
 		<div className="card">
-			<form onSubmit={handSaveRest}>
+			<form
+				ref={form}
+				onSubmit={handSaveRest}>
 				<div
 					id="modal"
 					className="modal">
