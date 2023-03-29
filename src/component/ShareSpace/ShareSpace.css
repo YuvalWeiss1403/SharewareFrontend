@@ -14,9 +14,16 @@
 	align-items: center;
 	justify-items: center;
 	gap: 25px;
-	height: fit-content;
-	padding-bottom: 180px;
-	min-height: 650px;
+	min-height: 78vh;
+}
+.share-space-header {
+	font-family: "Anton", sans-serif;
+	font-size: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 10px;
 }
 .add-subject {
 	background-color: #d68bd2c4;

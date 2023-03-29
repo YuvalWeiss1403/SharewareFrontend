@@ -4,23 +4,19 @@
 	align-items: center;
 	flex-direction: column;
 	background-color: hsl(0, 0%, 95%);
-	padding-top: 80px;
-	margin-top: -55px;
 	font-weight: 700;
 	font-size: 20px;
-	color: hsl(260, 8%, 14%);
-	padding-top: 20px;
 	color: hsl(257, 7%, 63%);
 	width: 100%;
-	height: 625px;
 	text-align: center;
+	padding-top: 70px;
 }
 
 .all-flow-dashboard {
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
-	padding: 50px;
+	padding: 10px;
 }
 .all-flow-dashboard hr {
 	width: 40%;
@@ -99,6 +95,7 @@
 .flow-box-content {
 	height: 100%;
 	font-size: 18px;
+	font-weight: 400;
 }
 #flow-box-questions {
 	background-image: url("../../assets/icons/questions.svg");
@@ -124,11 +121,16 @@
 		flex-direction: column;
 		margin-top: 0px;
 		font-weight: 700;
-		height: 1200px;
 	}
 
 	.all-flow-dashboard {
 		display: flex;
 		flex-direction: column;
+	}
+	.all-shareSpace-container {
+		margin: 0;
+	}
+	.tips-container-hp {
+		margin: 0;
 	}
 }

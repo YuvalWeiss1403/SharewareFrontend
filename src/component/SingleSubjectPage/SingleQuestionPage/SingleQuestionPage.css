@@ -18,7 +18,16 @@
 	background-size: 14px;
 	display: flex;
 	align-items: center;
-	margin-top: 5px;
+	margin-top: 4px;
+	margin-left: 5px;
+	padding-bottom: 5px;
+}
+
+.question-title {
+	padding: 20px;
+	text-align: center;
+	width: 100%;
+	border-top: 2px solid hsl(0, 0%, 75%);
 }
 .buttons-container {
 	align-self: flex-end;
