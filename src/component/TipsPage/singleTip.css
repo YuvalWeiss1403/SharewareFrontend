@@ -16,7 +16,7 @@
 	padding-top: 50px;
 	padding-bottom: 35px;
 	letter-spacing: 1.67px;
-	font-family: "Anton", sans-serif;
+	font-family: 'Anton', sans-serif;
 }
 
 #all-the-tips {
@@ -78,7 +78,7 @@
 }
 
 #username {
-	background-image: url("../../assets/icons/user.svg");
+	background-image: url('../../assets/icons/user.svg');
 	font-size: 13px;
 	background-repeat: no-repeat;
 	padding-left: 20px;
@@ -100,6 +100,9 @@
 	align-self: flex-end;
 	align-items: center;
 	gap: 5px;
+}
+#comment {
+	font-family: system-ui;
 }
 
 @media (max-width: 700px) {
