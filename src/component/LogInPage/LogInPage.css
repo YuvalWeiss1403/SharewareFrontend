@@ -9,6 +9,7 @@
 
 .login-content {
 	background-color: white;
+	height: 80vh;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
