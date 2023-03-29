@@ -1,15 +1,15 @@
-import "../HomePage/HomePage.css";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import "./singleTip.css";
-import like from "./image/like.svg";
-import { ObjectId } from "mongoose";
-import { ITips } from "../../store/slices/TipsSlice";
-import { useNavigate } from "react-router";
-import { IUser } from "../../store/slices/UsersSlice";
+import '../HomePage/HomePage.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import './singleTip.css';
+import like from './image/like.svg';
+import { ObjectId } from 'mongoose';
+import { ITips } from '../../store/slices/TipsSlice';
+import { useNavigate } from 'react-router';
+import { IUser } from '../../store/slices/UsersSlice';
 
 const SingleTip: React.FC = () => {
-	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const tipsData = useSelector((state: RootState) => state.tips.value);
 	const userLike = useSelector((state: RootState) => state.users.value);
 	const navigate = useNavigate();
@@ -25,7 +25,7 @@ const SingleTip: React.FC = () => {
 				currentUserLike &&
 				currentUserLike.tipLiked?.includes(String(newData?._id))
 			) {
-				alert("You have already liked this tip!");
+				alert('You have already liked this tip!');
 			} else {
 				const currentUser = currentUserLike;
 				if (currentUser && currentUser.tipLiked) {
@@ -36,10 +36,9 @@ const SingleTip: React.FC = () => {
 						...currentUser, // copy all properties from currentUser
 						tipLiked: newdataUser, // override tipLiked property with updated array
 					};
-					console.log(updatedUser);
 					await updateUser(updatedUser._id, updatedUser);
 				} else {
-					console.log("Error: currentUser or tipLiked is null or undefined.");
+					console.log('Error: currentUser or tipLiked is null or undefined.');
 				}
 
 				if (newData && newData.likes !== undefined) {
@@ -47,27 +46,25 @@ const SingleTip: React.FC = () => {
 					updatedData.likes += 1;
 					await addLike(_id, updatedData);
 				} else {
-					alert("You have already liked this tip!");
+					alert('You have already liked this tip!');
 				}
 			}
 		} else {
-			navigate("/LogIn");
-			alert("Please log in to like tips!");
+			navigate('/LogIn');
+			alert('Please log in to like tips!');
 		}
 	};
 	const updateUser = async (_id: ObjectId, newData: IUser) => {
-		console.log(_id);
-		console.log(newData);
 		try {
 			const response = await fetch(`http://localhost:8000/users/`, {
-				method: "PUT",
+				method: 'PUT',
 				body: JSON.stringify({
 					userId: user._id,
 					_id: _id,
 					data: newData,
 				}),
 				headers: {
-					"Content-type": "application/json; charset=UTF-8",
+					'Content-type': 'application/json; charset=UTF-8',
 				},
 			});
 			const data = await response.json();
@@ -84,14 +81,14 @@ const SingleTip: React.FC = () => {
 	const addLike = async (_id: ObjectId, newData: ITips) => {
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
-				method: "PUT",
+				method: 'PUT',
 				body: JSON.stringify({
 					userId: user._id,
 					_id: _id,
 					data: newData,
 				}),
 				headers: {
-					"Content-type": "application/json; charset=UTF-8",
+					'Content-type': 'application/json; charset=UTF-8',
 				},
 			});
 			const data = await response.json();
@@ -104,47 +101,19 @@ const SingleTip: React.FC = () => {
 			throw err;
 		}
 	};
-
-	// const deleteTip = async (_id: ObjectId) => {
-	// 	const newData = tipsData.find((data: ITips) => {
-	// 		return data._id === _id;
-	// 	});
-	// 	if (user.firstName) {
-	// 		const currentUserLike = userLike.find((data: any) => {
-	// 			return data._id === user._id;
-	// 		});
-	// 		const currentUser = currentUserLike;
-	// 		if (currentUser && currentUser.tipLiked) {
-	// 			const newdataUser = currentUser.tipLiked.filter((likeId: any) => {
-	// 				return likeId != String(_id);
-	// 			});
-	// 			const updatedUser = {
-	// 				...currentUser, // copy all properties from currentUser
-	// 				tipLiked: newdataUser, // override tipLiked property with updated array
-	// 			};
-	// 			await deleteTips(_id);
-	// 			await updateUser(updatedUser._id, updatedUser);
-	// 		} else {
-	// 			console.log('Error: currentUser or tipLiked is null or undefined.');
-	// 		}
-	// 	}
-	// };
-
 	const closeButton = async (id: ObjectId) => {
-		// await deleteTip(id);
 		await deleteTips(id);
 	};
 
 	const deleteTips = async (_id: ObjectId) => {
-		console.log(_id);
 		try {
 			const response = await fetch(`http://localhost:8000/tips/`, {
-				method: "DELETE",
+				method: 'DELETE',
 				body: JSON.stringify({
 					_id: _id,
 				}),
 				headers: {
-					"Content-type": "application/json; charset=UTF-8",
+					'Content-type': 'application/json; charset=UTF-8',
 					Authorization: `Bearer ${user.token}`,
 				},
 			});
@@ -162,8 +131,10 @@ const SingleTip: React.FC = () => {
 		<div id="all-the-tips">
 			{tipsData.map((data: any) => {
 				return (
-					<div id="tip" key={data._id}>
-						{user.userType === "admin" && (
+					<div
+						id="tip"
+						key={data._id}>
+						{user.userType === 'admin' && (
 							<span
 								id="closeButton"
 								onClick={() => closeButton(data._id)}

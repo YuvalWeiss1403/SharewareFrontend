@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router";
-import { RootState } from "../../../store/store";
-import { useSelector } from "react-redux";
-import "./SubjectCard.css";
-import { ISubjects } from "../../../store/slices/SubjectsSlice";
+import { useNavigate } from 'react-router';
+import { RootState } from '../../../store/store';
+import { useSelector } from 'react-redux';
+import './SubjectCard.css';
+import { ISubjects } from '../../../store/slices/SubjectsSlice';
 
 export interface ISubjectCard {
 	name: string;
@@ -20,7 +20,9 @@ const SubjectCard: React.FC<ISubjectCard> = (props: ISubjectCard) => {
 		navigator(`/ShareSpace/${currentSubjectDate[0]._id}`);
 	};
 	return (
-		<div className="subject-card" onClick={() => handelCardClick(props.name)}>
+		<div
+			className="subject-card"
+			onClick={() => handelCardClick(props.name)}>
 			<span>{props.name}</span>
 		</div>
 	);

@@ -45,10 +45,8 @@ const SignUp: React.FC = () => {
 	const handelPasswords = () => {
 		setPasswordsMatch(() => {
 			if (User.confirmPassword !== User.password) {
-				// console.log('false' + ' ' + User.confirmPassword + ' ' + User.password);
 				return false;
 			} else {
-				// console.log('true' + ' ' + User.confirmPassword + ' ' + User.password);
 				return true;
 			}
 		});

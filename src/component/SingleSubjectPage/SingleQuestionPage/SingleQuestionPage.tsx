@@ -8,6 +8,7 @@ import AnswerCard from '../AnswerCard/AnswerCard';
 import { ObjectId } from 'mongoose';
 import Modal from '../../General/Modal/Modal';
 import AddAnswer from '../../AddAnswer/AddAnswer';
+import { useNavigate } from 'react-router';
 
 export interface IQuestionCard {
 	question: IQuestions;
@@ -20,8 +21,12 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	const currentQuestion = props.question;
 	const answersData = useSelector((state: RootState) => state.answers.value);
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
+	const navigate = useNavigate();
 	const openModal = () => {
+		if (!user.firstName) {
+			alert('please Log-in');
+			navigate('/LogIn');
+		}
 		setIsModalOpen(true);
 	};
 	const currentAnswers: IAnswers[] = answersData.filter((answer: IAnswers) => {
@@ -42,7 +47,6 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	};
 
 	const deleteQuestion = async (_id: ObjectId) => {
-		console.log('delete question', _id);
 		try {
 			const response = await fetch(`http://localhost:8000/questions`, {
 				method: 'DELETE',

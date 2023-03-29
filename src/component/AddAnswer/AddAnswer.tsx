@@ -32,10 +32,7 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 	emailjs.init(String(currentUser[0]._id));
 	const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		console.log('pass', e);
-		console.log('form', form.current);
 		if (!form.current) {
-			console.log('null');
 			return;
 		}
 		emailjs
@@ -43,9 +40,6 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 				'service_gzb0p0p',
 				'template_dbd8ip9',
 				form.current,
-				// currentUser[0],
-				// { name: 'hagar', email: 'hagaram11@gmail.com' },
-				// currentUser[0].email,
 				'iN9LhDKwo2LtbVMRw'
 			)
 			.then(
@@ -131,8 +125,7 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 	};
 
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
-		// e.preventDefault();
-		if (!data) {
+		if (!data.firstName) {
 			alert('please Log-in');
 			navigate('/LogIn');
 		}

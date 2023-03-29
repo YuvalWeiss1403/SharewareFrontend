@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../../store/store';
-import Modal from "../General/Modal/Modal"
 import { ITips } from '../../store/slices/TipsSlice';
-import "../AddSubject/AddSubject.css"
+import '../AddSubject/AddSubject.css';
 interface IModal {
 	setIsModalOpen: Function;
 }
@@ -101,8 +100,7 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 							<span
 								id="closeButton"
 								onClick={() => props.setIsModalOpen(false)}
-								className="close">
-							</span>
+								className="close"></span>
 							<div className="information">
 								<div>
 									<div id="information">{renderInputs(restDetails)}</div>
