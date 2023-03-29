@@ -99,12 +99,6 @@ const SingleSubjectPage: React.FC = () => {
 						/>
 					</Modal>
 				)}
-				{/* {isModalOpen && (
-					<AddQuestion
-						closeButton={() => closeModal()}
-						key={subjectId}
-					/>
-				)} */}
 			</div>
 		</div>
 	);

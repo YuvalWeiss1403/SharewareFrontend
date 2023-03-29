@@ -84,7 +84,6 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 						title: '',
 						comment: '',
 					});
-					// navigate('/');
 					window.location.reload();
 				});
 		} catch (err) {

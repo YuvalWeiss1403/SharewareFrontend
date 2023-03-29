@@ -29,7 +29,7 @@ export interface IAnswersState {
 	value: IAnswers[];
 }
 export interface ITipsState {
-    length: number;
+	length: number;
 	filteredValue: ITips;
 	value: ITips[];
 }
