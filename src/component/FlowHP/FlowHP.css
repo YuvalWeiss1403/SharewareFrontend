@@ -10,8 +10,8 @@
 	width: 100%;
 	text-align: center;
 	padding-top: 70px;
-
-	margin-top: 120px;
+	height: 700px;
+	/* margin-top: 120px; */
 }
 
 .all-flow-dashboard {
@@ -123,6 +123,7 @@
 		flex-direction: column;
 		margin-top: 0px;
 		font-weight: 700;
+		height: 1200px;
 	}
 
 	.all-flow-dashboard {
@@ -135,4 +136,5 @@
 	.tips-container-hp {
 		margin: 0;
 	}
+
 }

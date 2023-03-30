@@ -70,16 +70,18 @@ const ConceptHero: React.FC = () => {
 					<label id="input-empty-label">Search for subject</label>
 
 					{filteredOptions.length > 0 && (
-						<ul id="subjects-list">
-							{filteredOptions.map((option, index) => (
-								<div
-									key={option.name}
-									className={selectedItemIndex === index ? 'selected' : ''}
-									onClick={() => handleSelectItem(option.name)}>
-									{option.name}
-								</div>
-							))}
-						</ul>
+						// <div style={{backgroundColor:"white"}}>
+							<ul id="subjects-list">
+								{filteredOptions.map((option, index) => (
+									<div
+										key={option.name}
+										className={selectedItemIndex === index ? 'selected' : 'subject-option'}
+										onClick={() => handleSelectItem(option.name)}>
+										{option.name}
+									</div>
+								))}
+							</ul>
+						// </div>
 					)}
 					<input
 						id="input"

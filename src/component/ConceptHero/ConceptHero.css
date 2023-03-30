@@ -178,21 +178,26 @@
 	display: none;
 }
 #subjects-list {
-	margin-top: 265px;
+	margin-top: 228px;
 	position: absolute;
-	background-color: #ecd4eb;
 	font-family: 'Anton', sans-serif;
-	width: 66%;
-	gap: 3px;
+	width: 80%;
+	left: 50px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	border-radius: 10px 10px;
 }
 
 .subject-option {
-	background-color: white;
-	border: 1px solid #ecd4eb;
+    display: flex;
+	align-items: center;
+	background-color: #ecd4eb;
+	border: 0px solid white;
+	height: 30px;
+    font-family: 'Anton', sans-serif;
+	font-size: 12px;
+    padding-left: 20px;
 }
 
 @media (max-width: 700px) {
@@ -237,5 +242,9 @@
 	}
 	.input-container #input {
 		width: 70%;
+	}
+
+	#subjects-list {
+		left:20px;
 	}
 }
