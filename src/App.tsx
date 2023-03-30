@@ -8,6 +8,7 @@ import SignUp from './component/SignUp/SignUp';
 import SignedInUser from './component/SignedInUser/SignedInUser';
 import TipsPage from './component/TipsPage/TipsPage';
 import SingleSubjectPage from './component/SingleSubjectPage/SingleSubjectPage';
+import AdminPage from './component/AdminPage/AdminPage';
 
 const App: React.FC = () => {
 	return (
@@ -40,6 +41,10 @@ const App: React.FC = () => {
 				<Route
 					path="/UserInfo"
 					element={<SignedInUser />}
+				/>
+				<Route
+					path="/AdminPage"
+					element={<AdminPage />}
 				/>
 				<Route path="/SignUp" />
 			</Routes>
