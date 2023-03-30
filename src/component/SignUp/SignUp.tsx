@@ -83,7 +83,7 @@ const SignUp: React.FC = () => {
 				<input
 					value={User.password}
 					onChange={(e) => setUser({ ...User, password: e.target.value })}
-					pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+					pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
 					title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
 					className="enter-password"
 					type="password"
