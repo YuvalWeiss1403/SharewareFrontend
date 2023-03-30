@@ -34,56 +34,41 @@ const AdminPage: React.FC = () => {
 	return (
 		<div>
 			<Navbar />
-			<form>
-				<input
-					value={User.first_name}
-					onChange={(e) => setUser({ ...User, first_name: e.target.value })}
-					className="enter-first-name"
-					type="text"
-					placeholder="First Name"></input>
-				<input
-					value={User.last_name}
-					onChange={(e) => setUser({ ...User, last_name: e.target.value })}
-					className="enter-last-name"
-					type="text"
-					placeholder="Last Name"></input>
-				<input
-					value={User.email}
-					onChange={async (e) =>
-						await setUser({ ...User, email: e.target.value })
-					}
-					className="enter-email"
-					type="email"
-					placeholder="Email address"></input>
-				<button
-					id="page-sign-up-button"
-					onClick={(e) => {
-						e.preventDefault();
-						AdminSign();
-						setUser(defaultInputValue);
-					}}>
-					sign up
-				</button>
 			<form className='form-container'>
-				<div className='add-students-container'>
-					<div className='add-students-title'>Add Students Details</div>
+			<div className='add-students-container'>
+				<div className='add-students-title'>Add Students Details</div>
 					<input
-						type={'text'}
-						placeholder={'first Name'}
+						value={User.first_name}
+						onChange={(e) => setUser({ ...User, first_name: e.target.value })}
 						className= "first-name-input"
-					/>
+						type="text"
+						placeholder="First Name"></input>
+
 					<input
-						type={'text'}
-						placeholder={'Last Name'}
-						className= "user-name-input"
-					/>
+						value={User.last_name}
+						onChange={(e) => setUser({ ...User, last_name: e.target.value })}
+						className= "last-name-input"
+						type="text"
+						placeholder="Last Name"></input>
 					<input
-						type={'text'}
-						placeholder={'email'}
+						value={User.email}
+						onChange={async (e) =>
+							await setUser({ ...User, email: e.target.value })
+						}
 						className= "email-input"
-					/>
-				</div>
-			</form>
+						type="email"
+						placeholder="Email address"></input>
+					<button
+						id="page-sign-up-button"
+						onClick={(e) => {
+							e.preventDefault();
+							AdminSign();
+							setUser(defaultInputValue);
+						}}>
+						sign up
+					</button>
+			</div>
+			</form>			
 			<Footer />
 		</div>
 	);

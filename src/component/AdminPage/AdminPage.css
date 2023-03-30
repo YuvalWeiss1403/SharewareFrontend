@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    min-height: 72vh;
 }
 
 .add-students-container {
@@ -12,7 +13,7 @@
     gap: 20px;
     align-items: center;
     /* border: 1px solid grey; */
-    width: 500px;
+    width: 60%;
     height:400px;
     border-radius: 5px;
     box-shadow: 2px 0px 3px hsla(0, 0%, 69%, 1.25);
@@ -20,7 +21,11 @@
 }
 
 .add-students-title {
+    font-family: "Anton", sans-serif;
     font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
 .first-name-input {
@@ -29,7 +34,7 @@
     border-radius: 5px;
     padding-left: 5px;
 }
-.user-name-input {
+.last-name-input {
     width: 200px;
     height: 40px;
     border-radius: 5px;
