@@ -9,8 +9,10 @@ import SignedInUser from './component/SignedInUser/SignedInUser';
 import TipsPage from './component/TipsPage/TipsPage';
 import SingleSubjectPage from './component/SingleSubjectPage/SingleSubjectPage';
 import AdminPage from './component/AdminPage/AdminPage';
+import NotFoundPage from './component/NotFoundPage/NotFoundPage';
 
 const App: React.FC = () => {
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -42,10 +44,17 @@ const App: React.FC = () => {
 					path="/UserInfo"
 					element={<SignedInUser />}
 				/>
+				{user.userType === 'admin' && (
+					<Route
+						path="/AdminPage"
+						element={<AdminPage />}
+					/>
+				)}
 				<Route
-					path="/AdminPage"
-					element={<AdminPage />}
+					path="NotFoundPage"
+					element={<NotFoundPage />}
 				/>
+
 				<Route path="/SignUp" />
 			</Routes>
 		</BrowserRouter>
