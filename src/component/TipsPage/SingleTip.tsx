@@ -7,12 +7,17 @@ import { ObjectId } from 'mongoose';
 import { ITips } from '../../store/slices/TipsSlice';
 import { useNavigate } from 'react-router';
 import { IUser } from '../../store/slices/UsersSlice';
+import Modal from '../General/Modal/Modal';
+import { useState } from 'react';
+import Alert from '../Alert/Alert';
 
 const SingleTip: React.FC = () => {
 	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const tipsData = useSelector((state: RootState) => state.tips.value);
 	const userLike = useSelector((state: RootState) => state.users.value);
 	const navigate = useNavigate();
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
 	const handlePlus = async (e: React.MouseEvent, _id: ObjectId) => {
 		const newData = tipsData.find((data: ITips) => {
 			return data._id === _id;
@@ -25,7 +30,8 @@ const SingleTip: React.FC = () => {
 				currentUserLike &&
 				currentUserLike.tipLiked?.includes(String(newData?._id))
 			) {
-				alert('You have already liked this tip!');
+				setIsModalOpen(true);
+				// alert('You have already liked this tip!');
 			} else {
 				const currentUser = currentUserLike;
 				if (currentUser && currentUser.tipLiked) {
@@ -46,7 +52,9 @@ const SingleTip: React.FC = () => {
 					updatedData.likes += 1;
 					await addLike(_id, updatedData);
 				} else {
-					alert('You have already liked this tip!');
+					{
+						setIsModalOpen(true);
+					}
 				}
 			}
 		} else {
@@ -129,6 +137,13 @@ const SingleTip: React.FC = () => {
 	};
 	return (
 		<div id="all-the-tips">
+			{isModalOpen && (
+				<Modal
+					isModalOpen={isModalOpen}
+					setIsModalOpen={setIsModalOpen}>
+					<Alert setIsModalOpen={setIsModalOpen} />
+				</Modal>
+			)}
 			{tipsData.map((data: any) => {
 				return (
 					<div
