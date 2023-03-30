@@ -15,9 +15,8 @@ const ConceptHero: React.FC = () => {
 	const [filteredOptions, setFilteredOptions] = useState<ISubjects[]>([]);
 	const options: ISubjects[] = subjectsData;
 	console.log(options);
-	const handleSelectItem = (index: number) => {
-		setSelectedItemIndex(index);
-		setSearchValue(options[index].name);
+	const handleSelectItem = (name: string) => {
+		setSearchValue(name);
 		setFilteredOptions([]);
 	};
 
@@ -34,7 +33,6 @@ const ConceptHero: React.FC = () => {
 			);
 		} else if (event.key === 'Enter') {
 			// Select the item
-			handleSelectItem(selectedItemIndex);
 		}
 	};
 
@@ -70,13 +68,14 @@ const ConceptHero: React.FC = () => {
 				className="input-modal">
 				<div className="input-container">
 					<label id="input-empty-label">Search for subject</label>
-					{searchValue && filteredOptions.length > 0 && (
+
+					{filteredOptions.length > 0 && (
 						<ul id="subjects-list">
 							{filteredOptions.map((option, index) => (
 								<div
 									key={option.name}
 									className={selectedItemIndex === index ? 'selected' : ''}
-									onClick={() => handleSelectItem(index)}>
+									onClick={() => handleSelectItem(option.name)}>
 									{option.name}
 								</div>
 							))}

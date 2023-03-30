@@ -178,14 +178,23 @@
 	display: none;
 }
 #subjects-list {
-	margin-top: 200px;
+	margin-top: 265px;
 	position: absolute;
 	background-color: #ecd4eb;
 	font-family: 'Anton', sans-serif;
 	width: 66%;
 	gap: 3px;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 }
+
+.subject-option {
+	background-color: white;
+	border: 1px solid #ecd4eb;
+}
+
 @media (max-width: 700px) {
 	.sharing-caring-title {
 		padding-left: 2%;
