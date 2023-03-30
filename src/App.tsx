@@ -12,7 +12,6 @@ import AdminPage from './component/AdminPage/AdminPage';
 import NotFoundPage from './component/NotFoundPage/NotFoundPage';
 
 const App: React.FC = () => {
-	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -44,12 +43,11 @@ const App: React.FC = () => {
 					path="/UserInfo"
 					element={<SignedInUser />}
 				/>
-				{user.userType === 'admin' && (
-					<Route
-						path="/AdminPage"
-						element={<AdminPage />}
-					/>
-				)}
+				<Route
+					path="/AdminPage"
+					element={<AdminPage />}
+				/>
+
 				<Route
 					path="NotFoundPage"
 					element={<NotFoundPage />}
