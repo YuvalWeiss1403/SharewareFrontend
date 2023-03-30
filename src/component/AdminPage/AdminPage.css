@@ -1,0 +1,43 @@
+.form-container {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.add-students-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    /* border: 1px solid grey; */
+    width: 500px;
+    height:400px;
+    border-radius: 5px;
+    box-shadow: 2px 0px 3px hsla(0, 0%, 69%, 1.25);
+	background-color: #ecd4eb47;
+}
+
+.add-students-title {
+    font-size: 30px;
+}
+
+.first-name-input {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.user-name-input {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.email-input {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
