@@ -7,14 +7,12 @@ const NotFoundPage: React.FC = () => {
 	const navigate = useNavigate();
 	return (
 		<div>
-			<Navbar />
 			<button className="not-found">not found</button>
 			<button
 				id="homepage"
 				onClick={() => navigate('/')}>
 				to home page
 			</button>
-			<Footer />
 		</div>
 	);
 };
