@@ -1,15 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { ObjectId } from "mongoose";
+import { createSlice } from '@reduxjs/toolkit';
+import { ObjectId } from 'mongoose';
 
 export interface ISubjects {
+	toLowerCase(): unknown;
 	name: string;
 	_id: ObjectId;
 }
 
 const dataSubject = async () => {
 	try {
-		const response = await fetch("http://localhost:8000/subjects", {
-			method: "GET",
+		const response = await fetch('http://localhost:8000/subjects', {
+			method: 'GET',
 		});
 		const data = await response.json();
 		return data;
@@ -19,7 +20,7 @@ const dataSubject = async () => {
 };
 const subjects: ISubjects[] = await dataSubject();
 export const subjectsSlice = createSlice({
-	name: "Subjects",
+	name: 'Subjects',
 	initialState: {
 		value: subjects,
 		filteredValue: {},

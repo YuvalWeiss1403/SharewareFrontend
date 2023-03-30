@@ -10,6 +10,8 @@
 	width: 100%;
 	text-align: center;
 	padding-top: 70px;
+
+	margin-top: 120px;
 }
 
 .all-flow-dashboard {
@@ -98,20 +100,20 @@
 	font-weight: 400;
 }
 #flow-box-questions {
-	background-image: url("../../assets/icons/questions.svg");
+	background-image: url('../../assets/icons/questions.svg');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position-y: 7px;
 }
 #flow-box-share {
-	background-image: url("../../assets/icons/share.svg");
+	background-image: url('../../assets/icons/share.svg');
 	background-repeat: no-repeat;
 	background-size: 39px;
 	background-position-y: 21px;
 	background-position-x: 10px;
 }
 #flow-box-tips {
-	background-image: url("../../assets/icons/tips.svg");
+	background-image: url('../../assets/icons/tips.svg');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position-y: 7px;
