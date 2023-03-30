@@ -177,6 +177,15 @@
 .matches-search {
 	display: none;
 }
+#subjects-list {
+	margin-top: 200px;
+	position: absolute;
+	background-color: #ecd4eb;
+	font-family: 'Anton', sans-serif;
+	width: 66%;
+	gap: 3px;
+	text-align: center;
+}
 @media (max-width: 700px) {
 	.sharing-caring-title {
 		padding-left: 2%;
