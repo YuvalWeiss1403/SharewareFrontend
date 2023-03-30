@@ -23,7 +23,7 @@ const SignedInUser: React.FC = () => {
 	const handelLogout = async () => {
 		await onLogout();
 	};
-	const [filterBar, SetFilterBar] = useState<string>();
+	const [filterBar, SetFilterBar] = useState<string>('questions');
 
 	const user = JSON.parse(sessionStorage.getItem('user') || '');
 	const userName = `${user.firstName} ${user.lastName}`;
