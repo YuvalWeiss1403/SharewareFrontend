@@ -45,14 +45,15 @@ const AdminPage: React.FC = () => {
 								onChange={(e) => setUser({ ...User, first_name: e.target.value })}
 								className="first-name-input"
 								type="text"
-								placeholder="First Name"></input>
-
+								placeholder="First Name">
+							</input>
 							<input
 								value={User.last_name}
 								onChange={(e) => setUser({ ...User, last_name: e.target.value })}
 								className="last-name-input"
 								type="text"
-								placeholder="Last Name"></input>
+								placeholder="Last Name">
+							</input>
 							<input
 								value={User.email}
 								onChange={async (e) =>
