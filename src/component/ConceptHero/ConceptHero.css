@@ -178,15 +178,37 @@
 	display: none;
 }
 #subjects-list {
-	margin-top: 228px;
-	position: absolute;
-	font-family: 'Anton', sans-serif;
-	width: 80%;
-	left: 50px;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	border-radius: 10px 10px;
+    margin-top: 260px;
+    position: absolute;
+    font-family: 'Anton', sans-serif;
+    width: 80%;
+    left: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0px 10px 10px;
+    height: 179px;
+    overflow-y: scroll;
+}
+
+/* width */
+#subjects-list::-webkit-scrollbar {
+	width: 100%;
+}
+
+/* Track */
+#subjects-list::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+#subjects-list::-webkit-scrollbar-thumb {
+	background: transparent;
+}
+
+/* Handle on hover */
+#subjects-list::-webkit-scrollbar-thumb:hover {
+	background: transparent;
 }
 
 .subject-option {

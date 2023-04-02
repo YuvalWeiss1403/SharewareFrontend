@@ -70,8 +70,8 @@ const ConceptHero: React.FC = () => {
 					<label id="input-empty-label">Search for subject</label>
 
 					{filteredOptions.length > 0 && (
-						// <div style={{backgroundColor:"white"}}>
-							<ul id="subjects-list">
+						<div id="subjects-list">
+							<ul>
 								{filteredOptions.map((option, index) => (
 									<div
 										key={option.name}
@@ -81,7 +81,7 @@ const ConceptHero: React.FC = () => {
 									</div>
 								))}
 							</ul>
-						// </div>
+						</div>
 					)}
 					<input
 						id="input"
