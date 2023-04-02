@@ -1,18 +1,18 @@
-import "../HomePage/HomePage.css";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import "./singleTip.css";
-import like from "./image/like.svg";
-import { ObjectId } from "mongoose";
-import { ITips } from "../../store/slices/TipsSlice";
-import { useNavigate } from "react-router";
-import { IUser } from "../../store/slices/UsersSlice";
-import Modal from "../General/Modal/Modal";
-import { useState } from "react";
-import Alert from "../Alert/Alert";
+import '../HomePage/HomePage.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import './singleTip.css';
+import like from './image/like.svg';
+import { ObjectId } from 'mongoose';
+import { ITips } from '../../store/slices/TipsSlice';
+import { useNavigate } from 'react-router';
+import { IUser } from '../../store/slices/UsersSlice';
+import Modal from '../General/Modal/Modal';
+import { useState } from 'react';
+import Alert from '../Alert/Alert';
 
 const SingleTip: React.FC = () => {
-	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
+	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
 	const tipsData = useSelector((state: RootState) => state.tips.value);
 	const userLike = useSelector((state: RootState) => state.users.value);
 	const navigate = useNavigate();
@@ -44,7 +44,7 @@ const SingleTip: React.FC = () => {
 					};
 					await updateUser(updatedUser._id, updatedUser);
 				} else {
-					console.log("Error: currentUser or tipLiked is null or undefined.");
+					console.log('Error: currentUser or tipLiked is null or undefined.');
 				}
 
 				if (newData && newData.likes !== undefined) {
@@ -58,8 +58,8 @@ const SingleTip: React.FC = () => {
 				}
 			}
 		} else {
-			navigate("/LogIn");
-			alert("Please log in to like tips!");
+			navigate('/LogIn');
+			alert('Please log in to like tips!');
 		}
 	};
 	const updateUser = async (_id: ObjectId, newData: IUser) => {
@@ -67,14 +67,14 @@ const SingleTip: React.FC = () => {
 			const response = await fetch(
 				`https://shareware-server.onrender.com/users/`,
 				{
-					method: "PUT",
+					method: 'PUT',
 					body: JSON.stringify({
 						userId: user._id,
 						_id: _id,
 						data: newData,
 					}),
 					headers: {
-						"Content-type": "application/json; charset=UTF-8",
+						'Content-type': 'application/json; charset=UTF-8',
 					},
 				}
 			);
@@ -94,14 +94,14 @@ const SingleTip: React.FC = () => {
 			const response = await fetch(
 				`https://shareware-server.onrender.com/tips/`,
 				{
-					method: "PUT",
+					method: 'PUT',
 					body: JSON.stringify({
 						userId: user._id,
 						_id: _id,
 						data: newData,
 					}),
 					headers: {
-						"Content-type": "application/json; charset=UTF-8",
+						'Content-type': 'application/json; charset=UTF-8',
 					},
 				}
 			);
@@ -124,12 +124,12 @@ const SingleTip: React.FC = () => {
 			const response = await fetch(
 				`https://shareware-server.onrender.com/tips/`,
 				{
-					method: "DELETE",
+					method: 'DELETE',
 					body: JSON.stringify({
 						_id: _id,
 					}),
 					headers: {
-						"Content-type": "application/json; charset=UTF-8",
+						'Content-type': 'application/json; charset=UTF-8',
 						Authorization: `Bearer ${user.token}`,
 					},
 				}
@@ -147,14 +147,18 @@ const SingleTip: React.FC = () => {
 	return (
 		<div id="all-the-tips">
 			{isModalOpen && (
-				<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+				<Modal
+					isModalOpen={isModalOpen}
+					setIsModalOpen={setIsModalOpen}>
 					<Alert setIsModalOpen={setIsModalOpen} />
 				</Modal>
 			)}
 			{tipsData.map((data: any) => {
 				return (
-					<div id="tip" key={data._id}>
-						{user.userType === "admin" && (
+					<div
+						id="tip"
+						key={data._id}>
+						{user.userType === process.env.ADMIN && (
 							<span
 								id="closeButton"
 								onClick={() => closeButton(data._id)}
