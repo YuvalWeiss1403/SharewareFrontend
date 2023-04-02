@@ -74,7 +74,9 @@ const ConceptHero: React.FC = () => {
 							{filteredOptions.map((option, index) => (
 								<div
 									key={option.name}
-									className={selectedItemIndex === index ? 'selected' : ''}
+									className={
+										selectedItemIndex === index ? 'selected' : 'subject-option'
+									}
 									onClick={() => handleSelectItem(option.name)}>
 									{option.name}
 								</div>

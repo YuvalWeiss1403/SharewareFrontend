@@ -23,6 +23,12 @@ const AdminPage: React.FC = () => {
 					firstName: User.first_name,
 					lastName: User.last_name,
 					email: User.email,
+				},
+				{
+					headers: {
+						'Content-type': 'application/json; charset=UTF-8',
+						Authorization: `Bearer ${user.token}`,
+					},
 				}
 			);
 			navigator('/');
@@ -39,17 +45,21 @@ const AdminPage: React.FC = () => {
 				{user.userType === 'admin' && (
 					<div className="add-students-container">
 						<div className="add-students-title">Add Students Details</div>
-						<div className='all-inputs'>
+						<div className="all-inputs">
 							<input
 								value={User.first_name}
-								onChange={(e) => setUser({ ...User, first_name: e.target.value })}
+								onChange={(e) =>
+									setUser({ ...User, first_name: e.target.value })
+								}
 								className="first-name-input"
 								type="text"
 								placeholder="First Name"></input>
 
 							<input
 								value={User.last_name}
-								onChange={(e) => setUser({ ...User, last_name: e.target.value })}
+								onChange={(e) =>
+									setUser({ ...User, last_name: e.target.value })
+								}
 								className="last-name-input"
 								type="text"
 								placeholder="Last Name"></input>
@@ -60,8 +70,7 @@ const AdminPage: React.FC = () => {
 								}
 								className="email-input"
 								type="email"
-								placeholder="Email address">
-							</input>
+								placeholder="Email address"></input>
 						</div>
 						<button
 							className="admin-page-sign-up-button"
