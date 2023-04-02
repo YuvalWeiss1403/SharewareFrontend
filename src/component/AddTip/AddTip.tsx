@@ -84,8 +84,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 					window.location.reload();
 				});
 		} catch (err) {
-			alert("please try again");
-			console.log(err);
+			alert('please try again');
 		}
 	};
 

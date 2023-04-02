@@ -8,13 +8,14 @@
 }
 
 .login-content {
-	background-color: white;
-	height: 80vh;
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	gap: 15px;
-	padding-top: 25px;
+    background-color: white;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 25px;
+    padding-bottom: 20px;
 }
 
 .signIn-page-heading {
@@ -88,22 +89,18 @@
 	border-radius: 4px;
 	height: 30px;
 }
-/* width */
 ::-webkit-scrollbar {
 	width: 100%;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
 	background: transparent;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
 	background: transparent;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: transparent;
 }
@@ -122,7 +119,4 @@
 		width: 90%;
 		text-align: center;
 	}
-	/* .login-content {
-		height: 440px;
-	} */
 }
