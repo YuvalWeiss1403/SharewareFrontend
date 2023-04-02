@@ -42,7 +42,8 @@ const AdminPage: React.FC = () => {
 							onClick={() => navigator('/userInfo')}
 							className="go-back button go-to-admin">
 							&larr; Go back
-						</button>						<div className="add-students-title">Add Students Details</div>
+						</button>						
+						<div className="add-students-title">Add Students Details</div>
 						<div className='all-inputs'>
 							<input
 								value={User.first_name}
