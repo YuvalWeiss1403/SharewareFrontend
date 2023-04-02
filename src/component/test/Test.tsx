@@ -11,7 +11,6 @@ const Test: React.FC = () => {
 	const [searchValue, setSearchValue] = useState<string>('');
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const options: ISubjects[] = subjectsData;
-	console.log(options);
 	const handleSelectItem = (index: number) => {
 		setSelectedItemIndex(index);
 		setSearchValue(options[index].name);

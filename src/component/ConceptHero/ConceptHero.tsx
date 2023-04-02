@@ -14,7 +14,6 @@ const ConceptHero: React.FC = () => {
 	const [selectedItemIndex, setSelectedItemIndex] = useState<number>(-1);
 	const [filteredOptions, setFilteredOptions] = useState<ISubjects[]>([]);
 	const options: ISubjects[] = subjectsData;
-	console.log(options);
 	const handleSelectItem = (name: string) => {
 		setSearchValue(name);
 		setFilteredOptions([]);
@@ -22,17 +21,14 @@ const ConceptHero: React.FC = () => {
 
 	const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
 		if (event.key === 'ArrowUp') {
-			// Move selection up
 			setSelectedItemIndex((prevIndex) =>
 				prevIndex <= 0 ? filteredOptions.length - 1 : prevIndex - 1
 			);
 		} else if (event.key === 'ArrowDown') {
-			// Move selection down
 			setSelectedItemIndex((prevIndex) =>
 				prevIndex === filteredOptions.length - 1 ? 0 : prevIndex + 1
 			);
 		} else if (event.key === 'Enter') {
-			// Select the item
 		}
 	};
 
