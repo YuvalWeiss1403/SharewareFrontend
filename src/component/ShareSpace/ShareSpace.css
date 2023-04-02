@@ -15,6 +15,7 @@
 	justify-items: center;
 	gap: 25px;
 	min-height: 78vh;
+	padding-bottom: 60px;
 }
 .share-space-header {
 	font-family: "Anton", sans-serif;

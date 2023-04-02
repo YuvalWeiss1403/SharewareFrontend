@@ -1,17 +1,16 @@
 .all-flow-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	background-color: hsl(0, 0%, 95%);
-	font-weight: 700;
-	font-size: 20px;
-	color: hsl(257, 7%, 63%);
-	width: 100%;
-	text-align: center;
-	padding-top: 70px;
-	height: 700px;
-	/* margin-top: 120px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: hsl(0, 0%, 95%);
+    font-weight: 700;
+    font-size: 20px;
+    color: hsl(257, 7%, 63%);
+    width: 100%;
+    text-align: center;
+    padding-top: 175px;
+    height: 575px;
 }
 
 .all-flow-dashboard {
@@ -89,7 +88,6 @@
 .hr {
 	display: block;
 	width: 10px;
-	display: block;
 	height: 1px;
 	border: 0;
 	background-color: grey;
@@ -121,7 +119,7 @@
 @media (max-width: 700px) {
 	.all-flow-container {
 		flex-direction: column;
-		margin-top: 0px;
+		margin-top: -105px;
 		font-weight: 700;
 		height: 1200px;
 	}
@@ -130,6 +128,19 @@
 		display: flex;
 		flex-direction: column;
 	}
+
+	.all-flow-dashboard hr {
+		display: none;
+	}
+
+	.hr {
+		display: none;
+		width: 10px;
+		height: 1px;
+		border: 0;
+		background-color: grey;
+	}
+
 	.all-shareSpace-container {
 		margin: 0;
 	}

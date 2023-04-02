@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+	text-align: center;
 }
 
 .no-access-icon{
@@ -15,7 +16,6 @@
 .to-hp-button {
 	border: 0.5px solid #ecd4eb;
     background-color: #ecd4eb;
-	/* background-color: transparent; */
 	color: black;
 	font-size: 16px;
 	line-height: 20px;

@@ -48,3 +48,13 @@
 .clicked {
 	border-bottom: 2px solid #ecd4eb;
 }
+
+.add-students {
+	padding: 0px 5px 0px 5px;
+    color: white;
+    background-color: #ecd4eb;
+    border-radius: 5px;
+    height: fit-content;
+    width: fit-content;
+	margin-left: 5px;
+}

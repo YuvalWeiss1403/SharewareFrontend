@@ -39,7 +39,7 @@ const SignUp: React.FC = () => {
 	};
 
 	const handelSignUp = async () => {
-		PasswordsMatch ? await onSignUp() : console.log('not match');
+		PasswordsMatch ? await onSignUp() : alert('not match');
 	};
 
 	const handelPasswords = () => {

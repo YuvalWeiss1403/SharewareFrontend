@@ -38,7 +38,11 @@ const AdminPage: React.FC = () => {
 			<form className="form-container">
 				{user.userType === 'admin' && (
 					<div className="add-students-container">
-						<div className="add-students-title">Add Students Details</div>
+						<button
+							onClick={() => navigator('/userInfo')}
+							className="go-back button go-to-admin">
+							&larr; Go back
+						</button>						<div className="add-students-title">Add Students Details</div>
 						<div className='all-inputs'>
 							<input
 								value={User.first_name}
