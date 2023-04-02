@@ -15,9 +15,12 @@ export interface IUser {
 
 const datausers = async () => {
 	try {
-		const response = await fetch("http://localhost:8000/users", {
-			method: "GET",
-		});
+		const response = await fetch(
+			"https://shareware-server.onrender.com/users",
+			{
+				method: "GET",
+			}
+		);
 		const data = await response.json();
 		return data;
 	} catch (err) {

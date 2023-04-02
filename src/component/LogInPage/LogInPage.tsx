@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
-import axios from 'axios';
-import Footer from '../General/Footer/Footer';
-import NavBar from '../General/Navbar/Navbar';
-import './LogInPage.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
+import Footer from "../General/Footer/Footer";
+import NavBar from "../General/Navbar/Navbar";
+import "./LogInPage.css";
 
 const LogInPage: React.FC = () => {
 	const navigator = useNavigate();
-	const [Email, setEmail] = useState('');
-	const [Password, setPassword] = useState('');
+	const [Email, setEmail] = useState("");
+	const [Password, setPassword] = useState("");
 
 	const onLogin = async () => {
 		try {
-			const userReq = await axios.post('http://localhost:8000/users/', {
-				email: Email,
-				password: Password,
-			});
-			sessionStorage.setItem('user', JSON.stringify(userReq.data));
-			navigator('/');
+			const userReq = await axios.post(
+				"https://shareware-server.onrender.com/users/",
+				{
+					email: Email,
+					password: Password,
+				}
+			);
+			sessionStorage.setItem("user", JSON.stringify(userReq.data));
+			navigator("/");
 		} catch (error: any) {
 			alert(error.response.data);
 			return [];
@@ -52,8 +55,8 @@ const LogInPage: React.FC = () => {
 					id="page-login"
 					onClick={() => {
 						handelLogin();
-						setEmail('');
-						setPassword('');
+						setEmail("");
+						setPassword("");
 					}}>
 					Login
 				</button>
@@ -63,9 +66,7 @@ const LogInPage: React.FC = () => {
 					<div>or</div>
 					<hr></hr>
 				</div>
-				<button
-					id="page-sign-up-button"
-					onClick={() => navigator('/signUp')}>
+				<button id="page-sign-up-button" onClick={() => navigator("/signUp")}>
 					sign up
 				</button>
 			</div>

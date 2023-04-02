@@ -48,16 +48,19 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 
 	const deleteQuestion = async (_id: ObjectId) => {
 		try {
-			const response = await fetch(`http://localhost:8000/questions`, {
-				method: "DELETE",
-				body: JSON.stringify({
-					_id: _id,
-				}),
-				headers: {
-					"Content-type": "application/json; charset=UTF-8",
-					Authorization: `Bearer ${user.token}`,
-				},
-			});
+			const response = await fetch(
+				`https://shareware-server.onrender.com/questions`,
+				{
+					method: "DELETE",
+					body: JSON.stringify({
+						_id: _id,
+					}),
+					headers: {
+						"Content-type": "application/json; charset=UTF-8",
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
+			);
 			const data = await response.json();
 			window.location.reload();
 			if (!response.ok) {

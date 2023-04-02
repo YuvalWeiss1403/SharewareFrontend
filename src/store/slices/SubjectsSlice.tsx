@@ -8,9 +8,12 @@ export interface ISubjects {
 
 const dataSubject = async () => {
 	try {
-		const response = await fetch("http://localhost:8000/subjects", {
-			method: "GET",
-		});
+		const response = await fetch(
+			"https://shareware-server.onrender.com/subjects",
+			{
+				method: "GET",
+			}
+		);
 		const data = await response.json();
 		return data;
 	} catch (err) {

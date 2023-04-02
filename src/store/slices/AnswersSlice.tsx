@@ -10,9 +10,12 @@ export interface IAnswers {
 
 const dataAnswers = async () => {
 	try {
-		const response = await fetch("http://localhost:8000/answers", {
-			method: "GET",
-		});
+		const response = await fetch(
+			"https://shareware-server.onrender.com/answers",
+			{
+				method: "GET",
+			}
+		);
 		const data = await response.json();
 		return data;
 	} catch (err) {

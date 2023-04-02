@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../store/store';
-import { ITips } from '../../store/slices/TipsSlice';
-import '../AddSubject/AddSubject.css';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../../store/store";
+import { ITips } from "../../store/slices/TipsSlice";
+import "../AddSubject/AddSubject.css";
 interface IModal {
 	setIsModalOpen: Function;
 }
 const AddSubject: React.FC<IModal> = (props: IModal) => {
-	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const data = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const navigate = useNavigate();
 	const subjectsData = useSelector((state: RootState) => state.subjects.value);
 	const [subject, SetSubject] = useState<any>(subjectsData);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
-		subject: '',
+		subject: "",
 	});
 
 	interface InputField {
@@ -25,19 +25,17 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 	}
 	const restDetails: InputField[] = [
 		{
-			id: 'subject-input',
-			placeholder: 'Enter Subject',
-			type: 'text',
-			title: 'Subject',
-			name: 'Subject',
+			id: "subject-input",
+			placeholder: "Enter Subject",
+			type: "text",
+			title: "Subject",
+			name: "Subject",
 		},
 	];
 
 	const renderInputs = (inputFields: InputField[]) => {
 		return inputFields.map((field) => (
-			<div
-				id="input-container"
-				key={field.id}>
+			<div id="input-container" key={field.id}>
 				{field.title && <div id="input-title">{field.title}</div>}
 				<input
 					id="input-full-Name"
@@ -55,13 +53,13 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 
 	const newSubject = async (newSubject: String) => {
 		try {
-			await fetch('http://localhost:8000/subjects/', {
-				method: 'POST',
+			await fetch("https://shareware-server.onrender.com/subjects/", {
+				method: "POST",
 				body: JSON.stringify({
 					name: newSubject,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 					Authorization: `Bearer ${data.token}`,
 				},
 			})
@@ -69,12 +67,12 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 				.then((data) => {
 					SetSubject((newSubject: ITips[]) => [...newSubject, data]);
 					setInputValues({
-						subject: '',
+						subject: "",
 					});
 					window.location.reload();
 				});
 		} catch (err) {
-			alert('please try again');
+			alert("please try again");
 			console.log(err);
 		}
 	};
@@ -82,8 +80,8 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!data) {
-			alert('please Log-in');
-			navigate('/LogIn');
+			alert("please Log-in");
+			navigate("/LogIn");
 		}
 		const newSubjectValue = inputValues.Subject;
 		await newSubject(newSubjectValue);
@@ -93,9 +91,7 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 		<>
 			<div className="card">
 				<form onSubmit={handSaveRest}>
-					<div
-						id="modal"
-						className="modal">
+					<div id="modal" className="modal">
 						<div className="add-information">
 							<span
 								id="closeButton"
@@ -105,9 +101,7 @@ const AddSubject: React.FC<IModal> = (props: IModal) => {
 								<div>
 									<div id="information">{renderInputs(restDetails)}</div>
 								</div>
-								<button
-									className="submit"
-									type="submit">
+								<button className="submit" type="submit">
 									<span>ADD SUBJECT </span>
 								</button>
 							</div>

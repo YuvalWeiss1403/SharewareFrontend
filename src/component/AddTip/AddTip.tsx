@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { RootState } from '../../store/store';
-import '../AddTip/AddTip.css';
-import { ITips } from '../../store/slices/TipsSlice';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { RootState } from "../../store/store";
+import "../AddTip/AddTip.css";
+import { ITips } from "../../store/slices/TipsSlice";
 interface IModal {
 	setIsModalOpen: Function;
 }
 const AddTip: React.FC<IModal> = (props: IModal) => {
-	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const data = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const navigate = useNavigate();
 	const tipsData = useSelector((state: RootState) => state.tips.value);
 	const [tips, setTips] = useState<any>(tipsData);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
-		title: '',
-		comment: '',
+		title: "",
+		comment: "",
 	});
 
 	interface InputField {
@@ -26,26 +26,24 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 	}
 	const restDetails: InputField[] = [
 		{
-			id: 'title-input',
-			placeholder: 'Enter Title',
-			type: 'text',
-			title: 'title',
-			name: 'title',
+			id: "title-input",
+			placeholder: "Enter Title",
+			type: "text",
+			title: "title",
+			name: "title",
 		},
 		{
-			id: 'comment-input',
-			placeholder: 'Enter Comment',
-			type: 'text',
-			title: 'comment',
-			name: 'comment',
+			id: "comment-input",
+			placeholder: "Enter Comment",
+			type: "text",
+			title: "comment",
+			name: "comment",
 		},
 	];
 
 	const renderInputs = (inputFields: InputField[]) => {
 		return inputFields.map((field) => (
-			<div
-				id="input-container"
-				key={field.id}>
+			<div id="input-container" key={field.id}>
 				{field.title && <div id="input-title">{field.title}</div>}
 				<input
 					id="input-full-Name"
@@ -63,8 +61,8 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 
 	const newTip = async (title: string, comment: string, username: string) => {
 		try {
-			await fetch('http://localhost:8000/tips/', {
-				method: 'POST',
+			await fetch("https://shareware-server.onrender.com/tips/", {
+				method: "POST",
 				body: JSON.stringify({
 					userId: data._id,
 					title: title,
@@ -73,7 +71,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 					likes: 0,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 					Authorization: `Bearer ${data.token}`,
 				},
 			})
@@ -81,13 +79,13 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 				.then((data) => {
 					setTips((newTips: ITips[]) => [...newTips, data]);
 					setInputValues({
-						title: '',
-						comment: '',
+						title: "",
+						comment: "",
 					});
 					window.location.reload();
 				});
 		} catch (err) {
-			alert('please try again');
+			alert("please try again");
 			console.log(err);
 		}
 	};
@@ -95,8 +93,8 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!data) {
-			alert('please Log-in');
-			navigate('/LogIn');
+			alert("please Log-in");
+			navigate("/LogIn");
 		}
 		const username = `${data.firstName} ${data.lastName}`;
 		const comment = inputValues.comment;
@@ -107,9 +105,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 	return (
 		<div className="card-information">
 			<form onSubmit={handSaveRest}>
-				<div
-					id="Modal"
-					className="modal">
+				<div id="Modal" className="modal">
 					<div className="add-information">
 						<span
 							id="closeButton"
@@ -119,9 +115,7 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 							<div>
 								<div id="information">{renderInputs(restDetails)}</div>
 							</div>
-							<button
-								className="submit"
-								type="submit">
+							<button className="submit" type="submit">
 								<span>ADD TIPS </span>
 							</button>
 						</div>

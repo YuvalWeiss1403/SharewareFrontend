@@ -1,25 +1,25 @@
-import React, { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { RootState } from '../../store/store';
-import { ITips } from '../../store/slices/TipsSlice';
-import { ObjectId } from 'mongoose';
-import emailjs from 'emailjs-com';
-import './AddAnswer.css';
+import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { RootState } from "../../store/store";
+import { ITips } from "../../store/slices/TipsSlice";
+import { ObjectId } from "mongoose";
+import emailjs from "emailjs-com";
+import "./AddAnswer.css";
 interface IModal {
 	closeButton?: Function;
 	questionId?: ObjectId;
 	setIsModalOpen: Function;
 }
 const AddAnswer: React.FC<IModal> = (props: IModal) => {
-	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const data = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const navigate = useNavigate();
 	const questionData = useSelector((state: RootState) => state.questions.value);
 	const [question, SetQuestion] = useState<any>(questionData);
 	const usersData = useSelector((state: RootState) => state.users.value);
 	const propsQuestion = props.questionId;
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
-		subject: '',
+		subject: "",
 	});
 	const currentQuestion = questionData.filter(
 		(qusetion) => qusetion._id === propsQuestion
@@ -37,10 +37,10 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 		}
 		emailjs
 			.sendForm(
-				'service_gzb0p0p',
-				'template_dbd8ip9',
+				"service_gzb0p0p",
+				"template_dbd8ip9",
 				form.current,
-				'iN9LhDKwo2LtbVMRw'
+				"iN9LhDKwo2LtbVMRw"
 			)
 			.then(
 				(result) => {
@@ -63,19 +63,17 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 	}
 	const restDetails: InputField[] = [
 		{
-			id: 'comment-input',
-			placeholder: 'Enter comment',
-			type: 'text',
-			title: 'comment',
-			name: 'comment',
+			id: "comment-input",
+			placeholder: "Enter comment",
+			type: "text",
+			title: "comment",
+			name: "comment",
 		},
 	];
 
 	const renderInputs = (inputFields: InputField[]) => {
 		return inputFields.map((field) => (
-			<div
-				id="input-container"
-				key={field.id}>
+			<div id="input-container" key={field.id}>
 				{field.title && <div id="input-title">{field.title}</div>}
 				<input
 					id="input-full-Name"
@@ -97,8 +95,8 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 		questionsId: string
 	) => {
 		try {
-			await fetch('http://localhost:8000/answers', {
-				method: 'POST',
+			await fetch("https://shareware-server.onrender.com/answers", {
+				method: "POST",
 				body: JSON.stringify({
 					userName: userName,
 					date: Date.now(),
@@ -106,7 +104,7 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 					questionsId: questionsId,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 					Authorization: `Bearer ${data.token}`,
 				},
 			})
@@ -114,20 +112,20 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 				.then((data) => {
 					SetQuestion((newQuestion: ITips[]) => [...newQuestion, data]);
 					setInputValues({
-						subject: '',
+						subject: "",
 					});
 					window.location.reload();
 				});
 		} catch (err) {
-			alert('please try again');
+			alert("please try again");
 			console.log(err);
 		}
 	};
 
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		if (!data.firstName) {
-			alert('please Log-in');
-			navigate('/LogIn');
+			alert("please Log-in");
+			navigate("/LogIn");
 		}
 		const username = `${data.firstName} ${data.lastName}`;
 		const title = inputValues.comment;
@@ -138,12 +136,8 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 
 	return (
 		<div className="card">
-			<form
-				ref={form}
-				onSubmit={handSaveRest}>
-				<div
-					id="modal"
-					className="modal">
+			<form ref={form} onSubmit={handSaveRest}>
+				<div id="modal" className="modal">
 					<div className="add-information">
 						<span
 							id="closeButton"
@@ -155,22 +149,20 @@ const AddAnswer: React.FC<IModal> = (props: IModal) => {
 								<input
 									id="email"
 									type="email"
-									name={'user_email'}
+									name={"user_email"}
 									value={`${currentUser[0].email}`}></input>
 								<input
 									id="email"
 									type="text"
-									name={'user_name'}
+									name={"user_name"}
 									value={`${currentUser[0].firstName}`}></input>
 								<input
 									id="email"
 									type="text"
-									name={'user_question'}
+									name={"user_question"}
 									value={`${currentQuestion[0].question}`}></input>
 							</div>
-							<button
-								className="submit"
-								type="submit">
+							<button className="submit" type="submit">
 								<span>ADD ANSWER </span>
 							</button>
 						</div>
