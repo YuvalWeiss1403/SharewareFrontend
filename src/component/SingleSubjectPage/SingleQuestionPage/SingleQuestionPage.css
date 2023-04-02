@@ -28,6 +28,8 @@
 	text-align: center;
 	width: 100%;
 	border-top: 2px solid hsl(0, 0%, 75%);
+	font-size: 21px;
+	word-break: break-all;
 }
 .buttons-container {
 	align-self: flex-end;
@@ -46,22 +48,18 @@
 	width: 100%;
 }
 
-/* width */
 .answers-container::-webkit-scrollbar {
 	width: 100%;
 }
 
-/* Track */
 .answers-container::-webkit-scrollbar-track {
 	background: transparent;
 }
 
-/* Handle */
 .answers-container::-webkit-scrollbar-thumb {
 	background: transparent;
 }
 
-/* Handle on hover */
 .answers-container::-webkit-scrollbar-thumb:hover {
 	background: transparent;
 }

@@ -87,7 +87,6 @@ const AddTip: React.FC<IModal> = (props: IModal) => {
 				});
 		} catch (err) {
 			alert('please try again');
-			console.log(err);
 		}
 	};
 

@@ -58,7 +58,9 @@ const SignedInUser: React.FC = () => {
 					Logout
 				</button>
 				{user.userType === 'admin' && (
-					<button onClick={() => navigator('/AdminPage')}>New ClassRoom</button>
+					<button  onClick={() => navigator('/AdminPage')}>Create New ClassRoom
+					<span className='add-students'>&#43;</span>
+					</button>
 				)}
 				<div className="user-activities-filterBar">
 					<button
