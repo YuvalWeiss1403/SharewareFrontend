@@ -1,14 +1,14 @@
-import './SingleQuestionPage.css';
-import { IQuestions } from '../../../store/slices/QuestionsSlice';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { IAnswers } from '../../../store/slices/AnswersSlice';
-import { RootState } from '../../../store/store';
-import AnswerCard from '../AnswerCard/AnswerCard';
-import { ObjectId } from 'mongoose';
-import Modal from '../../General/Modal/Modal';
-import AddAnswer from '../../AddAnswer/AddAnswer';
-import { useNavigate } from 'react-router';
+import "./SingleQuestionPage.css";
+import { IQuestions } from "../../../store/slices/QuestionsSlice";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { IAnswers } from "../../../store/slices/AnswersSlice";
+import { RootState } from "../../../store/store";
+import AnswerCard from "../AnswerCard/AnswerCard";
+import { ObjectId } from "mongoose";
+import Modal from "../../General/Modal/Modal";
+import AddAnswer from "../../AddAnswer/AddAnswer";
+import { useNavigate } from "react-router";
 
 export interface IQuestionCard {
 	question: IQuestions;
@@ -16,7 +16,7 @@ export interface IQuestionCard {
 }
 
 const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
-	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const [ShowAnswers, setShowAnswers] = useState<boolean>(true);
 	const currentQuestion = props.question;
 	const answersData = useSelector((state: RootState) => state.answers.value);
@@ -24,8 +24,8 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	const navigate = useNavigate();
 	const openModal = () => {
 		if (!user.firstName) {
-			alert('please Log-in');
-			navigate('/LogIn');
+			alert("please Log-in");
+			navigate("/LogIn");
 		}
 		setIsModalOpen(true);
 	};
@@ -48,16 +48,19 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 
 	const deleteQuestion = async (_id: ObjectId) => {
 		try {
-			const response = await fetch(`http://localhost:8000/questions`, {
-				method: 'DELETE',
-				body: JSON.stringify({
-					_id: _id,
-				}),
-				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
-					Authorization: `Bearer ${user.token}`,
-				},
-			});
+			const response = await fetch(
+				`https://shareware-server.onrender.com/questions`,
+				{
+					method: "DELETE",
+					body: JSON.stringify({
+						_id: _id,
+					}),
+					headers: {
+						"Content-type": "application/json; charset=UTF-8",
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
+			);
 			const data = await response.json();
 			window.location.reload();
 			if (!response.ok) {
@@ -73,7 +76,7 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	}, [currentQuestion]);
 	return (
 		<div className="question-content">
-			{user.userType === 'admin' && (
+			{user.userType === "admin" && (
 				<span
 					id="delete-question"
 					onClick={() => handelDelete()}
@@ -92,31 +95,22 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 					}}>
 					{ShowAnswers
 						? `Show answers (${currentAnswers.length})`
-						: 'Hide answers'}
+						: "Hide answers"}
 				</button>
-				<button
-					className="button add-answer"
-					onClick={openModal}>
+				<button className="button add-answer" onClick={openModal}>
 					Add answer
 				</button>
 			</div>
 			{!ShowAnswers && (
 				<div className="answers-container">
 					{currentAnswers.map((answer: IAnswers, index: number) => {
-						return (
-							<AnswerCard
-								answer={answer}
-								key={index}
-							/>
-						);
+						return <AnswerCard answer={answer} key={index} />;
 					})}
 				</div>
 			)}
 			{isModalOpen && (
-				<Modal
-					isModalOpen={isModalOpen}
-					setIsModalOpen={setIsModalOpen}>
-					{' '}
+				<Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+					{" "}
 					<AddAnswer
 						setIsModalOpen={setIsModalOpen}
 						questionId={currentQuestion._id}
@@ -133,9 +127,7 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 								className="confirm-delete">
 								Confirm
 							</button>
-							<button
-								onClick={() => handelCancel()}
-								className="cancel-delete">
+							<button onClick={() => handelCancel()} className="cancel-delete">
 								Cancel
 							</button>
 						</div>

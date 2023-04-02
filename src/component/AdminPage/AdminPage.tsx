@@ -1,31 +1,31 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
-import Footer from '../General/Footer/Footer';
-import Navbar from '../General/Navbar/Navbar';
-import '../AdminPage/AdminPage.css';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import Footer from "../General/Footer/Footer";
+import Navbar from "../General/Navbar/Navbar";
+import "../AdminPage/AdminPage.css";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const AdminPage: React.FC = () => {
 	const defaultInputValue = {
-		first_name: '',
-		last_name: '',
-		email: '',
+		first_name: "",
+		last_name: "",
+		email: "",
 	};
 	const [User, setUser] = useState(defaultInputValue);
 	const navigator = useNavigate();
-	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const AdminSign = async () => {
 		try {
 			const userReq = await axios.post(
-				'http://localhost:8000/adminUser/create',
+				"https://shareware-server.onrender.com/adminUser/create",
 				{
 					firstName: User.first_name,
 					lastName: User.last_name,
 					email: User.email,
 				}
 			);
-			navigator('/');
+			navigator("/");
 		} catch (error: any) {
 			alert(error.response.data);
 			return [];
@@ -36,24 +36,26 @@ const AdminPage: React.FC = () => {
 		<div>
 			<Navbar />
 			<form className="form-container">
-				{user.userType === 'admin' && (
+				{user.userType === "admin" && (
 					<div className="add-students-container">
 						<div className="add-students-title">Add Students Details</div>
-						<div className='all-inputs'>
+						<div className="all-inputs">
 							<input
 								value={User.first_name}
-								onChange={(e) => setUser({ ...User, first_name: e.target.value })}
+								onChange={(e) =>
+									setUser({ ...User, first_name: e.target.value })
+								}
 								className="first-name-input"
 								type="text"
-								placeholder="First Name">
-							</input>
+								placeholder="First Name"></input>
 							<input
 								value={User.last_name}
-								onChange={(e) => setUser({ ...User, last_name: e.target.value })}
+								onChange={(e) =>
+									setUser({ ...User, last_name: e.target.value })
+								}
 								className="last-name-input"
 								type="text"
-								placeholder="Last Name">
-							</input>
+								placeholder="Last Name"></input>
 							<input
 								value={User.email}
 								onChange={async (e) =>
@@ -61,8 +63,7 @@ const AdminPage: React.FC = () => {
 								}
 								className="email-input"
 								type="email"
-								placeholder="Email address">
-							</input>
+								placeholder="Email address"></input>
 						</div>
 						<button
 							className="admin-page-sign-up-button"
@@ -75,7 +76,7 @@ const AdminPage: React.FC = () => {
 						</button>
 					</div>
 				)}
-				{user.userType === 'user' && <NotFoundPage />}
+				{user.userType === "user" && <NotFoundPage />}
 			</form>
 			<Footer />
 		</div>
