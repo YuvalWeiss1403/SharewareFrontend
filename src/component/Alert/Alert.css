@@ -1,13 +1,13 @@
 #alert {
 	background-color: #d68bd247;
 	width: 100%;
-	height: 40%;
+	height: 36%;
+	border-radius: 20px;
 	color: black;
-	font-size: 40px;
 	text-align: center;
 	padding-top: 46px;
-	font-size: 44px;
-	font-weight: 300;
+	font-size: 38px;
+	font-weight: 500;
 	letter-spacing: 1.37px;
 	line-height: 56px;
 }

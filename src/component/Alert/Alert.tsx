@@ -6,6 +6,7 @@ import { ITips } from '../../store/slices/TipsSlice';
 import './Alert.css';
 interface IModal {
 	setIsModalOpen: Function;
+	text: string;
 }
 const Alert: React.FC<IModal> = (props: IModal) => {
 	return (
@@ -21,7 +22,7 @@ const Alert: React.FC<IModal> = (props: IModal) => {
 							onClick={() => props.setIsModalOpen(false)}
 							className="close"></span>
 					</div>
-					<div id="alert">You have already liked this tip!</div>
+					<div id="alert">{props.text}</div>
 				</div>
 			</div>
 		</>

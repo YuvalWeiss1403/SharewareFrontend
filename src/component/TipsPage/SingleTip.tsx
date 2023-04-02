@@ -150,7 +150,10 @@ const SingleTip: React.FC = () => {
 				<Modal
 					isModalOpen={isModalOpen}
 					setIsModalOpen={setIsModalOpen}>
-					<Alert setIsModalOpen={setIsModalOpen} />
+					<Alert
+						setIsModalOpen={setIsModalOpen}
+						text={'You have already liked this tip'}
+					/>
 				</Modal>
 			)}
 			{tipsData.map((data: any) => {
