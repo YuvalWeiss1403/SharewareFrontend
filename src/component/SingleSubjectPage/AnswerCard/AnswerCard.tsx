@@ -1,13 +1,13 @@
-import { ObjectId } from 'mongoose';
-import { useState } from 'react';
-import { IAnswers } from '../../../store/slices/AnswersSlice';
-import './AnswerCard.css';
+import { ObjectId } from "mongoose";
+import { useState } from "react";
+import { IAnswers } from "../../../store/slices/AnswersSlice";
+import "./AnswerCard.css";
 
 export interface IAnswerCard {
 	answer: IAnswers;
 }
 const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
-	const user = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const user = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const currentAnswer = props.answer;
 	const closeButton = async (id: ObjectId) => {
 		await deleteAnswers(id);
@@ -28,16 +28,19 @@ const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
 
 	const deleteAnswers = async (_id: ObjectId) => {
 		try {
-			const response = await fetch(`http://localhost:8000/answers`, {
-				method: '',
-				body: JSON.stringify({
-					_id: _id,
-				}),
-				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
-					Authorization: `Bearer ${user.token}`,
-				},
-			});
+			const response = await fetch(
+				`https://shareware-server.onrender.com/answers`,
+				{
+					method: "",
+					body: JSON.stringify({
+						_id: _id,
+					}),
+					headers: {
+						"Content-type": "application/json; charset=UTF-8",
+						Authorization: `Bearer ${user.token}`,
+					},
+				}
+			);
 			const data = await response.json();
 			window.location.reload();
 			if (!response.ok) {
@@ -51,10 +54,8 @@ const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
 	return (
 		<div className="answer-card">
 			<div className="single-answer-container">
-				{user.userType === 'admin' && (
-					<span
-						onClick={() => handelDelete()}
-						className="delete-answer">
+				{user.userType === "admin" && (
+					<span onClick={() => handelDelete()} className="delete-answer">
 						Delete Answer
 					</span>
 				)}
@@ -71,9 +72,7 @@ const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
 								className="confirm-delete">
 								Confirm
 							</button>
-							<button
-								onClick={() => handelCancel()}
-								className="cancel-delete">
+							<button onClick={() => handelCancel()} className="cancel-delete">
 								Cancel
 							</button>
 						</div>

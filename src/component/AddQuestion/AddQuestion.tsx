@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { RootState } from '../../store/store';
-import { ITips } from '../../store/slices/TipsSlice';
-import { ObjectId } from 'mongoose';
-import '../AddQuestion/AddQuestion.css';
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { RootState } from "../../store/store";
+import { ITips } from "../../store/slices/TipsSlice";
+import { ObjectId } from "mongoose";
+import "../AddQuestion/AddQuestion.css";
 interface IModal {
 	setIsModalOpen: Function;
 	key?: string;
 }
 const AddQuestion: React.FC<IModal> = (props: IModal) => {
 	let { subjectId } = useParams<string>();
-	const data = JSON.parse(sessionStorage.getItem('user') || '{}');
+	const data = JSON.parse(sessionStorage.getItem("user") || "{}");
 	const navigate = useNavigate();
 	const questionData = useSelector((state: RootState) => state.questions.value);
 	const [question, SetQuestion] = useState<any>(questionData);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
-		subject: '',
+		subject: "",
 	});
 
 	interface InputField {
@@ -28,26 +28,24 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 	}
 	const restDetails: InputField[] = [
 		{
-			id: 'title-input',
-			placeholder: 'Enter title',
-			type: 'text',
-			title: 'title',
-			name: 'title',
+			id: "title-input",
+			placeholder: "Enter title",
+			type: "text",
+			title: "title",
+			name: "title",
 		},
 		{
-			id: 'question-input',
-			placeholder: 'Enter question',
-			type: 'text',
-			title: 'question',
-			name: 'question',
+			id: "question-input",
+			placeholder: "Enter question",
+			type: "text",
+			title: "question",
+			name: "question",
 		},
 	];
 
 	const renderInputs = (inputFields: InputField[]) => {
 		return inputFields.map((field) => (
-			<div
-				id="input-container"
-				key={field.id}>
+			<div id="input-container" key={field.id}>
 				{field.title && <div id="input-title">{field.title}</div>}
 				<textarea
 					id="input-full-Name"
@@ -69,8 +67,8 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 		question: string
 	) => {
 		try {
-			await fetch('http://localhost:8000/questions', {
-				method: 'POST',
+			await fetch("https://shareware-server.onrender.com/questions", {
+				method: "POST",
 				body: JSON.stringify({
 					userName: userName,
 					date: Date.now(),
@@ -79,19 +77,19 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 					question: question,
 				}),
 				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
+					"Content-type": "application/json; charset=UTF-8",
 				},
 			})
 				.then((response) => response.json())
 				.then((data) => {
 					SetQuestion((newQuestion: ITips[]) => [...newQuestion, data]);
 					setInputValues({
-						subject: '',
+						subject: "",
 					});
 					window.location.reload();
 				});
 		} catch (err) {
-			alert('please try again');
+			alert("please try again");
 			console.log(err);
 		}
 	};
@@ -99,13 +97,13 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (!data.firstName) {
-			alert('please Log-in');
-			navigate('/LogIn');
+			alert("please Log-in");
+			navigate("/LogIn");
 		} else {
 			const username = `${data.firstName} ${data.lastName}`;
 			const question = inputValues.question;
 			const title = inputValues.title;
-			const subjectID = subjectId || '0';
+			const subjectID = subjectId || "0";
 			await newQuestion(username, title, subjectID, question);
 		}
 	};
@@ -114,9 +112,7 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 		<>
 			<div className="card">
 				<form onSubmit={handSaveRest}>
-					<div
-						id="modal"
-						className="modal">
+					<div id="modal" className="modal">
 						<div className="add-information">
 							<span
 								id="closeButton"
@@ -126,9 +122,7 @@ const AddQuestion: React.FC<IModal> = (props: IModal) => {
 								<div>
 									<div id="information">{renderInputs(restDetails)}</div>
 								</div>
-								<button
-									className="submit-add-ques"
-									type="submit">
+								<button className="submit-add-ques" type="submit">
 									<span>ADD QUESTION </span>
 								</button>
 							</div>
