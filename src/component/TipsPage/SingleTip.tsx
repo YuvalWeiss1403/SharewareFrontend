@@ -161,7 +161,7 @@ const SingleTip: React.FC = () => {
 					<div
 						id="tip"
 						key={data._id}>
-						{user.userType === process.env.ADMIN && (
+						{user.userType === 'admin' && (
 							<span
 								id="closeButton"
 								onClick={() => closeButton(data._id)}

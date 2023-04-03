@@ -54,7 +54,7 @@ const AnswerCard: React.FC<IAnswerCard> = (props: IAnswerCard) => {
 	return (
 		<div className="answer-card">
 			<div className="single-answer-container">
-				{user.userType === process.env.ADMIN && (
+				{user.userType === 'admin' && (
 					<span
 						onClick={() => handelDelete()}
 						className="delete-answer">

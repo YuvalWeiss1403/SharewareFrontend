@@ -76,7 +76,7 @@ const SingleQuestionPage: React.FC<IQuestionCard> = (props: IQuestionCard) => {
 	}, [currentQuestion]);
 	return (
 		<div className="question-content">
-			{user.userType === process.env.ADMIN && (
+			{user.userType === 'admin' && (
 				<span
 					id="delete-question"
 					onClick={() => handelDelete()}

@@ -60,7 +60,7 @@ const ShareSpace: React.FC = () => {
 		<div className="ShareSpace">
 			<Navbar />
 			<div className="share-space-header">Subjects</div>
-			{user.userType === process.env.ADMIN && (
+			{user.userType === 'admin' && (
 				<button
 					onClick={openModal}
 					className="add-subject">
@@ -72,7 +72,7 @@ const ShareSpace: React.FC = () => {
 				{subjectsData?.map((subject: ISubjects, index: number) => {
 					return (
 						<div className="single-subject">
-							{user.userType === process.env.ADMIN && (
+							{user.userType === 'admin' && (
 								<span
 									onClick={() => handelDelete()}
 									className="delete-subject">

@@ -42,7 +42,7 @@ const AdminPage: React.FC = () => {
 		<div>
 			<Navbar />
 			<form className="form-container">
-				{user.userType === process.env.ADMIN && (
+				{user.userType === 'admin' && (
 					<div className="add-students-container">
 						<button
 							onClick={() => navigator('/userInfo')}
@@ -87,7 +87,7 @@ const AdminPage: React.FC = () => {
 						</button>
 					</div>
 				)}
-				{user.userType === process.env.USER && <NotFoundPage />}
+				{user.userType === 'user' && <NotFoundPage />}
 			</form>
 			<Footer />
 		</div>

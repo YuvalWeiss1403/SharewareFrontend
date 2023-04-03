@@ -57,7 +57,7 @@ const SignedInUser: React.FC = () => {
 					}}>
 					Logout
 				</button>
-				{user.userType === process.env.ADMIN && (
+				{user.userType === 'admin' && (
 					<button onClick={() => navigator('/AdminPage')}>
 						Create New ClassRoom
 						<span className="add-students">&#43;</span>
